@@ -23,3 +23,7 @@ class Student(models.Model):
 
     gender = models.CharField("Sexo", max_length=1, choices=Gender_Select, default='M')
     CreatedAt = models.DateTimeField("Creado a", auto_now_add=True)
+
+    
+    def __str__(self):
+        return self.Name
