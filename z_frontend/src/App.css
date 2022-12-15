@@ -7,3 +7,10 @@ body, html {
 .app-logo {
    padding-left: 50px;
 }
+
+.sidebar {
+   display: flex;
+   height: 100vh;
+   float: left;
+   overflow: 'scroll initial';
+}
