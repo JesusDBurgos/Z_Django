@@ -10,7 +10,7 @@ import {
 
 import {NavLink} from 'react-router-dom';
 import {Navbar} from 'react-bootstrap';
-import logo from '../static/logo.png'
+//import logo from '../static/logo.png'
 import logoE from '../static/Logo_Elaine.JPG'
 import "../App.css";
 
