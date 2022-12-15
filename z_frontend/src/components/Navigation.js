@@ -11,6 +11,7 @@ import {
 import {NavLink} from 'react-router-dom';
 import {Navbar} from 'react-bootstrap';
 import logo from '../static/logo.png'
+import logoE from '../static/Logo_Elaine.JPG'
 import "../App.css";
 
 
@@ -20,19 +21,19 @@ const Navigation = () => {
     <Navbar bg="dark" variant="dark" expand="lg" id="my-nav">
         <Navbar.Brand className="app-logo" href="/">
             <img
-              src={logo}
+              src={logoE}
               width="40"
               height="50"
               className="d-inline-block align-center"
               alt="React Bootstrap logo"
             />{' '}
-            Elaine Virtual Assistant System App
+            Asistente Virtual Robótico: Elaine Assistant
         </Navbar.Brand>
     </Navbar>
     <div className='sidebar'>
     <CDBSidebar textColor="#333" backgroundColor="#f0f0f0">
         <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>
-          Navigation
+          Ruta de Navegación
         </CDBSidebarHeader>
         <CDBSidebarContent>
           <CDBSidebarMenu>
