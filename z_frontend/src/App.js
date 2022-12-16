@@ -2,13 +2,11 @@
 //import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter} from 'react-router-dom';
-//Como se usa la version 5 de react-router-dom se cambia 
-//Routes por Router
-import {Switch, Route, Router} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
+import Chatbot from "./components/Chatbot";
 
 
 function App() {
@@ -17,8 +15,11 @@ function App() {
     //y el componente de la barra de navegación
     <BrowserRouter>
       <Navigation />
+       <Routes>
+         <Route exact path="/" element={<Home/>} />
+         <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
+       </Routes>
     </BrowserRouter>
-
   );
 }
 
