@@ -89,14 +89,14 @@ function Chatbot(){
         height: '4.5rem',
         borderBottom : '1px solid black',
         borderRadius: '30px 30px 0px 0px',
-        backgroundColor: '#8012c4',
+        backgroundColor: '#1b0527',
 
     }
     const styleFooter = {
         //maxWidth : '32rem',
         borderTop : '1px solid black',
         borderRadius: '0px 0px 30px 30px',
-        backgroundColor: '#8012c4',
+        backgroundColor: '#1b0527',
         
         
     }
