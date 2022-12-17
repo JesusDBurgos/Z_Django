@@ -119,8 +119,8 @@ function Chatbot(){
             
                 <div className="card" style={stylecard}>
                     <div className="cardHeader text-white" style={styleHeader}>
-                        <h1 style={{marginBottom:'0px'}}>AI Assistant</h1>
-                        {botTyping ? <h6>Bot Typing....</h6> : null}
+                        <h1 style={{marginBottom:'2px'}}>Elaine Assistant</h1>
+                        {botTyping ? <h6 style={{marginBottom:'1px'}}>Bot Typing....</h6> : null}
                         
                         
                         
