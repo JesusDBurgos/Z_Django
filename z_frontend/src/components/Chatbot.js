@@ -1,5 +1,6 @@
 import './chatbot.css';
-import react, { useEffect, useState } from 'react';
+//import react from 'react';
+import { useEffect, useState } from 'react';
 
 import {IoMdSend}  from 'react-icons/io';
 import {BiBot,BiUser} from 'react-icons/bi';
