@@ -8,7 +8,7 @@ import Carousel from 'react-bootstrap/Carousel';
 const Home = () => {
   return (
   <div className="row">
-    <Carousel variant="white">
+    <Carousel variant="dark">
       <Carousel.Item>
         <img
           width={1100} height={500}
