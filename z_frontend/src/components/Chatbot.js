@@ -113,14 +113,16 @@ function Chatbot(){
       <div>
         {/* <button onClick={()=>rasaAPI("shreyas","hi")}>Try this</button> */}
         
-
+        <br></br>
         <div className="container">
         <div className="row justify-content-center">
-            
-                <div className="card" style={stylecard}>
+                
+                <div className="card" style={stylecard} >
                     <div className="cardHeader text-white" style={styleHeader}>
-                        <h1 style={{marginBottom:'2px'}}>Elaine Assistant</h1>
-                        {botTyping ? <h6 style={{marginBottom:'1px'}}>Bot Typing....</h6> : null}
+                        <h1 style={{marginBottom:'0px'}}>
+                          <center>Elaine Assistant</center>
+                        </h1>
+                        {botTyping ? <h6>Elaine escribiendo...</h6> : null}
                         
                         
                         

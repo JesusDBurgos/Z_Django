@@ -14,3 +14,9 @@ body, html {
    float: left;
    overflow: 'scroll initial';
 }
+
+.carousel {
+   width:1100px;
+   height:600px;
+   margin: auto;
+ }

@@ -1,15 +1,17 @@
-import slide01 from '../static/slide01.jpg'
-import slide02 from '../static/slide02.jpg'
-import slide03 from '../static/slide03.jpg'
+import slide01 from '../static/Mecatronica01.jpg'
+import slide02 from '../static/Mecatronica02.jpg'
+import slide03 from '../static/Mecatronica03.jpg'
+import slide04 from '../static/Mecatronica04.jpg'
 
 import Carousel from 'react-bootstrap/Carousel';
 
 const Home = () => {
   return (
   <div className="row">
-    <Carousel variant="dark">
+    <Carousel variant="white">
       <Carousel.Item>
         <img
+          width={1100} height={500}
           className="d-block w-100"
           src={slide01}
           alt="First slide"
@@ -17,16 +19,26 @@ const Home = () => {
       </Carousel.Item>
       <Carousel.Item>
         <img
+          width={1100} height={500}
           className="d-block w-100"
-          src={slide03}
+          src={slide02}
           alt="Second slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
+          width={1100} height={500}
           className="d-block w-100"
-          src={slide02}
+          src={slide03}
           alt="Third slide"
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          width={1100} height={500}
+          className="d-block w-100"
+          src={slide04}
+          alt="Fourth slide"
         />
       </Carousel.Item>
     </Carousel>
