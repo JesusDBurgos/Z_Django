@@ -11,7 +11,7 @@ import {
 import {NavLink} from 'react-router-dom';
 import {Navbar} from 'react-bootstrap';
 //import logo from '../static/logo.png'
-import logoE from '../static/Logo_Elaine.JPG'
+import logoEd from '../static/Bot_IA.png'
 import "../App.css";
 
 
@@ -21,7 +21,7 @@ const Navigation = () => {
     <Navbar bg="dark" variant="dark" expand="lg" id="my-nav">
         <Navbar.Brand className="app-logo" href="/">
             <img
-              src={logoE}
+              src={logoEd}
               width="40"
               height="50"
               className="d-inline-block align-center"
