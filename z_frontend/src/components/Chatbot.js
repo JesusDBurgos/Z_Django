@@ -174,9 +174,7 @@ function Chatbot(){
                           <center>Elaine Assistant</center>
                         </h1>
                         {botTyping ? <h6>Elaine escribiendo...</h6> : null}
-                        
-                        
-                        
+                           
                     </div>
                     <div className="cardBody" id="messageArea" style={styleBody}>
                         
