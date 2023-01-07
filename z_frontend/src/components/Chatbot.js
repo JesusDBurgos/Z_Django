@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import {IoMdSend}  from 'react-icons/io';
 import {BiBot,BiUser} from 'react-icons/bi';
 
+import logoE from '../static/Logo_Elaine.JPG'
+
 function Chatbot(){
     const [chat,setChat] = useState([]);
     const [inputMessage,setInputMessage] = useState('');
@@ -86,11 +88,31 @@ function Chatbot(){
         boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
 
     }
+    const stylecardLogo = {
+        maxWidth : '20rem',
+        border: '1px solid black',
+        paddingLeft: '0px',
+        paddingRight: '0px',
+        borderRadius: '30px',
+        boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
+
+    }
     const styleHeader = {
         height: '4.5rem',
         borderBottom : '1px solid black',
         borderRadius: '30px 30px 0px 0px',
         backgroundColor: '#1b0527',
+
+    }
+    const styleHeaderLogo = {
+        height: '3.5rem',
+        width: '225px',
+        borderBottom : '1px solid black',
+        backgroundColor: '#1b0527',
+        paddingLeft: '0px',
+        paddingRight: '0px',
+        borderRadius: '30px',
+        boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
 
     }
     const styleFooter = {
@@ -108,6 +130,13 @@ function Chatbot(){
         overflowX: 'hidden',
         
     }
+    const styleBodyLogo = {
+        paddingTop : '10px',
+        height: '28rem',
+        overflowY: 'a',
+        overflowX: 'hidden',
+        
+    }
 
     return (
       <div>
@@ -115,10 +144,32 @@ function Chatbot(){
         
         <br></br>
         <div className="container">
-        <div className="row justify-content-center">
+        <div className="row position-relative justify-content-flex-start">
+
+                    <div className="cardHeader text-white position-absolute top-0 start-0" style={styleHeaderLogo}>
+                    <h4 style={{marginBottom:'0px'}}>
+                          <center>Virtual Assistant</center>
+                    </h4>
+                    </div>
+                    <br></br>
+                    <div className="cardBody position-absolute top-100 start-0" style={styleBodyLogo}>
+                        <img
+                           src={logoE}
+                           width="200"
+                           height="300"
+                           className="d-inline-block align-center"
+                           alt="React Bootstrap logo"
+                        />{' '}
+
+                    </div>  
+  
+        </div>
+
+        <div className="row position-relative justify-content-center">
                 
                 <div className="card" style={stylecard} >
-                    <div className="cardHeader text-white" style={styleHeader}>
+
+                    <div className="cardHeader text-white top-50 start-50" style={styleHeader}>
                         <h1 style={{marginBottom:'0px'}}>
                           <center>Elaine Assistant</center>
                         </h1>
