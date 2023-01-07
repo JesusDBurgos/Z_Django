@@ -27,7 +27,7 @@ const Navigation = () => {
               className="d-inline-block align-center"
               alt="React Bootstrap logo"
             />{' '}
-            Asistente Virtual Robótico: Elaine Assistant
+            Asistente Virtual Robótico: Edison Robot
         </Navbar.Brand>
     </Navbar>
     <div className='sidebar'>
