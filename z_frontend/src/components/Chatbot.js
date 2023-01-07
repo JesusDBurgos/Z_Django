@@ -88,15 +88,6 @@ function Chatbot(){
         boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
 
     }
-    const stylecardLogo = {
-        maxWidth : '20rem',
-        border: '1px solid black',
-        paddingLeft: '0px',
-        paddingRight: '0px',
-        borderRadius: '30px',
-        boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
-
-    }
     const styleHeader = {
         height: '4.5rem',
         borderBottom : '1px solid black',
