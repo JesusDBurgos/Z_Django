@@ -91,7 +91,9 @@ export const Users = () => {
   }, []);
 
   return (
+    
     <div className="row">
+      <br></br>  
       <div className="col-md-4">
         <form onSubmit={handleSubmit} className="card card-body">
           <div className="form-group">
@@ -164,6 +166,7 @@ export const Users = () => {
         </table>
       </div>
     </div>
+
   );
 };
 
