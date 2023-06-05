@@ -124,7 +124,7 @@ export const Users = () => {
               placeholder="Genero del Usuario Ej: M / F"
             />
           </div>
-          <button className="btn btn-primary btn-block backgroundColor: #1b0527"> 
+          <button className="btn btn-dark btn-block"> 
             {editing ? "Update" : "Crear Usuario"}    
           </button>
         </form>
