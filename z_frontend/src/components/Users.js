@@ -100,7 +100,7 @@ export const Users = () => {
               onChange={(e) => setName(e.target.value)}
               value={name}
               className="form-control"
-              placeholder="Name"
+              placeholder="Nombre del usuario"
               ref={nameInput}
               autoFocus
             />
@@ -111,7 +111,7 @@ export const Users = () => {
               onChange={(e) => setAge(e.target.value)}
               value={age}
               className="form-control"
-              placeholder="User's Age"
+              placeholder="Edad del usuario"
             />
           </div>
           <div className="form-group">
@@ -120,11 +120,11 @@ export const Users = () => {
               onChange={(e) => setGender(e.target.value)}
               value={gender}
               className="form-control"
-              placeholder="User's gender"
+              placeholder="Genero del Usuario Ej: M / F"
             />
           </div>
-          <button className="btn btn-primary btn-block">
-            {editing ? "Update" : "Create"}
+          <button className="btn btn-primary btn-block"> 
+            {editing ? "Update" : "Crear Usuario"}    
           </button>
         </form>
       </div>
@@ -132,10 +132,10 @@ export const Users = () => {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>age</th>
-              <th>gender</th>
-              <th>Operations</th>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Genero</th>
+              <th>Operaciones</th>
             </tr>
           </thead>
           <tbody>
