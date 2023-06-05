@@ -93,7 +93,8 @@ export const Users = () => {
   return (
     
     <div className="row">
-      <br></br>  
+      <br></br>
+      <div className="row position-relative justify-content-flex-start">  
       <div className="col-md-4">
         <form onSubmit={handleSubmit} className="card card-body">
           <div className="form-group">
@@ -164,6 +165,7 @@ export const Users = () => {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     </div>
 
