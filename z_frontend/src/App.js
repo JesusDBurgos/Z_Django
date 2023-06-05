@@ -18,7 +18,7 @@ function App() {
        <Routes>
          <Route exact path="/" element={<Home/>} />
          <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
-         <Route exact path="/Admin" element={<Users/>} />
+         <Route exact path="/manage" element={<Users/>} />
        </Routes>
     </BrowserRouter>
   );
