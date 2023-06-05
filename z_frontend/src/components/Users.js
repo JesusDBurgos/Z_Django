@@ -90,11 +90,9 @@ export const Users = () => {
     getUsers();
   }, []);
 
-  return (
-    
+  return ( 
     <div className="row">
-      <br></br>
-      <div className="row position-relative justify-content-flex-start">  
+      <br></br> 
       <div className="col-md-4">
         <form onSubmit={handleSubmit} className="card card-body">
           <div className="form-group">
@@ -126,7 +124,7 @@ export const Users = () => {
               placeholder="Genero del Usuario Ej: M / F"
             />
           </div>
-          <button className="btn btn-primary btn-block"> 
+          <button className="btn btn-primary btn-block backgroundColor: #1b0527"> 
             {editing ? "Update" : "Crear Usuario"}    
           </button>
         </form>
@@ -165,7 +163,6 @@ export const Users = () => {
             ))}
           </tbody>
         </table>
-      </div>
       </div>
     </div>
 
