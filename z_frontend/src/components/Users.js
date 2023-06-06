@@ -6,6 +6,7 @@ export const Users = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  const [emotion, setEmotion] = useState("");
 
   const [editing, setEditing] = useState(false);
   const [id, setId] = useState("");
@@ -26,6 +27,7 @@ export const Users = () => {
           name,
           age,
           gender,
+          emotion,
         }),
       });
       await res.json();
@@ -39,6 +41,7 @@ export const Users = () => {
           name,
           age,
           gender,
+          emotion,
         }),
       });
       const data = await res.json();
@@ -51,6 +54,7 @@ export const Users = () => {
     setName("");
     setAge("");
     setGender("");
+    setEmotion("");
     nameInput.current.focus();
   };
 
@@ -83,6 +87,7 @@ export const Users = () => {
     setName(data.name);
     setAge(data.age);
     setGender(data.gender);
+    setEmotion(data.emotion);
     nameInput.current.focus();
   };
 
@@ -124,6 +129,15 @@ export const Users = () => {
               placeholder="Genero del Usuario Ej: M / F"
             />
           </div>
+          <div className="form-group">
+            <input
+              type="emotion"
+              onChange={(e) => setEmotion(e.target.value)}
+              value={emotion}
+              className="form-control"
+              placeholder="Emoción detectada"
+            />
+          </div>
           <button className="btn btn-dark btn-block"> 
             {editing ? "Update" : "Crear Usuario"}    
           </button>
@@ -136,6 +150,7 @@ export const Users = () => {
               <th>Nombre</th>
               <th>Edad</th>
               <th>Genero</th>
+              <th>Emoción Detectada</th>
               <th>Operaciones</th>
             </tr>
           </thead>
@@ -145,6 +160,7 @@ export const Users = () => {
                 <td>{user.name}</td>
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
+                <td>{user.emotion}</td>
                 <td>
                   <button
                     className="btn btn-secondary btn-sm btn-block"
