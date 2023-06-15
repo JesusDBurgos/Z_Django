@@ -75,36 +75,32 @@ def delete_user():
 
 #Desplegando los endpoints
 
-@app.route('/v1/api/users', methods=['GET'])
-# Esta función permite listar los usuarios
-def api_get_users():
-    return users    
-#    return jsonify(get_users())
+@app.route('/api/v1/users', methods=['GET'])
+def get_users():
+    # Esta función permite listar los usuarios
+    response = {'message': 'success'}
+    return users  
+    #return jsonify(response)
 
-@app.route('/v1/api/users/{user_id}', methods=['GET'])
-# Esta función permite listar los usuarios por id
-def api_get_user(user_id: Integer):
-    for user in users:
-        if user["id"]== id:
-            return user
-    return "La reservación no existe"
-#    return jsonify(get_user_by_id(user_id))
+@app.route('/api/v1/users/<id>', methods=['GET'])
+def get_user(id):
+    response = {'message': 'success'}
+    return jsonify(response)
 
+@app.route('/api/v1/users/', methods=['POST'])
+def create_user():
+    response = {'message': 'success'}
+    return jsonify(response)
 
-@app.route('/v1/api/users/add',  methods = ['POST'])
-# Esta función permite crear usuarios
-def api_add_user():
-    user = request.get_json()
-    return jsonify(insert_user(user))
+@app.route('/api/v1/users/<id>', methods=['PUT'])
+def update_user(id):
+    response = {'message': 'success'}
+    return jsonify(response)
 
-@app.route('/v1/api/users/update',  methods = ['PUT'])
-def api_update_user():
-    user = request.get_json()
-    return jsonify(update_user(user))
-
-@app.route('/v1/api/users/delete/<user_id>',  methods = ['DELETE'])
-def api_delete_user(user_id):
-    return jsonify(delete_user(user_id))
+@app.route('/api/v1/users/<id>', methods=['DELETE'])
+def delete_user(id):
+    response = {'message': 'success'}
+    return jsonify(response)
 
 #Creación  de ruta del servidor
 @app.route('/v1/Bienvenida')
