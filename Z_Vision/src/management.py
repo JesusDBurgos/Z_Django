@@ -11,6 +11,7 @@ import datetime
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_URL')
 db = SQLAlchemy(app)
 
+'''
 #Clase modelo
 class User(db.Model):
     __tablename__ = 'users'
@@ -19,14 +20,14 @@ class User(db.Model):
     age     = db.Column(db.Integer(100), nullable=False)
     gender  = db.Column(db.String(15), nullable=False)
     emotion = db.Column(db.String(20), nullable=False)
-    date    = db.Column(db.DateTime,default=datetime.datetime.now)
+    date    = db.Column(db.DateTime, default=datetime.datetime.now)
 
     def json(self):
         return {'id': self.id, 'age': self.age, 'gender': self.gender, 'emotion': self.emotion}
 
 db.create_all()
 
-
+'''
 
 #Librerías para enviar datos al Frontend
 from flask_cors import CORS
@@ -68,12 +69,15 @@ def delete_user(id):
 def home():
     return "Bienvenidos a la API de Visión Computacional de Ingeniería Mecatronica UNAB"
 
+#create a test route
+@app.route('/test', methods=['GET'])
+def test():
+  return make_response(jsonify({'message': 'test route'}), 200)
 
 # Usuarios de prueba
 users = []
 user0 = {
-    "user_id": "001",
-    "name": "Charles Effiong",
+    "id": "001",
     "age": "48",
     "gender": "Masculino",
     "emotion": "Enojo",
@@ -82,7 +86,6 @@ user0 = {
 
 user1 = {
     "user_id": "002",
-    "name": "Samantha Adebanjo",
     "age": "25",
     "gender": "Femenino",
     "emotion": "Felicidad",
