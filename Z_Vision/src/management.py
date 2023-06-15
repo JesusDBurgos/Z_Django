@@ -1,7 +1,7 @@
-import os
+from os import environ
 
 #Librerías para levantar el servidor y retornar las solicitudes HTTPS
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 
 #Librerías para crear el modelo de usuario con un ORM
 from flask_sqlalchemy import SQLAlchemy
@@ -13,30 +13,10 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-#ma=Marshmallow(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_URL')
+db = SQLAlchemy(app)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
-
-
-# creación de funciones
-#Consultar usuarios
-def get_users():
-    pass
-
-def get_user_by_id():
-    pass
-
-#agregar usuarios
-def insert_user():
-    pass
-
-#actualizar usuarios
-def update_user():
-    pass
-
-#eliminar usuarios
-def delete_user():
-    pass
 
 
 #Desplegando los endpoints
