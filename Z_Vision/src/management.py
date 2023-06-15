@@ -20,19 +20,36 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 #Creación del modelo usuario
-class Usuarios(Model):
-    user_id = Column(Integer,primary_key=True)
-    name    = Column(String(100))
-    age     = Column(Integer(100))
-    gender  = Column(String(100))
-    emotion = Column(String(100))
-    date    = Column(DateTime,default=datetime.datetime.now)
+class UsersModel(Model):
+    user_id      = Column(Integer,primary_key=True)
+    name         = Column(String(100))
+    age          = Column(Integer(100))
+    gender       = Column(String(100))
+    emotion      = Column(String(100))
+    date_created = Column(DateTime,auto_now_add=True)
 
     def __init__(self,name,age, gender, emotion):
         self.name=name
         self.age=age
         self.gender=gender
         self.emotion=emotion
+
+class UserSchema(ma.Schema):
+    class Meta:
+        # Fields to expose
+        fields = ("name","age","gender","emotion", "date_created", "_links")
+
+    # Smart hyperlinking
+    _links = ma.Hyperlinks(
+        {
+            "self": ma.URLFor("user_detail", values=dict(id="<id>")),
+            "collection": ma.URLFor("users"),
+        }
+    )
+
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
 
 
 # creación de funciones
@@ -73,7 +90,9 @@ def api_get_user(user_id: Integer):
     return "La reservación no existe"
 #    return jsonify(get_user_by_id(user_id))
 
+
 @app.route('/v1/api/users/add',  methods = ['POST'])
+# Esta función permite crear usuarios
 def api_add_user():
     user = request.get_json()
     return jsonify(insert_user(user))
@@ -90,7 +109,7 @@ def api_delete_user(user_id):
 #Creación  de ruta del servidor
 @app.route('/v1/Bienvenida')
 def home():
-    return "Bienvenidos a la API de Ingeniería Mecatronica UNAB"
+    return "Bienvenidos a la API de Visión Computacional de Ingeniería Mecatronica UNAB"
 
 
 # Usuarios de prueba
