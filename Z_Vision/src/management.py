@@ -32,10 +32,13 @@ def delete_user():
 
 #Desplegando las endpoints
 @app.route('/v1/api/users', methods=['GET'])
+# Esta función permite listar los usuarios
 def api_get_users():
-    return jsonify(get_users())
+    return users    
+#    return jsonify(get_users())
 
 @app.route('/v1/api/users/<user_id>', methods=['GET'])
+# Esta función permite listar los usuarios por id
 def api_get_user(user_id):
     return jsonify(get_user_by_id(user_id))
 
@@ -67,18 +70,18 @@ user0 = {
     "name": "Charles Effiong",
     "age": "48",
     "gender": "Masculino",
-    "gender": "Enojo"
+    "emotion": "Enojo"
 }
 
 user1 = {
     "name": "Samantha Adebanjo",
     "age": "25",
     "gender": "Femenino",
-    "gender": "Felicidad"
+    "emotion": "Felicidad"
 }
 
-#users.append(user0)
-#users.append(user1)
+users.append(user0)
+users.append(user1)
 
 #Despliegue del servidor
 if __name__ == "__main__":
