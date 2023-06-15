@@ -31,30 +31,32 @@ def delete_user():
 
 
 #Desplegando las endpoints
-@app.route('/api/users', methods=['GET'])
+@app.route('/v1/api/users', methods=['GET'])
 def api_get_users():
     return jsonify(get_users())
 
-@app.route('/api/users/<user_id>', methods=['GET'])
+@app.route('/v1/api/users/<user_id>', methods=['GET'])
 def api_get_user(user_id):
     return jsonify(get_user_by_id(user_id))
 
-@app.route('/api/users/add',  methods = ['POST'])
+@app.route('/v1/api/users/add',  methods = ['POST'])
 def api_add_user():
     user = request.get_json()
     return jsonify(insert_user(user))
 
-@app.route('/api/users/update',  methods = ['PUT'])
+@app.route('/v1/api/users/update',  methods = ['PUT'])
 def api_update_user():
     user = request.get_json()
     return jsonify(update_user(user))
 
-@app.route('/api/users/delete/<user_id>',  methods = ['DELETE'])
+@app.route('/v1/api/users/delete/<user_id>',  methods = ['DELETE'])
 def api_delete_user(user_id):
     return jsonify(delete_user(user_id))
 
 #Creación  de ruta del servidor
-@app.route('/v1/Bienvenida', tags=["Home"])
+# Revisar como poner tags para documentar en Swagger
+#@app.route('/v1/Bienvenida', tags=["Home"]) 
+@app.route('/v1/Bienvenida')
 def home():
     return "Bienvenidos a la API de Ingeniería Mecatronica UNAB"
 
