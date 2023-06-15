@@ -9,8 +9,25 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 
+# creación de funciones
+#Consultar usuarios
+def get_users():
+    pass
 
+def get_user_by_id():
+    pass
 
+#agregar usuarios
+def insert_user():
+    pass
+
+#actualizar usuarios
+def update_user():
+    pass
+
+#eliminar usuarios
+def delete_user():
+    pass
 
 
 #Desplegando las endpoints
@@ -58,7 +75,8 @@ user1 = {
     "gender": "Felicidad"
 }
 
-
+users.append(user0)
+users.append(user1)
 
 #Despliegue del servidor
 if __name__ == "__main__":
