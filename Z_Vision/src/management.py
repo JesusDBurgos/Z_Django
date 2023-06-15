@@ -5,8 +5,8 @@ from flask import Flask, jsonify, request
 
 #Librerías para crear el modelo de usuario
 from flask_marshmallow import Marshmallow
-from marshmallow import Schema, fields, Model, Column, Integer, String, DateTime
-import datetime
+#from marshmallow import Schema, fields, Model, Column, Integer, String, DateTime
+#import datetime
 
 #Librerías para enviar datos al Frontend
 from flask_cors import CORS
@@ -14,42 +14,9 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-ma=Marshmallow(app)
+#ma=Marshmallow(app)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
-
-
-#Creación del modelo usuario
-class UsersModel(Model):
-    user_id      = Column(Integer,primary_key=True)
-    name         = Column(String(100))
-    age          = Column(Integer(100))
-    gender       = Column(String(100))
-    emotion      = Column(String(100))
-    date_created = Column(DateTime,auto_now_add=True)
-
-    def __init__(self,name,age, gender, emotion):
-        self.name=name
-        self.age=age
-        self.gender=gender
-        self.emotion=emotion
-
-class UserSchema(ma.Schema):
-    class Meta:
-        # Fields to expose
-        fields = ("name","age","gender","emotion", "date_created", "_links")
-
-    # Smart hyperlinking
-    _links = ma.Hyperlinks(
-        {
-            "self": ma.URLFor("user_detail", values=dict(id="<id>")),
-            "collection": ma.URLFor("users"),
-        }
-    )
-
-
-user_schema = UserSchema()
-users_schema = UserSchema(many=True)
 
 
 # creación de funciones
