@@ -1,22 +1,19 @@
-from os import environ
-
 #Librerías para levantar el servidor y retornar las solicitudes HTTPS
 from flask import Flask, jsonify, request, make_response
 
+app = Flask(__name__)
+
 #Librerías para crear el modelo de usuario con un ORM
 from flask_sqlalchemy import SQLAlchemy
-
-
-#Librerías para enviar datos al Frontend
-from flask_cors import CORS
-
-
-app = Flask(__name__)
+from os import environ
 
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_URL')
 db = SQLAlchemy(app)
 
-CORS(app, resources={r"/*": {"origins": "*"}})
+#Librerías para enviar datos al Frontend
+from flask_cors import CORS
+
+CORS(app)
 
 
 #Desplegando los endpoints
