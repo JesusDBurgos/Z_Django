@@ -8,6 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import environ
 import datetime
 
+'''
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_URL')
 db = SQLAlchemy(app)
 
@@ -27,7 +28,7 @@ class Users(db.Model):
 
 db.init_app(app)
 db.create_all()
-'''
+
 '''
 
 #Librerías para enviar datos al Frontend
