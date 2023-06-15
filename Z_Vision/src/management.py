@@ -11,9 +11,9 @@ import datetime
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_URL')
 db = SQLAlchemy(app)
 
-'''
+
 #Clase modelo
-class User(db.Model):
+class Users(db.Model):
     __tablename__ = 'users'
 
     id      = db.Column(db.Integer, primary_key=True)
@@ -25,8 +25,9 @@ class User(db.Model):
     def json(self):
         return {'id': self.id, 'age': self.age, 'gender': self.gender, 'emotion': self.emotion}
 
+db.init_app(app)
 db.create_all()
-
+'''
 '''
 
 #Librerías para enviar datos al Frontend
