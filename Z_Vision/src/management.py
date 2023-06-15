@@ -54,9 +54,9 @@ def api_delete_user(user_id):
     return jsonify(delete_user(user_id))
 
 #Creación  de ruta del servidor
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
+@app.route('/v1/Bienvenida', tags=["Home"])
+def home():
+    return "Bienvenidos a la API de Ingeniería Mecatronica UNAB"
 
 
 # Usuarios de prueba
@@ -75,8 +75,8 @@ user1 = {
     "gender": "Felicidad"
 }
 
-users.append(user0)
-users.append(user1)
+#users.append(user0)
+#users.append(user1)
 
 #Despliegue del servidor
 if __name__ == "__main__":
