@@ -1,35 +1,19 @@
 #Librerías para levantar el servidor y retornar las solicitudes HTTPS
 from flask import Flask, jsonify, request, make_response
 
-app = Flask(__name__)
+#Agregando el entorno de configuración
+from config import config
 
-#Librerías para crear el modelo de usuario con un ORM
-from flask_sqlalchemy import SQLAlchemy
-from os import environ
-import datetime
+def create_app(enviroment):
+    app = Flask(__name__)
 
-'''
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_URL')
-db = SQLAlchemy(app)
+    app.config.from_object(enviroment)
 
+    return app
 
-#Clase modelo
-class Users(db.Model):
-    __tablename__ = 'users'
+enviroment = config['development']
+app = create_app(enviroment)
 
-    id      = db.Column(db.Integer, primary_key=True)
-    age     = db.Column(db.Integer(100), nullable=False)
-    gender  = db.Column(db.String(15), nullable=False)
-    emotion = db.Column(db.String(20), nullable=False)
-    date    = db.Column(db.DateTime, default=datetime.datetime.now)
-
-    def json(self):
-        return {'id': self.id, 'age': self.age, 'gender': self.gender, 'emotion': self.emotion}
-
-db.init_app(app)
-db.create_all()
-
-'''
 
 #Librerías para enviar datos al Frontend
 from flask_cors import CORS
