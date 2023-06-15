@@ -3,10 +3,9 @@ import os
 #Librerías para levantar el servidor y retornar las solicitudes HTTPS
 from flask import Flask, jsonify, request
 
-#Librerías para crear el modelo de usuario
-from flask_marshmallow import Marshmallow
-#from marshmallow import Schema, fields, Model, Column, Integer, String, DateTime
-#import datetime
+#Librerías para crear el modelo de usuario con un ORM
+from flask_sqlalchemy import SQLAlchemy
+
 
 #Librerías para enviar datos al Frontend
 from flask_cors import CORS
