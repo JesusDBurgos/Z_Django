@@ -99,7 +99,7 @@ users.append(user1)
 
 #Despliegue del servidor
 if __name__ == "__main__":
-    #app.debug = True
     #app.run(debug=True)
+    app.debug = True
     app.run()
 
