@@ -25,5 +25,5 @@ def create_db_table():
   
     except sqlite3.OperationalError:
         print("La creación de la tabla de usuarios ha fallado")
-    finally:
-        conn.close()
+    #finally:
+    conn.close()
