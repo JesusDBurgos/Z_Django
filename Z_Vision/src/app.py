@@ -26,7 +26,7 @@ def create_db_table():
         print("La creación de la tabla de usuarios ha sido exitosa")
   
     except sqlite3.OperationalError:
-        print("La creación de la tabla de usuarios ha fallado")
+        print("La creación de la tabla de usuarios ha fallado, puede que ya exista")
     #finally:
     conn.close()
 
@@ -115,3 +115,44 @@ def create_user(user):
 def api_create_user():
     user = request.get_json()
     return jsonify(create_user(user))
+
+
+#Creación  de ruta del servidor
+@app.route('/v1/Bienvenida')
+def home():
+    return "Bienvenidos a la API de Visión Computacional de Ingeniería Mecatronica UNAB"
+
+#create a test route
+@app.route('/test', methods=['GET'])
+def test():
+  return make_response(jsonify({'message': 'test route'}), 200)
+
+# Usuarios de prueba
+users = []
+user0 = {
+    "age": "48",
+    "gender": "Masculino",
+    "emotion": "Enojo",
+    "date" : "05-05-2022"
+}
+
+user1 = {
+    "age": "25",
+    "gender": "Femenino",
+    "emotion": "Felicidad",
+    "DateCreated" : "06-05-2021"
+}
+
+users.append(user0)
+users.append(user1)
+
+create_db_table()
+
+for i in users:
+    print(create_user(i))
+
+#Despliegue del servidor
+if __name__ == "__main__":
+    #app.run(debug=True)
+    app.debug = True
+    app.run()
