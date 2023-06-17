@@ -65,7 +65,7 @@ def get_users():
 
     return users
 
-@app.route('/api/v1/users', methods=['GET'])
+@app.route('/api/v2/users', methods=['GET'])
 def api_get_users():
     return jsonify(get_users())
 
@@ -90,7 +90,7 @@ def get_user_by_id(user_id):
 
     return user
 
-@app.route('/api/v1/users/<user_id>', methods=['GET'])
+@app.route('/api/v2/users/<user_id>', methods=['GET'])
 def get_user(user_id):
     return jsonify(get_user_by_id(user_id))
 
@@ -111,7 +111,7 @@ def create_user(user):
 
     return inserted_user
 
-@app.route('/api/v1/users/', methods=['POST'])
+@app.route('/api/v2/users/', methods=['POST'])
 def api_create_user():
     user = request.get_json()
     return jsonify(create_user(user))
