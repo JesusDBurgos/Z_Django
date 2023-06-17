@@ -7,7 +7,7 @@ import app_controller
 app = Flask(__name__)
 
 # Endpoint HTTP creación de usuario
-@app.route("/api/v1/users", methods=["POST"])
+@app.route("/api/v1/users/create", methods=["POST"])
 def api_create_user():
     user_details = request.get_json()
     age = user_details["age"]
@@ -30,8 +30,8 @@ def api_get_user_by_id(id):
     return jsonify(result)
 
 # Endpoint HTTP actualización de usuario
-@app.route("/api/v1/users", methods=["PUT"])
-def api_update_game():
+@app.route("/api/v1/users/update/<id>", methods=["PUT"])
+def api_update_user():
     user_details = request.get_json()
     age = user_details["age"]
     gender = user_details["gender"]
@@ -41,7 +41,7 @@ def api_update_game():
     return jsonify(result)
 
 # Endpoint HTTP eliminación de usuario
-@app.route("/api/v1/users/<id>", methods=["DELETE"])
+@app.route("/api/v1/users/delete/<id>", methods=["DELETE"])
 def api_delete_user(id):
     result = app_controller.delete_user(id)
     return jsonify(result)
