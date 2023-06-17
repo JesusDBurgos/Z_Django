@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request, make_response
 import sqlite3
 
 def connect_to_db():
-    conn = sqlite3.connect("Userdatabase.db")
+    conn = sqlite3.connect("Usersdatabase.db")
     return conn
 
 def create_db_table():
