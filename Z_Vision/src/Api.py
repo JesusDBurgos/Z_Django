@@ -30,7 +30,7 @@ def api_get_user_by_id(id):
     return jsonify(result)
 
 # Endpoint HTTP actualización de usuario
-@app.route("/api/v1/users/update", methods=["PUT"])
+@app.route("/api/v1/users/update/<id>", methods=["PUT"])
 def api_update_user():
     user_details = request.get_json()
     age = user_details["age"]
