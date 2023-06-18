@@ -11,7 +11,7 @@ def create_db_table():
        """
             CREATE TABLE IF NOT EXISTS users (
                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                age TEXT NOT NULL,
+                age INTEGER NOT NULL,
                 gender TEXT NOT NULL,
                 emotion TEXT NOT NULL,
                 DateCreated DATETIME NOT NULL
