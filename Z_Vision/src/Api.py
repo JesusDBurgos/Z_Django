@@ -25,25 +25,26 @@ def api_get_users():
 
 # Endpoint HTTP listado de usuario por id
 @app.route("/api/v1/users/<id>", methods=["GET"])
-def api_get_user_by_id(id):
-    result = app_controller.get_user_by_id(id)
+def api_get_user_by_id(user_id):
+    result = app_controller.get_user_by_id(user_id)
     return jsonify(result)
 
 # Endpoint HTTP actualización de usuario
 @app.route("/api/v1/users/update/<id>", methods=["PUT"])
 def api_update_user():
     user_details = request.get_json()
+    user_id = user_details["user_id"]
     age = user_details["age"]
     gender = user_details["gender"]
     emotion = user_details["emotion"]
     DateCreated = user_details["DateCreated"]
-    result = app_controller.update_user(age, gender, emotion, DateCreated)
+    result = app_controller.update_user(user_id, age, gender, emotion, DateCreated)
     return jsonify(result)
 
 # Endpoint HTTP eliminación de usuario
 @app.route("/api/v1/users/delete/<id>", methods=["DELETE"])
-def api_delete_user(id):
-    result = app_controller.delete_user(id)
+def api_delete_user(user_id):
+    result = app_controller.delete_user(user_id)
     return jsonify(result)
 
 

@@ -18,27 +18,27 @@ def get_users():
     return cursor.fetchall()
 
 #Listar usuario por id en la base de datos
-def get_user_by_id(id):
+def get_user_by_id(user_id):
     db = connect_to_db()
     cursor = db.cursor()
-    statement = "SELECT user_id, age, gender, emotion, DateCreated FROM users WHERE id = ?"
-    cursor.execute(statement, [id])
+    statement = "SELECT user_id, age, gender, emotion, DateCreated FROM users WHERE user_id = ?"
+    cursor.execute(statement, [user_id])
     return cursor.fetchone()
 
 #Actualizar usuario por id en la base de datos
-def update_user(id, age, gender, emotion, DateCreated):
+def update_user(user_id, age, gender, emotion, DateCreated):
     db = connect_to_db()
     cursor = db.cursor()
-    statement = "UPDATE users SET age = ?, gender = ?, emotion = ? , DateCreated = ? WHERE id = ?"
-    cursor.execute(statement, [age, gender, emotion, DateCreated, id])
+    statement = "UPDATE users SET age = ?, gender = ?, emotion = ? , DateCreated = ? WHERE user_id = ?"
+    cursor.execute(statement, [age, gender, emotion, DateCreated, user_id])
     db.commit()
     return True
 
 #Eliminar usuario por id en la base de datos
-def delete_user(id):
+def delete_user(user_id):
     db = connect_to_db()
     cursor = db.cursor()
-    statement = "DELETE FROM users WHERE id = ?"
-    cursor.execute(statement, [id])
+    statement = "DELETE FROM users WHERE user_id = ?"
+    cursor.execute(statement, [user_id])
     db.commit()
     return True
