@@ -3,13 +3,15 @@ import React, { useState, useEffect, useRef } from "react";
 const API = process.env.REACT_APP_API;
 
 export const Users = () => {
-  const [name, setName] = useState("");
+
+  const [id, setId] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [emotion, setEmotion] = useState("");
+  const [DateCreated, setDate] = useState("");
 
   const [editing, setEditing] = useState(false);
-  const [id, setId] = useState("");
+  
 
   const nameInput = useRef(null);
 
@@ -24,10 +26,11 @@ export const Users = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
+          id,
           age,
           gender,
           emotion,
+          DateCreated
         }),
       });
       await res.json();
@@ -38,10 +41,11 @@ export const Users = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
+          id,
           age,
           gender,
           emotion,
+          DateCreated
         }),
       });
       const data = await res.json();
@@ -50,11 +54,10 @@ export const Users = () => {
       setId("");
     }
     await getUsers();
-
-    setName("");
     setAge("");
     setGender("");
     setEmotion("");
+    setDate("");
     nameInput.current.focus();
   };
 
@@ -84,10 +87,10 @@ export const Users = () => {
     setId(id);
 
     // Reset
-    setName(data.name);
     setAge(data.age);
     setGender(data.gender);
     setEmotion(data.emotion);
+    setDate(data.DateCreated);
     nameInput.current.focus();
   };
 
@@ -100,17 +103,6 @@ export const Users = () => {
       <br></br> 
       <div className="col-md-4">
         <form onSubmit={handleSubmit} className="card card-body">
-          <div className="form-group">
-            <input
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              className="form-control"
-              placeholder="Nombre del usuario"
-              ref={nameInput}
-              autoFocus
-            />
-          </div>
           <div className="form-group">
             <input
               type="age"
@@ -138,6 +130,15 @@ export const Users = () => {
               placeholder="Emoción detectada"
             />
           </div>
+          <div className="form-group">
+            <input
+              type="text"
+              onChange={(e) => setDate(e.target.value)}
+              value={DateCreated}
+              className="form-control"
+              placeholder="Fecha de creación"
+            />
+          </div>
           <button className="btn btn-dark btn-block"> 
             {editing ? "Update" : "Crear Usuario"}    
           </button>
@@ -147,20 +148,21 @@ export const Users = () => {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Nombre</th>
+              <th>id</th>
               <th>Edad</th>
               <th>Genero</th>
               <th>Emoción Detectada</th>
+              <th>Fecha creación</th>
               <th>Operaciones</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
               <tr key={user._id}>
-                <td>{user.name}</td>
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
                 <td>{user.emotion}</td>
+                <td>{user.DateCreated}</td>
                 <td>
                   <button
                     className="btn btn-secondary btn-sm btn-block"
