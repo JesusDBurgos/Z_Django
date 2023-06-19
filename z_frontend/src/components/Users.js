@@ -20,7 +20,7 @@ export const Users = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!editing) {
-      const res = await fetch(`${API}/users`, {
+      const res = await fetch(`${API}/api/v1/users/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const Users = () => {
       });
       await res.json();
     } else {
-      const res = await fetch(`${API}/users/${id}`, {
+      const res = await fetch(`${API}/api/v1/users/update/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export const Users = () => {
   };
 
   const getUsers = async () => {
-    const res = await fetch(`${API}/users`);
+    const res = await fetch(`${API}/api/v1/users`);
     const data = await res.json();
     setUsers(data);
   };
@@ -70,7 +70,7 @@ export const Users = () => {
   const deleteUser = async (id) => {
     const userResponse = window.confirm("¿Esta seguro que desea eliminar este usuario?");
     if (userResponse) {
-      const res = await fetch(`${API}/users/${id}`, {
+      const res = await fetch(`${API}/api/v1/users/delete/${id}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -105,7 +105,7 @@ export const Users = () => {
         <form onSubmit={handleSubmit} className="card card-body">
           <div className="form-group">
             <input
-              type="age"
+              type="text"
               onChange={(e) => setAge(e.target.value)}
               value={age}
               className="form-control"
@@ -114,7 +114,7 @@ export const Users = () => {
           </div>
           <div className="form-group">
             <input
-              type="gender"
+              type="text"
               onChange={(e) => setGender(e.target.value)}
               value={gender}
               className="form-control"
@@ -123,7 +123,7 @@ export const Users = () => {
           </div>
           <div className="form-group">
             <input
-              type="emotion"
+              type="text"
               onChange={(e) => setEmotion(e.target.value)}
               value={emotion}
               className="form-control"
