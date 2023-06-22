@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
+//Ruta de conexión de datos CORS
 const API = process.env.REACT_APP_API;
 
 export const Users = () => {
@@ -23,7 +24,7 @@ export const Users = () => {
       const res = await fetch(`${API}/api/v1/users/create`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json", 
         },
         body: JSON.stringify({
           id,
