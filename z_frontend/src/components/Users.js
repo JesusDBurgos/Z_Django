@@ -169,13 +169,13 @@ export const Users = () => {
                     className="btn btn-secondary btn-sm btn-block"
                     onClick={(e) => editUser(user._id)}
                   >
-                    Edit
+                    Editar
                   </button>
                   <button
                     className="btn btn-danger btn-sm btn-block"
                     onClick={(e) => deleteUser(user._id)}
                   >
-                    Delete
+                    Eliminar
                   </button>
                 </td>
               </tr>
