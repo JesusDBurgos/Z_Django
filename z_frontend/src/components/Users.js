@@ -5,14 +5,14 @@ const API = process.env.REACT_APP_API;
 
 export const Users = () => {
 
-  const [id, setId] = useState("");
+
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [emotion, setEmotion] = useState("");
   const [DateCreated, setDate] = useState("");
 
   const [editing, setEditing] = useState(false);
-  
+  const [id, setId] = useState("");
 
   const nameInput = useRef(null);
 
