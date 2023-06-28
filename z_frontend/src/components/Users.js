@@ -150,7 +150,6 @@ export const Users = () => {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>id</th>
               <th>Edad</th>
               <th>Genero</th>
               <th>Emoción Detectada</th>
