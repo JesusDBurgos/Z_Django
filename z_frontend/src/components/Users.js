@@ -82,7 +82,7 @@ export const Users = () => {
 
   //Revisar que endpoint es el adecuado a esta función
   const editUser = async (id) => {
-    const res = await fetch(`${API}/users/${id}`);
+    const res = await fetch(`${API}/api/v1/users/update/${id}`);
     const data = await res.json();
 
     setEditing(true);
