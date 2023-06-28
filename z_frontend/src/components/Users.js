@@ -27,7 +27,6 @@ export const Users = () => {
           "Content-Type": "application/json", 
         },
         body: JSON.stringify({
-          id,
           age,
           gender,
           emotion,
@@ -42,7 +41,6 @@ export const Users = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id,
           age,
           gender,
           emotion,
