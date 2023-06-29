@@ -20,6 +20,8 @@ export const Users = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(API)
+    
     if (!editing) {
       const res = await fetch(`${API}/api/v1/users/create`, {
         method: "POST",
