@@ -5,7 +5,6 @@ const API = process.env.REACT_APP_API;
 
 export const Users = () => {
 
-
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [emotion, setEmotion] = useState("");
@@ -14,14 +13,14 @@ export const Users = () => {
   const [editing, setEditing] = useState(false);
   const [id, setId] = useState("");
 
-  const nameInput = useRef(null);
+  const nameInput = useRef(null);  //Revisar
 
   let [users, setUsers] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(API)
-    
+    console.log(API);
+
     if (!editing) {
       const res = await fetch(`${API}/api/v1/users/create`, {
         method: "POST",
