@@ -157,7 +157,7 @@ export const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {Users.users.map((user) => (
+            {users.data.map((user) => (
               <tr key={user._id}>
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
