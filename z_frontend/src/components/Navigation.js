@@ -46,7 +46,10 @@ const Navigation = () => {
             <NavLink exact to="/Vision_camera" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="camera">Detección</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/students" activeClassName="activeClicked">
+            <NavLink exact to="/CreateUsers" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="list">Crear usuarios</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/ListUsers" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="list">Listar usuarios</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/manage" activeClassName="activeClicked">
