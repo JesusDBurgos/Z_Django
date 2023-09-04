@@ -100,7 +100,7 @@ export const Users = () => {
   }, []);
 
   return ( 
-    <div className="row">
+    <div className="row" style={{ marginTop: '6rem' }}>
       <br></br> 
       <div className="col-md-4">
         <form onSubmit={handleSubmit} className="card card-body">
