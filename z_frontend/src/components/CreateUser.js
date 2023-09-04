@@ -37,7 +37,7 @@ function CreateUser() {
     return (
         <div >
             <Form className="d-grid gap-2" 
-                style={{ margin: '15rem' }}>
+                style={{ margin: '20rem', marginTop: '3rem' }}>
   
                 {/* Fetching a value from input textfield 
                     in a setAge using usestate*/}
@@ -89,7 +89,7 @@ function CreateUser() {
   
                 {/* Redirecting back to home page */}
                 <Link className="d-grid gap-2" to='/'>
-                    <Button variant="info" size="lg">
+                    <Button className="btn btn-dark" variant="info" size="lg">
                         Home
                     </Button>
                 </Link>
