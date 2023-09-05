@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
 import Users  from './components/Users';
 import CreateUser  from './components/CreateUser';
+import ListUser  from './components/ListUser';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
          <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
          <Route exact path="/manage" element={<Users/>} />
          <Route exact path="/CreateUsers" element={<CreateUser/>} />
+         <Route exact path="/ListUsers" element={<ListUser/>} />
        </Routes>
     </BrowserRouter>
   );
