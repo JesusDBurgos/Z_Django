@@ -5,7 +5,8 @@ import DataUser from './DataUser';
 import { Link, useNavigate } from 'react-router-dom';
   
 function ListUser() {
-  
+ 
+    // Using useNavigation for redirecting to pages
     let history = useNavigate()
   
     // You may skip this part if you're
@@ -30,7 +31,7 @@ function ListUser() {
   
         // We need to re-render the page for getting 
         // the results so redirect to same page.
-        history('/')
+        history('/ListUsers')
     }
   
     return (
