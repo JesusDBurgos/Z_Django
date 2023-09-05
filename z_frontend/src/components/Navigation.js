@@ -41,13 +41,13 @@ const Navigation = () => {
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/Elaine_Assistant" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="smile">Conversación</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="laptop">Conversación</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/Vision_camera" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="camera">Detección</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/API_conect" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="camera">Conexión API</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="smile">Conexión API</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/CreateUsers" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Crear usuarios</CDBSidebarMenuItem>
@@ -56,7 +56,10 @@ const Navigation = () => {
               <CDBSidebarMenuItem icon="list">Listar usuarios</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/manage" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="archive-fill">Administrar usuarios</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="archive">Administrar usuarios</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/Metrics" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="tools">Metricas</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
