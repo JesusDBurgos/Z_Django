@@ -62,7 +62,7 @@ function ListUser() {
                                     age for storing these
                                     value in the jsx with 
                                     onclick event */}
-                                <td><Link to={`/edit`}>
+                                <td><Link to={`/ListUsers`}>
                                     <Button onClick={(e) =>
                                     setID(item.id, item.Age, item.Gender, item.Emotion, item.DateCreated)} 
                                     variant="info">
