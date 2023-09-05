@@ -17,7 +17,7 @@ class UserList extends React.Component{
     }  
   
     componentDidMount(){  
-       axios.get(API + '/users').then(response => response.data).then(  
+       axios.get(API + '/api/v1/users').then(response => response.data).then(  
             (result)=>{  
                 this.setState({  
                     users:result  
@@ -32,7 +32,7 @@ class UserList extends React.Component{
       
     deleteUser(userId) {  
       const { users } = this.state;     
-     axios.delete(API + '/users/delete/' + userId).then(result=>{  
+     axios.delete(API + '/api/v1/users/delete/' + userId).then(result=>{  
        alert(result.data);  
         this.setState({  
           response:result,  
