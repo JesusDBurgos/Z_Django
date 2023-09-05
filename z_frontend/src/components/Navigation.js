@@ -46,14 +46,17 @@ const Navigation = () => {
             <NavLink exact to="/Vision_camera" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="camera">Detección</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/API_conect" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="camera">Conexión API</CDBSidebarMenuItem>
+            </NavLink>
             <NavLink exact to="/CreateUsers" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="list">Crear usuarios</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="user">Crear usuarios</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/ListUsers" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="list">Listar usuarios</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/manage" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Administrar usuarios</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="archive-fill">Administrar usuarios</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>

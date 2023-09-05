@@ -8,7 +8,7 @@ function ReadAPI() {
     const baseurl = "https://pokeapi.co/";
  
     useEffect(() => {
-        axios.get(`${baseurl}api/v2/pokemon/5`).then((response) => {
+        axios.get(`${baseurl}api/v2/pokemon/150`).then((response) => {
             setPokemon(response.data);
             setLoading(false);
         });
