@@ -3,8 +3,10 @@ import { Table,Button } from 'react-bootstrap';
 import axios from 'axios';  
 
 //Ruta de conexión de datos CORS
-const API = process.env.REACT_APP_API;
-  
+//const API = process.env.REACT_APP_API;
+
+const API_url = 'http://127.0.0.1:8000';
+
 class UserList extends React.Component{  
     constructor(props){  
         super(props);  
@@ -17,7 +19,7 @@ class UserList extends React.Component{
     }  
   
     componentDidMount(){  
-       axios.get(API + '/api/v1/users').then(response => response.data).then(  
+       axios.get(API_url + '/api/v1/users').then(response => response.data).then(  
             (result)=>{  
                 this.setState({  
                     users:result  
@@ -32,7 +34,7 @@ class UserList extends React.Component{
       
     deleteUser(userId) {  
       const { users } = this.state;     
-     axios.delete(API + '/api/v1/users/delete/' + userId).then(result=>{  
+     axios.delete(API_url + '/api/v1/users/delete/' + userId).then(result=>{  
        alert(result.data);  
         this.setState({  
           response:result,  
