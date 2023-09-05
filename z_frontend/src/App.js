@@ -21,7 +21,7 @@ function App() {
        <Routes>
          <Route exact path="/" element={<Home/>} />
          <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
-         <Route exact path="/Vision_camera" element={<ReadAPI/>} />
+         <Route exact path="/API_conect" element={<ReadAPI/>} />
          <Route exact path="/manage" element={<Users/>} />
          <Route exact path="/CreateUsers" element={<CreateUser/>} />
          <Route exact path="/ListUsers" element={<ListUser/>} />
