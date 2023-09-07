@@ -157,8 +157,8 @@ export const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
+            {users.map((user) => {
+            return <tr key={user.id}>
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
                 <td>{user.emotion}</td>
@@ -178,7 +178,7 @@ export const Users = () => {
                   </button>
                 </td>
               </tr>
-            ))}
+            })}
           </tbody>
         </table>
       </div>
