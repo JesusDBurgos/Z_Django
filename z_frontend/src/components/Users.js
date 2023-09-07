@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from 'react-router-dom'
 
 //Ruta de conexión de datos CORS
 const API = process.env.REACT_APP_API;
