@@ -30,13 +30,13 @@ def api_get_users():
     return jsonify(result)
 
 # Endpoint HTTP listado de usuario por id
-@app.route("/api/v1/users/<id>", methods=["GET"])
+@app.route("/api/v1/users/{id}", methods=["GET"])
 def api_get_user_by_id(id):
     result = app_controller.get_user_by_id(id)
     return jsonify(result)
 
 # Endpoint HTTP actualización de usuario
-@app.route("/api/v1/users/update/<id>", methods=["PUT"])
+@app.route("/api/v1/users/update/{id}", methods=["PUT"])
 def api_update_user(id):
     user_details = request.get_json()
     #id = user_details["id"]
@@ -48,7 +48,7 @@ def api_update_user(id):
     return jsonify(result)
 
 # Endpoint HTTP eliminación de usuario
-@app.route("/api/v1/users/delete/<id>", methods=["DELETE"])
+@app.route("/api/v1/users/delete/{id}", methods=["DELETE"])
 def api_delete_user(id):
     result = app_controller.delete_user(id)
     return jsonify(result)
