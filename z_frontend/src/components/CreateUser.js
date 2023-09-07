@@ -76,7 +76,7 @@ function CreateUser() {
                     <Form.Control onChange=
                         {e => setDate(e.target.value)}
                         type="text"
-                        placeholder="Fecha de creación" required />
+                        placeholder="Fecha de creación Ej:28-02-2016  (día-mes-año)" required />
                 </Form.Group>
   
                 {/* handing a onclick event in button for

@@ -137,7 +137,7 @@ export const Users = () => {
               onChange={(e) => setDate(e.target.value)}
               value={DateCreated}
               className="form-control"
-              placeholder="Fecha de creación"
+              placeholder="Fecha de creación Ej:28-02-2016  (día-mes-año)"
             />
           </div>
           <button className="btn btn-dark btn-block"> 
