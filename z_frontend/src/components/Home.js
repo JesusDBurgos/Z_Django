@@ -1,7 +1,7 @@
 import slide01 from '../static/Mecatronica01.jpg'
 import slide02 from '../static/Mecatronica02.jpg'
 import slide03 from '../static/Mecatronica03.jpg'
-import slide04 from '../static/Mecatronica04.jpg'
+import slide04 from '../static/Mecatronica06.jpg'
 
 import Carousel from 'react-bootstrap/Carousel';
 
