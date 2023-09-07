@@ -37,28 +37,28 @@ const Navigation = () => {
         </CDBSidebarHeader>
         <CDBSidebarContent>
           <CDBSidebarMenu>
-            <NavLink exact to="/" activeClassName="activeClicked">
+            <NavLink exact to="/">
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Elaine_Assistant" activeClassName="activeClicked">
+            <NavLink exact to="/Elaine_Assistant">
               <CDBSidebarMenuItem icon="laptop">Conversación</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Vision_camera" activeClassName="activeClicked">
+            <NavLink exact to="/Vision_camera">
               <CDBSidebarMenuItem icon="camera">Detección</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/API_conect" activeClassName="activeClicked">
+            <NavLink exact to="/API_conect">
               <CDBSidebarMenuItem icon="smile">Conexión API</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/CreateUsers" activeClassName="activeClicked">
+            <NavLink exact to="/CreateUsers">
               <CDBSidebarMenuItem icon="user">Crear usuarios</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/ListUsers" activeClassName="activeClicked">
+            <NavLink exact to="/ListUsers">
               <CDBSidebarMenuItem icon="list">Listar usuarios</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/manage" activeClassName="activeClicked">
+            <NavLink exact to="/manage">
               <CDBSidebarMenuItem icon="archive">Administrar usuarios</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Metrics" activeClassName="activeClicked">
+            <NavLink exact to="/Metrics">
               <CDBSidebarMenuItem icon="tools">Metricas</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
