@@ -35,7 +35,9 @@ export const Users = () => {
           DateCreated
         }),
       });
-      await res.json();
+      const data = await res.json();
+      console.log(data)
+      result => setData(result.data);
     } else {
       const res = await fetch(`${API}/api/v1/users/update/${id}`, {
         method: "PUT",
@@ -50,7 +52,8 @@ export const Users = () => {
         }),
       });
       const data = await res.json();
-      console.log(data);
+      console.log(data)
+      result => setData(result.data);
       setEditing(false);
       setId("");
     }
@@ -65,6 +68,8 @@ export const Users = () => {
   const getUsers = async () => {
     const res = await fetch(`${API}/api/v1/users`);
     const data = await res.json();
+    console.log(data)
+    result => setData(result.data);
     setUsers(data);
   };
 
@@ -75,7 +80,8 @@ export const Users = () => {
         method: "DELETE",
       });
       const data = await res.json();
-      console.log(data);
+      console.log(data)
+      result => setData(result.data);
       await getUsers();
     }
   };
@@ -84,6 +90,8 @@ export const Users = () => {
   const editUser = async (id) => {
     const res = await fetch(`${API}/api/v1/users/update/${id}`);
     const data = await res.json();
+    console.log(data)
+    result => setData(result.data);
 
     setEditing(true);
     setId(id);
@@ -146,7 +154,7 @@ export const Users = () => {
           </button>
         </form>
       </div>
-      <div className="col-md-6">
+      <div className="col-md-7">
         <table className="table table-striped">
           <thead>
             <tr>
@@ -158,16 +166,16 @@ export const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
-            return <tr key={user.id}>
+            {users.map((user,index) => {
+            return <tr key={index}>
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
                 <td>{user.emotion}</td>
                 <td>{user.DateCreated}</td>
                 <td>
                     <Link to={'http://localhost:8000/api/v1/update/'+ user.id} className='btn btn-primary btn-sm me-2'>Editar</Link>
-                    <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block'>Editarr</button>
-                    <button onClick={e => deleteUser(user.id)} className='btn btn-danger btn-sm btn-block'>Eliminar</button>
+                    <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block me-2'>Actualizar</button>
+                    <button onClick={e => deleteUser(user.id)} className='btn btn-danger btn-sm btn-block me-2'>Eliminar</button>
                 </td>
               </tr>
             })}
