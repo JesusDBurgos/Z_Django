@@ -164,18 +164,9 @@ export const Users = () => {
                 <td>{user.emotion}</td>
                 <td>{user.DateCreated}</td>
                 <td>
-                  <button
-                    className="btn btn-secondary btn-sm btn-block"
-                    onClick={(e) => editUser(user.id)}
-                  >
-                    Editar
-                  </button>
-                  <button
-                    className="btn btn-danger btn-sm btn-block"
-                    onClick={(e) => deleteUser(user.id)}
-                  >
-                    Eliminar
-                  </button>
+                    <Link to={'http://localhost:8000/api/v1/update/'+ user.id} className='btn btn-primary btn-sm me-2'>Editar</Link>
+                    <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block'>Editarr</button>
+                    <button onClick={e => deleteUser(user.id)} className='btn btn-danger btn-sm btn-block'>Eliminar</button>
                 </td>
               </tr>
             })}
