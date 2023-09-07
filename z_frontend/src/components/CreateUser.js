@@ -81,11 +81,13 @@ function CreateUser() {
   
                 {/* handing a onclick event in button for
                     firing a function */}
+                <Link className="d-grid gap-2" to='http://localhost:8000/api/v1/create'>    
                 <Button
                     onClick={e => handelSubmit(e)}
                     variant="primary" type="submit">
                     Crear Usuario
                 </Button>
+                </Link>
   
                 {/* Redirecting back to home page */}
                 <Link className="d-grid gap-2" to='/'>
