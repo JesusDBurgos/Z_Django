@@ -37,7 +37,7 @@ export const Users = () => {
       });
       const data = await res.json();
       console.log(data)
-      result => setData(result.data);
+      //result => setUsers(result.data);
     } else {
       const res = await fetch(`${API}/api/v1/users/update/${id}`, {
         method: "PUT",
@@ -53,7 +53,7 @@ export const Users = () => {
       });
       const data = await res.json();
       console.log(data)
-      result => setData(result.data);
+      //result => getUsers(result.data);
       setEditing(false);
       setId("");
     }
@@ -69,7 +69,7 @@ export const Users = () => {
     const res = await fetch(`${API}/api/v1/users`);
     const data = await res.json();
     console.log(data)
-    result => setData(result.data);
+    //result => setUsers(result.data);
     setUsers(data);
   };
 
@@ -81,7 +81,7 @@ export const Users = () => {
       });
       const data = await res.json();
       console.log(data)
-      result => setData(result.data);
+      //result => getUsers(result.data);
       await getUsers();
     }
   };
@@ -91,7 +91,7 @@ export const Users = () => {
     const res = await fetch(`${API}/api/v1/users/update/${id}`);
     const data = await res.json();
     console.log(data)
-    result => setData(result.data);
+    //result => getUsers(result.data);
 
     setEditing(true);
     setId(id);
