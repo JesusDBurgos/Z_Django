@@ -11,6 +11,7 @@ import ReadAPI  from './components/ReadAPI';
 import Users  from './components/Users';
 import CreateUser  from './components/CreateUser';
 import UserList  from './components/UserList';
+import Metrics from './components/Metrics';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
          <Route exact path="/manage" element={<Users/>} />
          <Route exact path="/CreateUsers" element={<CreateUser/>} />
          <Route exact path="/ListUsers" element={<UserList/>} />
+         <Route exact path="/Metrics" element={<Metrics/>} />
        </Routes>
     </BrowserRouter>
   );
