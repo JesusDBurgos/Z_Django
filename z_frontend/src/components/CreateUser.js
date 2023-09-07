@@ -46,7 +46,7 @@ function CreateUser() {
                     <Form.Control onChange=
                         {e => setAge(e.target.value)}
                         type="text"
-                        placeholder="Edad" required />
+                        placeholder="Edad del usuario" required />
                 </Form.Group>
   
                 {/* Fetching a value from input textfield in
@@ -56,7 +56,7 @@ function CreateUser() {
                     <Form.Control onChange=
                         {e => setGender(e.target.value)}
                         type="text"
-                        placeholder="Genero" required />
+                        placeholder="Genero del Usuario Ej: M / F" required />
                 </Form.Group>
 
                 {/* Fetching a value from input textfield 
@@ -66,7 +66,7 @@ function CreateUser() {
                     <Form.Control onChange=
                         {e => setEmotion(e.target.value)}
                         type="text"
-                        placeholder="Emoción" required />
+                        placeholder="Emoción detectada" required />
                 </Form.Group>
   
                 {/* Fetching a value from input textfield in
@@ -76,7 +76,7 @@ function CreateUser() {
                     <Form.Control onChange=
                         {e => setDate(e.target.value)}
                         type="text"
-                        placeholder="Fecha" required />
+                        placeholder="Fecha de creación" required />
                 </Form.Group>
   
                 {/* handing a onclick event in button for
@@ -84,7 +84,7 @@ function CreateUser() {
                 <Button
                     onClick={e => handelSubmit(e)}
                     variant="primary" type="submit">
-                    Submit
+                    Crear Usuario
                 </Button>
   
                 {/* Redirecting back to home page */}
