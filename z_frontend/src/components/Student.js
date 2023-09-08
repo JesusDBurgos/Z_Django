@@ -35,7 +35,7 @@ function Student() {
       <div className='d-flex justify-content-center mt-2'>
         <h3>Lista de Usuarios</h3>
       </div>
-      <Link to="/create" className='btn btn-success me-2'>Agregar usuario nuevo</Link>
+      <Link exact to="http://localhost:8000/api/v1/users/create" className='btn btn-success me-2'>Agregar usuario nuevo</Link>
       <div className='mt-3'>
         <table className='table'>
           <thead>
@@ -55,7 +55,7 @@ function Student() {
                   <td>{Student.emotion}</td>
                   <td>{Student.DateCreated}</td>
                   <td>
-                    <Link to={'http://localhost:8000/api/v1/update/'+Student.id} className='btn btn-primary btn-sm me-2'>Editar</Link>
+                    <Link exact to={'http://localhost:8000/api/v1/update/'+Student.id} className='btn btn-primary btn-sm me-2'>Editar</Link>
                     <button onClick={e => handleDelete(Student.id)} className='btn btn-sm btn-danger'>Eliminar</button>
                   </td>
               </tr>

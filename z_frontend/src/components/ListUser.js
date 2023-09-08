@@ -8,7 +8,7 @@ function ListUser() {
 
     const [user, setUser] = useState([])
     useEffect(()=> {
-        axios.get('http://localhost:8000/api/v1/users/'+id)
+        axios.get('http://localhost:8000/api/v1/users/')
         .then(res => setUser(res.data.Result))
         .catch(err => console.log(err));
     })
