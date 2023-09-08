@@ -35,7 +35,7 @@ function Student() {
       <div className='d-flex justify-content-center mt-2'>
         <h3>Lista de Usuarios</h3>
       </div>
-      <Link to="/create" className='btn btn-success'>Agregar usuario nuevo</Link>
+      <Link to="/create" className='btn btn-success me-2'>Agregar usuario nuevo</Link>
       <div className='mt-3'>
         <table className='table'>
           <thead>
