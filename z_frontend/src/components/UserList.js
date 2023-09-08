@@ -52,9 +52,8 @@ class UserList extends React.Component{
         }  
         else  
         {  
-            return(  
-         <div>  
-                      
+    return(  
+         <div>     
                   <Table>  
                     <thead className="btn-primary">  
                       <tr>  
@@ -67,10 +66,10 @@ class UserList extends React.Component{
                     <tbody>  
                       {users.map(user => (  
                         <tr key={user.UserId}>  
-                          <td>{user.Age}</td>  
-                          <td>{user.Gender}</td>  
-                          <td>{user.Emotion}</td>  
-                          <td>{user.DateCreated}</td>    
+                          <td>{user.age}</td>  
+                          <td>{user.gender}</td>  
+                          <td>{user.emotion}</td>  
+                          <td>{user.dateCreated}</td>    
                           <td><Button variant="info" onClick={() => this.props.editUser(user.UserId)}>Editar</Button>       
                           <Button variant="danger" onClick={() => this.deleteUser(user.UserId)}>Eliminar</Button>  
                           

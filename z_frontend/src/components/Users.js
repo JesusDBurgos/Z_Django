@@ -100,7 +100,7 @@ export const Users = () => {
     setAge(data.age);
     setGender(data.gender);
     setEmotion(data.emotion);
-    setDate(data.DateCreated);
+    setDate(data.dateCreated);
     nameInput.current.focus();
   };
 
@@ -171,7 +171,7 @@ export const Users = () => {
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
                 <td>{user.emotion}</td>
-                <td>{user.DateCreated}</td>
+                <td>{user.dateCreated}</td>
                 <td>
                     <Link to={'http://localhost:8000/api/v1/update/'+ user.id} className='btn btn-primary btn-sm me-2'>Editar</Link>
                     <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block me-2'>Actualizar</button>
