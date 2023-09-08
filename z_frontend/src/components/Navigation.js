@@ -52,7 +52,7 @@ const Navigation = () => {
             <NavLink exact to="/CreateUsers">
               <CDBSidebarMenuItem icon="user">Crear usuarios</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/ListUsers">
+            <NavLink exact to="/Student">
               <CDBSidebarMenuItem icon="list">Listar usuarios</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/manage">
