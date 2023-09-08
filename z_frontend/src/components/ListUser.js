@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-function UserDetail() {
+function ListUser() {
 
     const {id} = useParams();
     const navigate = useNavigate()
@@ -30,4 +30,4 @@ function UserDetail() {
   )
 }
 
-export default UserDetail
+export default ListUser
