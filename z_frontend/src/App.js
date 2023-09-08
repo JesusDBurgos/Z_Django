@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
 import ReadAPI  from './components/ReadAPI';
 import Users  from './components/Users';
+import Student  from './components/Student';
 import CreateUser  from './components/CreateUser';
 import ListUser  from './components/ListUser';
 import Metrics from './components/Metrics';
@@ -24,6 +25,7 @@ function App() {
          <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
          <Route exact path="/API_conect" element={<ReadAPI/>} />
          <Route exact path="/manage" element={<Users/>} />
+         <Route exact path="/Student" element={<Student/>} />
          <Route exact path="/CreateUsers" element={<CreateUser/>} />
          <Route exact path="/ListUsers" element={<ListUser/>} />
          <Route exact path="/Metrics" element={<Metrics/>} />
