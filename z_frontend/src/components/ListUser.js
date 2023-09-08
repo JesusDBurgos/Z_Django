@@ -10,7 +10,7 @@ function ListUser() {
     const [user, setUser] = useState([])
     useEffect(()=> {
         axios.get('http://localhost:8000/api/v1/users/'+id)
-        .then(res => setUser(res.data.Result[0]))
+        .then(res => setUser(res.data.Result))
         .catch(err => console.log(err));
     })
   return (
