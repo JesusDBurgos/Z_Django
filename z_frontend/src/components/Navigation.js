@@ -26,6 +26,7 @@ const Navigation = () => {
               height="50"
               className="d-inline-block align-center"
               alt="React Bootstrap logo"
+              exact = "True"
             />{' '}
             <strong>Asistente Virtual Robótico: Edison Robot</strong>
         </Navbar.Brand>
