@@ -8,11 +8,13 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
 import ReadAPI  from './components/ReadAPI';
+import RData  from './components/RData';
 import Users  from './components/Users';
 import Student  from './components/Student';
 import CreateUser  from './components/CreateUser';
 import ListUser  from './components/ListUser';
 import Metrics from './components/Metrics';
+import RData from './components/RData';
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
          <Route exact path="/" element={<Home/>} />
          <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
          <Route exact path="/API_conect" element={<ReadAPI/>} />
+         <Route exact path="/Read_Data" element={<RData/>} />
          <Route exact path="/manage" element={<Users/>} />
          <Route exact path="/Student" element={<Student/>} />
          <Route exact path="/CreateUsers" element={<CreateUser/>} />
