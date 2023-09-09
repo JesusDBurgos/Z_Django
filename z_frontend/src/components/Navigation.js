@@ -50,6 +50,9 @@ const Navigation = () => {
             <NavLink exact to="/API_conect">
               <CDBSidebarMenuItem icon="smile">Conexión API</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/Read_Data">
+              <CDBSidebarMenuItem icon="smile">Conexión DATA</CDBSidebarMenuItem>
+            </NavLink>
             <NavLink exact to="/CreateUsers">
               <CDBSidebarMenuItem icon="user">Crear usuarios</CDBSidebarMenuItem>
             </NavLink>
