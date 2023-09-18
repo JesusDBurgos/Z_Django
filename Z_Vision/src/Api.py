@@ -73,6 +73,11 @@ def after_request(response):
     response.headers["Access-Control-Allow-Headers"] = "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization"
     return response
 
+# Endpoint HTTP saludo API de usuario
+@app.route("/", methods=["GET"])
+def api_Welcome_user():
+    return("Has iniciado el API de gestión de usuarios")
+
 if __name__ == "__main__":
     create_db_table()
     app.run(host='0.0.0.0', port=8000, debug=False)
