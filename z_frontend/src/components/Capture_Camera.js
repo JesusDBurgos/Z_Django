@@ -21,18 +21,20 @@ async function init() {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     handleSuccess(stream);
   } catch (e) {
+
     errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
   }
 }
 
 // Success
 function handleSuccess(stream) {
-  window.stream = stream;
+  window.onload.stream = stream;
   video.srcObject = stream;
 }
 
 // Load init
-init();
+window.onload = init();
+//window.onload = handleSuccess();
 
 // Draw image
 var context = canvas.getContext('2d');
