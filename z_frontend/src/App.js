@@ -14,7 +14,7 @@ import Student  from './components/Student';
 import CreateUser  from './components/CreateUser';
 import ListUser  from './components/ListUser';
 import Metrics from './components/Metrics';
-import Capture_Camera from './components/Capture_Camera';
+//import Capture_Camera from './components/Capture_Camera';
 import Vision_Camera from './components/Vision_Camera';
 
 function App() {
