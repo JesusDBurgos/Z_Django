@@ -14,6 +14,7 @@ import Student  from './components/Student';
 import CreateUser  from './components/CreateUser';
 import ListUser  from './components/ListUser';
 import Metrics from './components/Metrics';
+import Capture_Camera from './components/Capture_Camera';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
        <Routes>
          <Route exact path="/" element={<Home/>} />
          <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
+         <Route exact path="/Vision_camera" element={<Capture_Camera/>} />
          <Route exact path="/API_conect" element={<ReadAPI/>} />
          <Route exact path="/manage" element={<Users/>} />
          <Route exact path="/Student" element={<Student/>} />
