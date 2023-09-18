@@ -29,6 +29,7 @@ export const Users = () => {
           "Content-Type": "application/json", 
         },
         body: JSON.stringify({
+          id,
           age,
           gender,
           emotion,
@@ -45,6 +46,7 @@ export const Users = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          id,
           age,
           gender,
           emotion,
@@ -94,7 +96,7 @@ export const Users = () => {
     //result => getUsers(result.data);
 
     setEditing(true);
-    setId(id);
+    setId(data.id);
 
     // Reset
     setAge(data.age);
@@ -158,6 +160,7 @@ export const Users = () => {
         <table className="table table-striped">
           <thead>
             <tr>
+              <th>Index</th>
               <th>Edad</th>
               <th>Genero</th>
               <th>Emoción Detectada</th>
@@ -168,6 +171,7 @@ export const Users = () => {
           <tbody>
             {users.map((user,index) => {
             return <tr key={index}>
+                <td>{user.id}</td>
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
                 <td>{user.emotion}</td>
