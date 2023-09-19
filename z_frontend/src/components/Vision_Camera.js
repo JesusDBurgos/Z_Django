@@ -9,10 +9,10 @@ function Vision_Camera() {
 
     return (
         <div>
-
+         // eslint-disable-next-line
          <div className="App">
-             <header className="header" style={{ margin: '3rem' }} >
-                 <h3 className="title" >Vision Elaine App</h3>
+             <header className="header">
+                 <h3 className="title">Vision Elaine App</h3>
              </header>
              <Webcam
               audio = {false}
@@ -21,7 +21,7 @@ function Vision_Camera() {
 	             screenshotFormat = "image/jpeg"
 	             width = {640}
 	         />
-         <div><button className='col-md-5 justify-content-center'>Captura</button></div>
+          <div><button className='col-md-5 justify-content-center'>Captura</button></div>
          </div>
         </div>
         

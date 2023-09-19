@@ -168,9 +168,9 @@ export const Users = () => {
               <th>Operaciones</th>
             </tr>
           </thead>
-          <tbody>
-            {users.map((user,index) => {
-            return <tr key={index}>
+          <tbody exact='true'>
+            {users.map((user,key) => {
+            return <tr key={key}>
                 <td>{user.id}</td>
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
