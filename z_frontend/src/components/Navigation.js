@@ -26,7 +26,7 @@ const Navigation = () => {
               height="50"
               className="d-inline-block align-center"
               alt="React Bootstrap logo"
-              exact = "True"
+              exact = "true"
             />{' '}
             <strong>Asistente Virtual Robótico: Edison Robot</strong>
         </Navbar.Brand>
@@ -50,17 +50,8 @@ const Navigation = () => {
             <NavLink exact to="/API_conect">
               <CDBSidebarMenuItem icon="smile">Conexión API</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Read_Data">
-              <CDBSidebarMenuItem icon="smile">Conexión DATA</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/CreateUsers">
-              <CDBSidebarMenuItem icon="user">Crear usuarios</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/Student">
-              <CDBSidebarMenuItem icon="list">Listar usuarios</CDBSidebarMenuItem>
-            </NavLink>
             <NavLink exact to="/manage">
-              <CDBSidebarMenuItem icon="archive">Administrar usuarios</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="user">Administrar usuarios</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/Metrics">
               <CDBSidebarMenuItem icon="tools">Metricas</CDBSidebarMenuItem>

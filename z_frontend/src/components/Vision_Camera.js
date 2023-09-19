@@ -1,23 +1,28 @@
-import React from "react";
+import React from 'react';
+//import {useState} from 'react';
 import Webcam from "react-webcam";
 
 function Vision_Camera() {
 
+    const webcamRef = React.useRef(null);
     //return <Webcam />;
+
     return (
         <div>
 
-         <div class="video-wrap">
-             <video id="video" playsinline autoplay></video>
-             <Webcam />
+         <div className="App">
+             <header className="header" style={{ margin: '3rem' }} >
+                 <h3 className="title" >Vision Elaine App</h3>
+             </header>
+             <Webcam
+              audio = {false}
+	             height = {480}
+                 ref = {webcamRef}
+	             screenshotFormat = "image/jpeg"
+	             width = {640}
+	         />
+         <div><button className='col-md-5 justify-content-center'>Captura</button></div>
          </div>
-
-        <div class="controller">
-             <button id="snap" width="640" height="480">Captura</button>
-        </div>
-
-        <canvas id="canvas" width="640" height="480"></canvas>
-
         </div>
         
     )
