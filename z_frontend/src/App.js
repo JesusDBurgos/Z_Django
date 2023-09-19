@@ -7,15 +7,12 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
-import ReadAPI  from './components/ReadAPI';
-//import RData  from './components/RData';
-import Users  from './components/Users';
-import Student  from './components/Student';
-import CreateUser  from './components/CreateUser';
-import ListUser  from './components/ListUser';
-import Metrics from './components/Metrics';
-//import Capture_Camera from './components/Capture_Camera';
 import Vision_Camera from './components/Vision_Camera';
+import ReadAPI  from './components/ReadAPI';
+
+import Users  from './components/Users';
+import Metrics from './components/Metrics';
+
 
 function App() {
   return (
@@ -29,9 +26,6 @@ function App() {
          <Route exact path="/Vision_camera" element={<Vision_Camera/>} />
          <Route exact path="/API_conect" element={<ReadAPI/>} />
          <Route exact path="/manage" element={<Users/>} />
-         <Route exact path="/Student" element={<Student/>} />
-         <Route exact path="/CreateUsers" element={<CreateUser/>} />
-         <Route exact path="/ListUsers" element={<ListUser/>} />
          <Route exact path="/Metrics" element={<Metrics/>} />
        </Routes>
     </BrowserRouter>
