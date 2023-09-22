@@ -9,9 +9,10 @@ import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
 import Vision_Camera from './components/Vision_Camera';
 import ReadAPI  from './components/ReadAPI';
-
+import ListUser from './components/ListUser';
 import Users  from './components/Users';
 import Metrics from './components/Metrics';
+
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
          <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
          <Route exact path="/Vision_camera" element={<Vision_Camera/>} />
          <Route exact path="/API_conect" element={<ReadAPI/>} />
-         <Route exact path="/manage" element={<Users/>} />
+         <Route exact path="/List" element={<ListUser/>} />
+         <Route exact path="/Manage" element={<Users/>} />
          <Route exact path="/Metrics" element={<Metrics/>} />
        </Routes>
     </BrowserRouter>
