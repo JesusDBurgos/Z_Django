@@ -177,7 +177,7 @@ export const Users = () => {
                 <td>{user.emotion}</td>
                 <td>{user.dateCreated}</td>
                 <td>
-                    <Link to={'http://localhost:8000/api/v1/update/'+ user.id} className='btn btn-primary btn-sm me-2'>Editar</Link>
+                    <Link to={'http://localhost:8000/api/v1/users/update/'+ user.id} className='btn btn-primary btn-sm me-2'>Editar</Link>
                     <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block me-2'>Actualizar</button>
                     <button onClick={e => deleteUser(user.id)} className='btn btn-danger btn-sm btn-block me-2'>Eliminar</button>
                 </td>
@@ -186,7 +186,7 @@ export const Users = () => {
           </tbody>
         </table>
       </div>
-    </div>
+     </div>
 
   );
 };

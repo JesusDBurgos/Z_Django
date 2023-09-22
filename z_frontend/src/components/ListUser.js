@@ -1,7 +1,78 @@
-import axios from 'axios';
+//import axios from 'axios';
+//import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+//Petición con Fetch
+function ListUser() {
+
+    const [users, setUsers] = useState([]);
+
+    // Modify the current state by setting the new data to
+    // the response from the backend
+
+    const getUsers = async () => {
+        const res = await fetch('http://localhost:8000/api/v1/users');
+        const data = await res.json();
+        console.log(data)
+        //result => setUsers(result.data);
+        setUsers(data);
+      };
+    
+    useEffect(() => {
+        getUsers();
+      }, []);
+
+    return (
+     <div className="App container m-4">
+        <div className="row">
+          <div className="text-center">
+          <h1>Connectando el Frontend de React hacia el Backend de Flask.</h1>
+          </div>
+        </div>
+        <div className="col-md-7">
+        <div className='d-flex align-items-center flex-column mt-5'>
+                <h3>Id: {users.id}</h3>
+                <h3>Edad: {users.age}</h3>
+                <h3>Genero: {users.gender}</h3>
+                <h3>Emocion: {users.emotion}</h3>
+                <h3>Fecha_Creación: {users.dateCreated}</h3>
+        </div>    
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Edad</th>
+              <th>Genero</th>
+              <th>Emoción Detectada</th>
+              <th>Fecha creación</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody exact="true">
+            {users.map((user,key) => {
+            return <tr key={key}>
+                <td>{user.id}</td>
+                <td>{user.age}</td>
+                <td>{user.gender}</td>
+                <td>{user.emotion}</td>
+                <td>{user.dateCreated}</td>
+                <td>
+                    <Link to={'http://localhost:8000/api/v1/users/delete/'+ user.id} className='btn btn-danger btn-sm me-2'>Eliminar</Link>
+                </td>
+              </tr>
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+      );
+
+}
+export default ListUser
+
+
+/* Petición con Axios
 function ListUser() {
 
     const {id} = useParams();
@@ -30,4 +101,4 @@ function ListUser() {
   )
 }
 
-export default ListUser
+export default ListUser */
