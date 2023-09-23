@@ -42,15 +42,15 @@ function ListUser() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user,key) => {
-            return <tr key={key}>
-                <td>{user.id}</td>
-                <td>{user.age}</td>
-                <td>{user.gender}</td>
-                <td>{user.emotion}</td>
-                <td>{user.dateCreated}</td>
+            {users.map((data,index) => {
+            return <tr index={index}>
+                <td>{data.id}</td>
+                <td>{data.age}</td>
+                <td>{data.gender}</td>
+                <td>{data.emotion}</td>
+                <td>{data.dateCreated}</td>
                 <td>
-                    <Link to={'http://localhost:8000/api/v1/users/delete/'+ user.id} className='btn btn-danger btn-sm me-2'>Eliminar</Link>
+                    <Link to={'http://localhost:8000/api/v1/users/delete/'+ data.id} className='btn btn-danger btn-sm me-2'>Eliminar</Link>
                 </td>
               </tr>
             })}
