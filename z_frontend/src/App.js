@@ -1,7 +1,10 @@
 //import logo from './logo.svg';
 //import './App.css';
 import React from 'react';
+//import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+//No se permite usar Switch
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import Navigation from "./components/Navigation";
@@ -23,12 +26,12 @@ function App() {
       <Navigation />
        <Routes>
          <Route exact path="/" element={<Home/>} />
-         <Route exact path="/Elaine_Assistant" element={<Chatbot/>} />
-         <Route exact path="/Vision_camera" element={<Vision_Camera/>} />
-         <Route exact path="/API_conect" element={<ReadAPI/>} />
+         <Route path="/Elaine_Assistant" element={<Chatbot/>} />
+         <Route path="/Vision_camera" element={<Vision_Camera/>} />
+         <Route path="/API_conect" element={<ReadAPI/>} />
          <Route exact path="/List" element={<ListUser/>} />
-         <Route exact path="/Manage" element={<Users/>} />
-         <Route exact path="/Metrics" element={<Metrics/>} />
+         <Route path="/Manage" element={<Users/>} />
+         <Route path="/Metrics" element={<Metrics/>} />
        </Routes>
     </BrowserRouter>
   );
