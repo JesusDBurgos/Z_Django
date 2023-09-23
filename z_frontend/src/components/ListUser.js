@@ -25,19 +25,11 @@ function ListUser() {
 
     return (
      <div className="App container m-4">
-        <div className="row">
+        <div className="row" style={{ marginTop: '4rem' }}>
           <div className="text-center">
           <h1>Connectando el Frontend de React hacia el Backend de Flask.</h1>
-          </div>
-        </div>
-        <div className="col-md-7">
-        <div className='d-flex align-items-center flex-column mt-5'>
-                <h3>Id: {users.id}</h3>
-                <h3>Edad: {users.age}</h3>
-                <h3>Genero: {users.gender}</h3>
-                <h3>Emocion: {users.emotion}</h3>
-                <h3>Fecha_Creación: {users.dateCreated}</h3>
-        </div>    
+          
+        <div className="col-md-8" >   
         <table className="table table-striped">
           <thead>
             <tr>
@@ -49,7 +41,7 @@ function ListUser() {
               <th>Operaciones</th>
             </tr>
           </thead>
-          <tbody exact="true">
+          <tbody>
             {users.map((user,key) => {
             return <tr key={key}>
                 <td>{user.id}</td>
@@ -64,6 +56,8 @@ function ListUser() {
             })}
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </div>
       );
