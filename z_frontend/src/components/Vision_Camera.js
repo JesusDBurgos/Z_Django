@@ -6,10 +6,10 @@ function Vision_Camera() {
 
     const webcamRef = React.useRef(null);
     //return <Webcam />;
-
+    // eslint-disable-next-line
     return (
         <div>
-         // eslint-disable-next-line
+         
          <div className="App">
              <header className="header">
                  <h3 className="title">Vision Elaine App</h3>
