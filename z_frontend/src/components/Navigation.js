@@ -38,25 +38,25 @@ const Navigation = () => {
         </CDBSidebarHeader>
         <CDBSidebarContent>
           <CDBSidebarMenu>
-            <NavLink exact to="/">
+            <NavLink exact="true" to="/">
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Elaine_Assistant">
+            <NavLink to="/Elaine_Assistant">
               <CDBSidebarMenuItem icon="laptop">Conversación</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Vision_camera">
+            <NavLink to="/Vision_camera">
               <CDBSidebarMenuItem icon="camera">Detección</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/API_conect">
+            <NavLink to="/API_conect">
               <CDBSidebarMenuItem icon="smile">Conexión API</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/List">
+            <NavLink exact="true" to="/List">
               <CDBSidebarMenuItem icon="list">Listar usuarios</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Manage">
+            <NavLink to="/Manage">
               <CDBSidebarMenuItem icon="user">Administrar usuarios</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Metrics">
+            <NavLink to="/Metrics">
               <CDBSidebarMenuItem icon="tools">Metricas</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
