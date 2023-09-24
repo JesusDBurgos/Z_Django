@@ -42,8 +42,8 @@ function ListUser() {
             </tr>
           </thead>
           <tbody>
-            {users.map((data,key) => {
-            return <tr key={key}>
+            {users.map(data => {
+            return <tr key={data.id}>
                 <td>{data.id}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
