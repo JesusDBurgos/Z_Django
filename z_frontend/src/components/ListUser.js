@@ -36,8 +36,8 @@ function ListUser() {
               <th>Index</th>
               <th>Edad</th>
               <th>Genero</th>
-              <th>Emoción Detectada</th>
-              <th>Fecha creación</th>
+              <th>Emoción detectada</th>
+              <th>Fecha de creación</th>
               <th>Operaciones</th>
             </tr>
           </thead>
