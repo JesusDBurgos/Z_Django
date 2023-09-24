@@ -1,7 +1,7 @@
 //import { DataUser } from './components/DataUser';
 import DataUser from './DataUser';
 
-export default function RData() {
+function RData() {
   const listUsers = DataUser.map(Duser =>
     <li key={Duser.id}>
       <p>
@@ -14,3 +14,5 @@ export default function RData() {
   );
   return <ul>{listUsers}</ul>;
 }
+
+export default RData;
