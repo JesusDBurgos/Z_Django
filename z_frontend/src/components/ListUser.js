@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 //Petición con Fetch
 function ListUser() {
 
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]); 
 
     // Modify the current state by setting the new data to
     // the response from the backend
@@ -42,8 +42,8 @@ function ListUser() {
             </tr>
           </thead>
           <tbody>
-            {users.map((data,index) => {
-            return <tr index={index}>
+            {users.map((data,key) => {
+            return <tr key={key}>
                 <td>{data.id}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
