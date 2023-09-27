@@ -37,20 +37,20 @@ function ListUser() {
               <th>Edad</th>
               <th>Genero</th>
               <th>Emoción detectada</th>
-              <th>Fecha de creación</th>
+              <th>Fecha creación</th>
               <th>Operaciones</th>
             </tr>
           </thead>
           <tbody>
-            {users.map(data => {
-            return <tr key={data.id}>
-                <td>{data.id}</td>
-                <td>{data.age}</td>
-                <td>{data.gender}</td>
-                <td>{data.emotion}</td>
-                <td>{data.dateCreated}</td>
+            {users.map(user => {
+            return <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.age}</td>
+                <td>{user.gender}</td>
+                <td>{user.emotion}</td>
+                <td>{user.dateCreated}</td>
                 <td>
-                    <Link to={'http://localhost:8000/api/v1/users/delete/'+ data.id} className='btn btn-danger btn-sm me-2'>Eliminar</Link>
+                    <Link to={'http://localhost:8000/api/v1/users/delete/'+ user.id} className='btn btn-danger btn-sm me-2'>Eliminar</Link>
                 </td>
               </tr>
             })}
