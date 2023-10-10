@@ -1,7 +1,7 @@
 //import axios from 'axios';
 //import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 //Petición con Fetch
 function ListUser() {
@@ -13,23 +13,30 @@ function ListUser() {
 
     const getUsers = async () => {
         const res = await fetch('http://localhost:8000/api/v1/users');
+        //console.log(res)
         const data = await res.json();
-        console.log(data)
+        //console.log(data)
+        //console.log(data.length)
+        //const id = data[0];
+        //console.log(id)
         //result => setUsers(result.data);
+        
         setUsers(data);
       };
     
     useEffect(() => {
         getUsers();
       }, []);
+    
+    console.log(users)  
 
     return (
-     <div className="App container m-4">
+     <div className="App container m-6">
         <div className="row" style={{ marginTop: '4rem' }}>
           <div className="text-center">
           <h1>Connectando el Frontend de React hacia el Backend de Flask.</h1>
           
-        <div className="col-md-8" >   
+        <div className="col-md-10" >   
         <table className="table table-striped">
           <thead>
             <tr>
@@ -38,22 +45,18 @@ function ListUser() {
               <th>Genero</th>
               <th>Emoción detectada</th>
               <th>Fecha creación</th>
-              <th>Operaciones</th>
             </tr>
           </thead>
           <tbody>
-            {users.map(user => {
-            return <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.age}</td>
-                <td>{user.gender}</td>
-                <td>{user.emotion}</td>
-                <td>{user.dateCreated}</td>
-                <td>
-                    <Link to={'http://localhost:8000/api/v1/users/delete/'+ user.id} className='btn btn-danger btn-sm me-2'>Eliminar</Link>
-                </td>
-              </tr>
-            })}
+            {users.map((user,key) =>
+            <tr key={key}>
+            <td>{user[0]}</td>
+            <td>{user[1]}</td>
+            <td>{user[2]}</td>
+            <td>{user[3]}</td>
+            <td>{user[4]}</td>
+          </tr>
+        )}
           </tbody>
         </table>
       </div>
@@ -64,35 +67,3 @@ function ListUser() {
 
 }
 export default ListUser
-
-
-/* Petición con Axios
-function ListUser() {
-
-    const {id} = useParams();
-
-    const [user, setUser] = useState([])
-    useEffect(()=> {
-        axios.get('http://localhost:8000/api/v1/users/'+{id})
-        .then(res => setUser(res.data.Result))
-        .catch(err => console.log(err));
-    })
-  return (
-    <div>
-        <div className='d-flex justify-content-center flex-column align-items-center mt-3'>
-            <div className='d-flex align-items-center flex-column mt-5'>
-                <h3>Id: {user.id}</h3>
-                <h3>Edad: {user.age}</h3>
-                <h3>Genero: {user.gender}</h3>
-                <h3>Emocion: {user.emotion}</h3>
-                <h3>Fecha_Creación: {user.dateCreated}</h3>
-            </div>
-            <div>
-                <button className='btn btn-primary me-2'>Edit</button>
-            </div>
-        </div>
-    </div>
-  )
-}
-
-export default ListUser */
