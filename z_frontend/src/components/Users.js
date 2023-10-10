@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 //Ruta de conexión de datos CORS
 const API = process.env.REACT_APP_API;
 
 export const Users = () => {
 
+  const [id, setId] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [emotion, setEmotion] = useState("");
   const [DateCreated, setDate] = useState("");
 
   const [editing, setEditing] = useState(false);
-  const [id, setId] = useState("");
+
 
   const nameInput = useRef(null);  //Revisar
 
@@ -20,7 +21,7 @@ export const Users = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(API);
+    //console.log(API);
 
     if (!editing) {
       const res = await fetch(`${API}/api/v1/users/create`, {
@@ -37,7 +38,7 @@ export const Users = () => {
         }),
       });
       const data = await res.json();
-      console.log(data)
+      //console.log(data)
       //result => setUsers(result.data);
     } else {
       const res = await fetch(`${API}/api/v1/users/update/${id}`, {
@@ -54,12 +55,13 @@ export const Users = () => {
         }),
       });
       const data = await res.json();
-      console.log(data)
+      //console.log(data)
       //result => getUsers(result.data);
       setEditing(false);
       setId("");
     }
     await getUsers();
+    setId("");
     setAge("");
     setGender("");
     setEmotion("");
@@ -68,9 +70,12 @@ export const Users = () => {
   };
 
   const getUsers = async () => {
-    const res = await fetch(`${API}/api/v1/users`);
+    const res = await fetch(`${API}/api/v1/users`)
+    //console.log(res)
     const data = await res.json();
-    console.log(data)
+    //console.log(data)
+    //const index = data[0];
+    //console.log(index)
     //result => setUsers(result.data);
     setUsers(data);
   };
@@ -82,7 +87,7 @@ export const Users = () => {
         method: "DELETE",
       });
       const data = await res.json();
-      console.log(data)
+      //console.log(data)
       //result => getUsers(result.data);
       await getUsers();
     }
@@ -92,7 +97,7 @@ export const Users = () => {
   const editUser = async (id) => {
     const res = await fetch(`${API}/api/v1/users/update/${id}`);
     const data = await res.json();
-    console.log(data)
+    //console.log(data)
     //result => getUsers(result.data);
 
     setEditing(true);
@@ -109,6 +114,22 @@ export const Users = () => {
   useEffect(() => {
     getUsers();
   }, []);
+
+  //console.log(users)
+
+  const JUsers = users.map((user,key) =>
+    <tr key={key}>
+        <td>{user[0]}</td>
+        <td>{user[1]}</td>
+        <td>{user[2]}</td>
+        <td>{user[3]}</td>
+        <td>{user[4]}</td>
+        <td>
+            <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block me-2'>Actualizar</button>
+            <button onClick={e => deleteUser(user.id)} className='btn btn-danger btn-sm btn-block me-2'>Eliminar</button>
+        </td>
+      </tr>
+    )
 
   return ( 
     <div className="row" style={{ marginTop: '6rem' }}>
@@ -169,20 +190,7 @@ export const Users = () => {
             </tr>
           </thead>
           <tbody exact='true'>
-            {users.map((user,key) => {
-            return <tr key={key}>
-                <td>{user.id}</td>
-                <td>{user.age}</td>
-                <td>{user.gender}</td>
-                <td>{user.emotion}</td>
-                <td>{user.dateCreated}</td>
-                <td>
-                    <Link to={'http://localhost:8000/api/v1/users/update/'+ user.id} className='btn btn-primary btn-sm me-2'>Editar</Link>
-                    <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block me-2'>Actualizar</button>
-                    <button onClick={e => deleteUser(user.id)} className='btn btn-danger btn-sm btn-block me-2'>Eliminar</button>
-                </td>
-              </tr>
-            })}
+            {JUsers}
           </tbody>
         </table>
       </div>
