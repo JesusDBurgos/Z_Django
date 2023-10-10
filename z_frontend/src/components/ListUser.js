@@ -28,7 +28,7 @@ function ListUser() {
         getUsers();
       }, []);
     
-    console.log(users)  
+    //console.log(users)  
 
     return (
      <div className="App container m-6">
