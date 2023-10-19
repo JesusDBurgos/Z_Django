@@ -1,5 +1,5 @@
 //import React from 'react'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 
 function Metrics() {
   const [users, setUsers] = useState([]); 
@@ -30,69 +30,36 @@ function Metrics() {
       <p key={key}>{Emo[3]}</p>
   )
 
-  //console.log(Emotions.Emo)
+function Conteo(props){
+  
+  const [Em_Neg, setEmNeg] = useState(0);
+  const [Em_Pos, setEmPos] = useState(0);
+  
+  const negativeEmotions = ['Tristeza', 'Enojo', 'Ira'];
+  const Em = props.Em;
 
-  function Conteo(props){
-    var Em_Neg=0;
-    var Em_Pos=0;
+  useMemo(() => {
+    Emotions.forEach(emo => {
+      const emotion = emo.props.children;
+      
+      if(negativeEmotions.includes(emotion)) 
+      {
+        setEmNeg(prev => prev + 1);
+      } else {
+        setEmPos(prev => prev + 1); 
+      }
+    });
+  }, [Emotions])
 
-    //var arr = Emo[3];
-    const Em = props.Em;
-
-    for (var i = 0; i <= Emotions.length; i++) 
-    {
-       //console.log(Emotions[i]);
-       //console.log('Zapato');
-       //const emotion = Emotions[i].props.children
-
-       if (Emotions[i] === 'Tristeza' || Emotions[i] === 'Enojo' || Emotions[i] === 'Ira' )
-       {
-         Em_Neg = Em_Neg ++;
-         console.log(Em_Neg)
-         console.log('Zapatico');  
-       } else if (Emotions[i] === 'Sorpresa' || Emotions[i] === 'Felicidad' || Emotions[i] === 'Neutral')
-       {
-         Em_Pos = Em_Pos ++;
-         console.log(Em_Pos)
-         console.log('Zapatote');
-       };
-    }
-    console.log(Em)
     if (Em)
      {
-       return <h5>{Em_Pos}</h5>
+       return <h5>Total: {Em_Pos}</h5>
      }
-     else
-     {
-       return <h5>{Em_Neg}</h5>
-     } 
-   }
-
-
-  /*
-  switch(Emotions){
-    case 'Tristeza':
-      Em_Neg = Em_Neg + 1;
-      console.log(Em_Neg)
-    case 'Enojo': 
-      Em_Neg = Em_Neg + 1;
-      console.log(Em_Neg)
-    case 'Ira':
-      Em_Neg = Em_Neg + 1;
-      console.log(Em_Neg)
-    case 'Sorpresa':
-      Em_Neg = Em_Neg + 1;
-      console.log(Em_Neg)
-    case 'Felicidad': 
-      Em_Pos = Em_Pos + 1;
-      console.log(Em_Pos)
-    case 'Neutral':
-      Em_Pos = Em_Pos + 1;
-      console.log(Em_Pos)
+    else
+    {
+       return <h5>Total: {Em_Neg}</h5>
+    } 
   }
-  */
-
-  //console.log(Emotions)
 
   return (
     <div>
@@ -122,8 +89,7 @@ function Metrics() {
           </div>
           <hr />
           <div className=''>
-            <h5>Total: </h5>
-            <Conteo Em={true} /> 
+            <Conteo Em={true}/>
           </div>
         </div>
         <div className='px-3 pt-2 pb-3 border shadow-sm w-25 me-2'>
@@ -132,8 +98,7 @@ function Metrics() {
           </div>
           <hr />
           <div className=''>
-            <h5>Total: </h5>
-            <Conteo Em_Neg />
+           <Conteo Em={false}/>
           </div>
         </div>  
       </div>
