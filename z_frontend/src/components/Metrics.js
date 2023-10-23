@@ -1,4 +1,5 @@
 //import React from 'react'
+
 import React, { useEffect, useState, useMemo } from 'react'
 
 function Metrics() {
@@ -35,6 +36,7 @@ function Conteo(props){
   const [Em_Neg, setEmNeg] = useState(0);
   const [Em_Pos, setEmPos] = useState(0);
   
+  // eslint-disable-next-line
   const negativeEmotions = ['Tristeza', 'Enojo', 'Ira'];
   const Em = props.Em;
 
