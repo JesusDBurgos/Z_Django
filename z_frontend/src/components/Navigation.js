@@ -47,7 +47,7 @@ const Navigation = () => {
             <NavLink to="/Vision_camera">
               <CDBSidebarMenuItem icon="camera">Detección</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink to="/API_conect">
+            <NavLink to="/RData">
               <CDBSidebarMenuItem icon="smile">Conexión API</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact="true" to="/List">

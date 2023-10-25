@@ -1,57 +1,159 @@
-//import { DataUser } from './components/DataUser';
+//Librerías de estados en React
+import React from 'react';
+import { useState } from "react";
+
+//Librerías de Data
+//import { Data } from "./Data";
 import DataUser from './DataUser';
+//import "./styles.css";
+
+//Librerías de graficas en React
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+//const labels = ['Masculino', 'Femenino'];
+
+function RData () {
+  const [chartData, setChartData] = useState({
+    labels: DataUser.map((data) => data.DateCreated), 
+    datasets: 
+    [
+      {
+        label: "Users Gained ",
+        data: DataUser.map((data) => data.Age),
+        backgroundColor: 
+        [
+          "rgba(75,192,192,1)",
+          "&quot;#ecf0f1",
+          "#50AF95",
+          "#f3ba2f",
+          "#2a71d0"
+        ],
+        borderColor: "black",
+        borderWidth: 2
+      }
+    ]
+  });
+ 
+  return (
+       <div>
+            {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
+            <h1 className="bg-info text-center font-monospace fw-bold lh-base">Gráficas ChartJS</h1>
+            <div>
+                <p className="m-2"><b>Ejemplo #1: </b>Gráfico de líneas básico</p>
+                <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{width:"450px", height:"230px"}}>
+                </div>
+            </div>
+            <hr className="mt-3 mb-2"/>
+            <div>
+                <p className="m-2"><b>Ejemplo #2: </b>Gráfico de barras</p>
+                <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{width:"450px", height:"225px"}}>
+                </div>
+            </div>
+            <hr className="mt-3 mb-2"/>
+            <div>
+                <p className="m-2"><b>Ejemplo #3: </b>Gráfico circular</p>
+                <div className="bg-light mx-auto border border-2 border-primary" style={{width:"450px", height:"250px"}}>
+                    <div style={{width:"100%", height:"100%", padding:"10px 0"}}>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+  );
+}
+
+export default RData;
+
+/*
+import React from 'react';
+import {Doughnut} from 'react-chartjs-2';
+
+const data = {
+  labels: [
+    'Red',
+    'Green',
+    'Yellow'
+  ],
+  datasets: [{
+    data: [300, 50, 100],
+    backgroundColor: [
+    '#FF6384',
+    '#36A2EB',
+    '#FFCE56'
+    ],
+    hoverBackgroundColor: [
+    '#FF6384',
+    '#36A2EB',
+    '#FFCE56'
+    ]
+  }]
+};
+
 
 function RData() {
-  const listUsers = DataUser.map(Duser =>
-    <li key={Duser.id}>
-      <p>
-          El usuario tiene una emoción de <b>{Duser.Emotion}</b>
-          , tiene una edad de {' ' + Duser.Age + ' '} años, 
-          un genero {' ' + Duser.Gender + ' '} (F:Femenino/M:Masculino) y
-          participo en el app el día: {' ' + Duser.DateCreated + ' '}
-      </p>
-    </li>
-  );
-  const Rusers = DataUser.map(Duser =>
-    <tr key={Duser.id}>
-        <td>{Duser.id}</td>
-        <td>{Duser.Age}</td>
-        <td>{Duser.Gender}</td>
-        <td>{Duser.Emotion}</td>
-        <td>{Duser.DateCreated}</td>
-        <td>
-        <button className='btn btn-secondary btn-sm btn-block me-2'>Actualizar</button>
-        <button className='btn btn-danger btn-sm btn-block me-2'>Eliminar</button>
-        </td>
-    </tr>  
-  );
   return (
-    <div className="App container m-4">
-      <div className="row" style={{ marginTop: '4rem' }}>
-       <div className="text-center">
-         <h1>Trayendo datos al frontend React.</h1>
-         <ul>{listUsers}</ul>
-       </div>
-       <div className="col-md-8" >   
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Index</th>
-              <th>Edad</th>
-              <th>Genero</th>
-              <th>Emoción detectada</th>
-              <th>Fecha de creación</th>
-              <th>Operaciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Rusers}
-          </tbody>
-        </table>
-      </div>
-      </div>
+    <div>
+        <h2>Grafico de Dona Example</h2>
+        <Doughnut data={data} />
     </div>
   );
 }
 
 export default RData;
+
+
+
+/*
+
+//Chart.register(CategoryScale);
+ 
+export default function App() 
+{
+  const [chartData, setChartData] = useState(
+    {
+    labels: DataUser.map((data) => data.DateCreated), 
+    datasets: [
+      {
+        label: "Users Gained ",
+        data: DataUser.map((data) => data.Age),
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+          "&quot;#ecf0f1",
+          "#50AF95",
+          "#f3ba2f",
+          "#2a71d0"
+        ],
+        borderColor: "black",
+        borderWidth: 2
+      }
+    ]
+  });
+ 
+  return (
+    <div>
+      <p>Using Chart.js in React</p>
+    </div>
+  );
+}
+
+
+
+
+
+*/
