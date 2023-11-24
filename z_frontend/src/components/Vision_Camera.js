@@ -31,18 +31,20 @@ function Vision_Camera() {
     }
 
     return (
-    <div>
-        <div className="container">
+    <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Tracking de usuarios</h1>
+    <div className="d-flex flex-wrap justify-content-evenly gap-30">
+        
+        <div className="">
             <br></br>   
-            <div className="row position-relative justify-content-flex-start">
+            <div className="">
 
-                    <div className="cardHeader text-white position-absolute top-0 start-0" style={styleHeaderLogo}>
+                    <div className="cardHeader text-white" style={styleHeaderLogo}>
                     <h4 style={{marginBottom:'0px'}}>
                           <center>Virtual Assistant</center>
                     </h4>
                     </div>
                     <br></br>
-                    <div className="cardBody position-absolute top-100 start-0" style={styleBodyLogo}>
+                    <div className="cardBody" style={styleBodyLogo}>
                         <img
                            src={logoE}
                            width="200"
@@ -57,10 +59,7 @@ function Vision_Camera() {
 
         <div>
          
-        <div className="row position-relative justify-content-center">
-             <header className="header">
-                 <h3 className="row position-relative justify-content-center title">Vision Elaine App</h3>
-             </header>
+        <div className="">
              <Webcam
               audio = {false}
 	             height = {480}
@@ -68,11 +67,11 @@ function Vision_Camera() {
 	             screenshotFormat = "image/jpeg"
 	             width = {640}
 	         />
-          <div className='col-md-5 row position-relative justify-content-center'><button>Captura</button></div>
+          <div className='col-md-20 row position-relative justify-content-center'><button>Captura</button></div>
          </div>
         </div>
-    </div>    
-        
+    </div>  
+    </>    
     )
 
 }
