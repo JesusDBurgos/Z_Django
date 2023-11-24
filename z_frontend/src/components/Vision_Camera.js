@@ -13,7 +13,7 @@ function Vision_Camera() {
     const styleHeaderLogo = {
         height: '3.5rem',
         width: '225px',
-        borderBottom : '1px solid black',
+        borderBottom: '1px solid black',
         backgroundColor: '#1b0527',
         paddingLeft: '0px',
         paddingRight: '0px',
@@ -23,55 +23,55 @@ function Vision_Camera() {
     }
 
     const styleBodyLogo = {
-        paddingTop : '10px',
+        paddingTop: '10px',
         height: '28rem',
         overflowY: 'a',
         overflowX: 'hidden',
-        
+
     }
 
     return (
-    <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Tracking de usuarios</h1>
-    <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '3rem' }}>
-        
-        <div className="">
-            <br></br>   
-            <div className="">
+        <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Tracking de usuarios</h1>
+            <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '3rem' }}>
 
-                    <div className="cardHeader text-white" style={styleHeaderLogo}>
-                    <h4 style={{marginBottom:'0px'}}>
-                          <center>Virtual Assistant</center>
-                    </h4>
-                    </div>
+                <div className="">
                     <br></br>
-                    <div className="cardBody" style={styleBodyLogo}>
-                        <img
-                           src={logoE}
-                           width="200"
-                           height="300"
-                           className="d-inline-block align-center"
-                           alt="React Bootstrap logo"
-                        />{' '}
+                    <div className="">
 
-                    </div>  
+                        <div className="cardHeader text-white" style={styleHeaderLogo}>
+                            <h4 style={{ marginBottom: '0px' }}>
+                                <center>Virtual Assistant</center>
+                            </h4>
+                        </div>
+                        <br></br>
+                        <div className="cardBody" style={styleBodyLogo}>
+                            <img
+                                src={logoE}
+                                width="200"
+                                height="300"
+                                className="d-inline-block align-center"
+                                alt="React Bootstrap logo"
+                            />{' '}
+
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+
+                    <div className="">
+                        <Webcam
+                            audio={false}
+                            height={480}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            width={640}
+                        />
+                        <div className='col-md-20 row position-relative justify-content-center'><button>Captura</button></div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div>
-         
-        <div className="">
-             <Webcam
-              audio = {false}
-	             height = {480}
-                 ref = {webcamRef}
-	             screenshotFormat = "image/jpeg"
-	             width = {640}
-	         />
-          <div className='col-md-20 row position-relative justify-content-center'><button>Captura</button></div>
-         </div>
-        </div>
-    </div>  
-    </>    
+        </>
     )
 
 }

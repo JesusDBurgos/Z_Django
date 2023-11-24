@@ -135,81 +135,81 @@ function Chatbot() {
                 {/* <button onClick={()=>rasaAPI("shreyas","hi")}>Try this</button> */}
 
                 <br></br>
-                
-                    <div className="">
 
-                        <div className="cardHeader text-white" style={styleHeaderLogo}>
-                            <h4 style={{ marginBottom: '0px' }}>
-                                <center>Virtual Assistant</center>
-                            </h4>
-                        </div>
-                        <br></br>
-                        <div className="cardBody top-100 start-0" style={styleBodyLogo}>
-                            <img
-                                src={logoE}
-                                width="200"
-                                height="300"
-                                className="d-inline-block align-center"
-                                alt="React Bootstrap logo"
-                            />{' '}
+                <div className="">
 
-                        </div>
+                    <div className="cardHeader text-white" style={styleHeaderLogo}>
+                        <h4 style={{ marginBottom: '0px' }}>
+                            <center>Virtual Assistant</center>
+                        </h4>
+                    </div>
+                    <br></br>
+                    <div className="cardBody top-100 start-0" style={styleBodyLogo}>
+                        <img
+                            src={logoE}
+                            width="200"
+                            height="300"
+                            className="d-inline-block align-center"
+                            alt="React Bootstrap logo"
+                        />{' '}
 
                     </div>
 
-                    <div className="" style={{width:"700px"}}>
+                </div>
 
-                        <div className="card" style={stylecard} >
+                <div className="" style={{ width: "700px" }}>
 
-                            <div className="cardHeader text-white top-50 start-50" style={styleHeader}>
-                                <h1 style={{ marginBottom: '0px' }}>
-                                    <center>Elaine Assistant</center>
-                                </h1>
-                                {botTyping ? <h6>Elaine escribiendo...</h6> : null}
+                    <div className="card" style={stylecard} >
+
+                        <div className="cardHeader text-white top-50 start-50" style={styleHeader}>
+                            <h1 style={{ marginBottom: '0px' }}>
+                                <center>Elaine Assistant</center>
+                            </h1>
+                            {botTyping ? <h6>Elaine escribiendo...</h6> : null}
+
+                        </div>
+                        <div className="cardBody" id="messageArea" style={styleBody}>
+
+                            <div className="row msgarea">
+                                {chat.map((user, key) => (
+                                    <div key={key}>
+                                        {user.sender === 'bot' ?
+                                            (
+
+                                                <div className='msgalignstart'>
+                                                    <BiBot className="botIcon" /><h5 className="botmsg">{user.msg}</h5>
+                                                </div>
+
+                                            )
+
+                                            : (
+                                                <div className='msgalignend'>
+                                                    <h5 className="usermsg">{user.msg}</h5><BiUser className="userIcon" />
+                                                </div>
+                                            )
+                                        }
+                                    </div>
+                                ))}
 
                             </div>
-                            <div className="cardBody" id="messageArea" style={styleBody}>
 
-                                <div className="row msgarea">
-                                    {chat.map((user, key) => (
-                                        <div key={key}>
-                                            {user.sender === 'bot' ?
-                                                (
-
-                                                    <div className='msgalignstart'>
-                                                        <BiBot className="botIcon" /><h5 className="botmsg">{user.msg}</h5>
-                                                    </div>
-
-                                                )
-
-                                                : (
-                                                    <div className='msgalignend'>
-                                                        <h5 className="usermsg">{user.msg}</h5><BiUser className="userIcon" />
-                                                    </div>
-                                                )
-                                            }
-                                        </div>
-                                    ))}
-
-                                </div>
-
-                            </div>
-                            <div className="cardFooter text-white" style={styleFooter}>
-                                <div className="row">
-                                    <form style={{ display: 'flex' }} onSubmit={handleSubmit}>
-                                        <div className="col-10" style={{ paddingRight: '0px' }}>
-                                            <input onChange={e => setInputMessage(e.target.value)} value={inputMessage} type="text" className="msginp"></input>
-                                        </div>
-                                        <div className="col-2 cola">
-                                            <button type="submit" className="circleBtn" ><IoMdSend className="sendBtn" /></button>
-                                        </div>
-                                    </form>
-                                </div>
+                        </div>
+                        <div className="cardFooter text-white" style={styleFooter}>
+                            <div className="row">
+                                <form style={{ display: 'flex' }} onSubmit={handleSubmit}>
+                                    <div className="col-10" style={{ paddingRight: '0px' }}>
+                                        <input onChange={e => setInputMessage(e.target.value)} value={inputMessage} type="text" className="msginp"></input>
+                                    </div>
+                                    <div className="col-2 cola">
+                                        <button type="submit" className="circleBtn" ><IoMdSend className="sendBtn" /></button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-
                     </div>
-                
+
+                </div>
+
 
             </div>
         </>
