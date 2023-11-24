@@ -65,6 +65,7 @@ function Conteo(props){
 
   return (
     <div>
+      <h1 className="bg-info text-center font-monospace fw-bold lh-base">Trazabilidad de usuarios</h1>
       <div className='p-3 d-flex justify-content-around mt-3'>
         <div className='px-3 pt-2 pb-3 border shadow-sm w-25 me-2'>
           <div className='text-center pb-1'>
@@ -110,21 +111,23 @@ function Conteo(props){
       <ul>{Emotions}</ul>
       */}
       <br></br>
-      <div>
+
+      <div style={{display:"flex", flexWrap:"wrap", paddingLeft: "100px", gap: "30px"}}>
       {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
-          <h1 className="bg-info text-center font-monospace fw-bold lh-base">Gráficas ChartJS</h1>
-          <div>
-              <p className="m-2"><b>Ejemplo #1: </b>Gráfico de líneas básico</p>
-              <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{width:"450px", height:"230px"}}>
+          
+          <div style={{margin: "20px"}}>
+              <p className="m-2"><b>Ejemplo #1: </b>Gráfico de usuarios conectados</p>
+              <div className="bg-light mx-auto px-2 border border-2 border-primary " style={{width:"450px", height:"225px", }}>
               </div>
           </div>
-          <hr className="mt-3 mb-2"/>
-          <div>
-              <p className="m-2"><b>Ejemplo #2: </b>Gráfico de barras</p>
+          <div style={{margin: "20px"}}>
+              <p className="m-2"><b>Ejemplo #2: </b>Gráfico de confianza hacia el Bot</p>
               <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{width:"450px", height:"225px"}}>
               </div>
           </div>
-          <hr className="mt-3 mb-2"/>
+
+          {/* Aquí se incluye un gráfico más 
+          #Línea de gráfico - <hr className="mt-3 mb-2"/>
           <div>
               <p className="m-2"><b>Ejemplo #3: </b>Gráfico circular</p>
               <div className="bg-light mx-auto border border-2 border-primary" style={{width:"450px", height:"250px"}}>
@@ -132,6 +135,8 @@ function Conteo(props){
                   </div>
               </div>
           </div>
+          */}
+
       </div>
     </div>
 
