@@ -104,9 +104,11 @@ function Conteo(props){
           </div>
         </div>  
       </div>
+      {/* Aquí se visualizaban los valores obtenidos del fetch
       <ul>{Edades}</ul>
       <ul>{Genero}</ul>
       <ul>{Emotions}</ul>
+      */}
       <br></br>
       <div>
       {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
