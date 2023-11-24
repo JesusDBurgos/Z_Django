@@ -66,7 +66,7 @@ function Conteo(props){
   return (
     <div>
       <h1 className="bg-info text-center font-monospace fw-bold lh-base">Trazabilidad de usuarios</h1>
-      <div className='p-3 d-flex justify-content-around mt-3'>
+      <div className='p-3 d-flex flex-wrap justify-content-around mt-3'>
         <div className='px-3 pt-2 pb-3 border shadow-sm w-25 me-2'>
           <div className='text-center pb-1'>
             <h4>Usuarios</h4>
@@ -75,15 +75,6 @@ function Conteo(props){
           <div className=''>
             <h5>Cantidad: {users.length}
             </h5>
-          </div>
-        </div>
-        <div className='px-3 pt-2 pb-3 border shadow-sm w-25 me-2'>
-          <div className='text-center pb-1'>
-            <h4>Conversaciones</h4>
-          </div>
-          <hr />
-          <div className=''>
-            <h5>Cantidad: </h5>
           </div>
         </div>
         <div className='px-3 pt-2 pb-3 border shadow-sm w-25 me-2'>
@@ -112,7 +103,7 @@ function Conteo(props){
       */}
       <br></br>
 
-      <div style={{display:"flex", flexWrap:"wrap", paddingLeft: "100px", gap: "30px"}}>
+      <div style={{display:"flex", flexWrap:"wrap", justifyContent: "center", gap: "30px"}}>
       {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
           
           <div style={{margin: "20px"}}>
