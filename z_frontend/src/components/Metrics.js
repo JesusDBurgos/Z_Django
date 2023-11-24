@@ -103,7 +103,7 @@ function Conteo(props){
       */}
       <br></br>
 
-      <div style={{display:"flex", flexWrap:"wrap", justifyContent: "center", gap: "30px"}}>
+      <div style={{display:"flex", flexWrap:"wrap", justifyContent: "center", marginTop: '3rem', gap: "30px"}}>
       {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
           
           <div style={{margin: "20px"}}>

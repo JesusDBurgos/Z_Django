@@ -32,7 +32,7 @@ function Vision_Camera() {
 
     return (
     <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Tracking de usuarios</h1>
-    <div className="d-flex flex-wrap justify-content-evenly">
+    <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '3rem' }}>
         
         <div className="">
             <br></br>   

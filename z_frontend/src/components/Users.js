@@ -131,8 +131,9 @@ export const Users = () => {
       </tr>
     )
 
-  return ( 
-    <div className="row" style={{ marginTop: '6rem' }}>
+  return (
+    <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Administración de usuarios</h1> 
+    <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '3rem' }}>
       <br></br> 
       <div className="col-md-4">
         <form onSubmit={handleSubmit} className="card card-body">
@@ -195,7 +196,7 @@ export const Users = () => {
         </table>
       </div>
      </div>
-
+     </>
   );
 };
 
