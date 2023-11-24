@@ -100,16 +100,16 @@ function Metrics() {
       */}
       <br></br>
 
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: '3rem', gap: "100px" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: '1rem', gap: "100px" }}>
         {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
 
         <div>
-          <p className="m-2"><b>Ejemplo #1: </b>Gráfico de usuarios conectados</p>
+          <p className=""><b>Ejemplo #1: </b>Gráfico de usuarios conectados</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary " style={{ width: "450px", height: "225px" }}>
           </div>
         </div>
         <div>
-          <p className="m-2"><b>Ejemplo #2: </b>Gráfico de confianza hacia el Bot</p>
+          <p className=""><b>Ejemplo #2: </b>Gráfico de confianza hacia el Bot</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{ width: "450px", height: "225px" }}>
           </div>
         </div>
