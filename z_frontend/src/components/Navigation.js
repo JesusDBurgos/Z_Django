@@ -44,10 +44,10 @@ const Navigation = () => {
             <NavLink to="/Elaine_Assistant">
               <CDBSidebarMenuItem icon="laptop">Conversación</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink to="/Vision_camera">
+            {/*<NavLink to="/Vision_camera">
               <CDBSidebarMenuItem icon="camera">Detección</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink to="/RData">
+            </NavLink>*/}
+            <NavLink to="/ReadAPI">
               <CDBSidebarMenuItem icon="smile">Conexión API</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact="true" to="/List">

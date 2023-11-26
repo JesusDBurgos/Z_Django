@@ -12,8 +12,8 @@ import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
 import Vision_Camera from './components/Vision_Camera';
 
-//import ReadAPI  from './components/ReadAPI';
-import RData from './components/RData';
+import ReadAPI  from './components/ReadAPI';
+//import RData from './components/RData';
 
 import ListUser from './components/ListUser';
 import Users  from './components/Users';
@@ -26,12 +26,13 @@ function App() {
     //Importo el componente BrowserRouter para la barra lateral
     //y el componente de la barra de navegación
     <BrowserRouter>
+      {/*Forma de comentario*/}
       <Navigation />
        <Routes>
          <Route exact path="/" element={<Home/>} />
          <Route path="/Elaine_Assistant" element={<Chatbot/>} />
-         <Route path="/Vision_camera" element={<Vision_Camera/>} />
-         <Route path="/RData" element={<RData/>} />
+         {/*<Route path="/Vision_camera" element={<Vision_Camera/>} />*/}
+         <Route path="/ReadAPI" element={<ReadAPI/>} />
          <Route exact path="/List" element={<ListUser/>} />
          <Route path="/Manage" element={<Users/>} />
          <Route path="/Metrics" element={<Metrics/>} />
