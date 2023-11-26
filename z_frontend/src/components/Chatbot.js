@@ -84,6 +84,10 @@ function Chatbot() {
 
     console.log(chat);
 
+    const styleImgElaine = {
+
+    }
+
     const stylecard = {
         maxWidth: '35rem',
         border: '1px solid black',
@@ -122,10 +126,22 @@ function Chatbot() {
     const styleBody = {
         paddingTop: '10px',
         height: '28rem',
-        overflowY: 'a',
+        overflowY: 'auto',
         overflowX: 'hidden',
-
-    }
+        position: 'relative',
+    };
+    const transparentBackground = {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        backgroundImage: `url("${logoE}")`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+        opacity: 0.5,  // Ajusta el nivel de transparencia según tus necesidades
+    };
     const styleBodyLogo = {
         paddingTop: '10px',
         height: '28rem',
@@ -137,7 +153,7 @@ function Chatbot() {
     return (
         <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Chat de usuarios</h1>
             <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '3rem' }}>
-                
+
                 {/* <button onClick={()=>rasaAPI("shreyas","hi")}>Try this</button> 
                 ###Codigo de Logo de Elaine    
                 <br></br>
@@ -164,7 +180,7 @@ function Chatbot() {
                 </div>
                 */}
 
-                <div className="" style={{ width: "700px" }}>
+                <div className="" style={{ width: "500px" }}>
 
                     <div className="card" style={stylecard} >
 
@@ -176,8 +192,8 @@ function Chatbot() {
 
                         </div>
                         <div className="cardBody" id="messageArea" style={styleBody}>
-
-                            <div className="row msgarea">
+                            <div style={transparentBackground}></div>
+                            <div className="row msgarea" style={{position: "relative"}} >
                                 {chat.map((user, key) => (
                                     <div key={key}>
                                         {user.sender === 'bot' ?
@@ -197,14 +213,7 @@ function Chatbot() {
                                         }
                                     </div>
                                 ))}
-                                <img
-                                    src={logoE}
-                                    height="400"
-                                    className="d-inline-block align-center"
-                                    alt="React Bootstrap logo"
-                                />{' '}
                             </div>
-
                         </div>
                         <div className="cardFooter text-white" style={styleFooter}>
                             <div className="row">
