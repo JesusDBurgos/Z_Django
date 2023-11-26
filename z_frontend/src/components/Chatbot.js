@@ -84,10 +84,6 @@ function Chatbot() {
 
     console.log(chat);
 
-    const styleImgElaine = {
-
-    }
-
     const stylecard = {
         maxWidth: '35rem',
         border: '1px solid black',
@@ -95,41 +91,23 @@ function Chatbot() {
         paddingRight: '0px',
         borderRadius: '30px',
         boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
-
     }
+
     const styleHeader = {
         height: '4.5rem',
         borderBottom: '1px solid black',
         borderRadius: '30px 30px 0px 0px',
         backgroundColor: '#1b0527',
-
     }
-    const styleHeaderLogo = {
-        height: '3.5rem',
-        width: '225px',
-        borderBottom: '1px solid black',
-        backgroundColor: '#1b0527',
-        paddingLeft: '0px',
-        paddingRight: '0px',
-        borderRadius: '30px',
-        boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
 
-    }
-    const styleFooter = {
-        //maxWidth : '32rem',
-        borderTop: '1px solid black',
-        borderRadius: '0px 0px 30px 30px',
-        backgroundColor: '#1b0527',
-
-
-    }
     const styleBody = {
         paddingTop: '10px',
         height: '28rem',
         overflowY: 'auto',
         overflowX: 'hidden',
         position: 'relative',
-    };
+    }
+
     const transparentBackground = {
         position: 'absolute',
         top: 0,
@@ -141,18 +119,38 @@ function Chatbot() {
         backgroundPosition: 'center',
         backgroundSize: 'contain',
         opacity: 0.5,  // Ajusta el nivel de transparencia según tus necesidades
-    };
+    }
+
+    const styleFooter = {
+        //maxWidth : '32rem',
+        borderTop: '1px solid black',
+        borderRadius: '0px 0px 30px 30px',
+        backgroundColor: '#1b0527',
+    }
+
+/*
+    const styleHeaderLogo = {
+        height: '3.5rem',
+        width: '225px',
+        borderBottom: '1px solid black',
+        backgroundColor: '#1b0527',
+        paddingLeft: '0px',
+        paddingRight: '0px',
+        borderRadius: '30px',
+        boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
+    }
+
     const styleBodyLogo = {
         paddingTop: '10px',
         height: '28rem',
         overflowY: 'a',
         overflowX: 'hidden',
-
     }
+ */
 
     return (
         <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Chat de usuarios</h1>
-            <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '3rem' }}>
+            <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '0rem' }}>
 
                 {/* <button onClick={()=>rasaAPI("shreyas","hi")}>Try this</button> 
                 ###Codigo de Logo de Elaine    
