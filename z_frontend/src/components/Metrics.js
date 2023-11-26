@@ -1,7 +1,10 @@
 //import React from 'react'
 
 import React, { useEffect, useState, useMemo } from 'react'
-import PiesChart from "./Graficos/PiesChart";
+import PiesChart_Con from "./Graficos/PiesChart_Con";
+import PiesChart_Ed from "./Graficos/PiesChart_Ed";
+import PiesChart_Emo from "./Graficos/PiesChart_Emo";
+import BarsChart_Conf from "./Graficos/BarsChart_Conf";
 
 function Metrics() {
   const [users, setUsers] = useState([]);
@@ -105,26 +108,35 @@ function Metrics() {
         {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
 
         <div>
-          <p className=""><b>Ejemplo #1: </b>Gráfico de usuarios conectados</p>
+          <p className=""><b>Gráfico #1: </b>Usuarios conectados</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary " style={{ width: "450px", height: "225px" }}>
-          </div>
-        </div>
-        <div>
-          <p className=""><b>Ejemplo #2: </b>Gráfico de rango de edades detectadas de usuarios</p>
-          <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{ width: "450px", height: "225px" }}>
             <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
-              <PiesChart />
+              <PiesChart_Con />
             </div>
           </div>
         </div>
         <div>
-          <p className=""><b>Ejemplo #3: </b>Gráfico de emociones detectadas de usuarios</p>
-          <div className="bg-light mx-auto px-2 border border-2 border-primary " style={{ width: "450px", height: "225px" }}>
+          <p className=""><b>Gráfico #2: </b>Rango de edades de usuarios</p>
+          <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{ width: "450px", height: "225px" }}>
+            <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
+              <PiesChart_Ed />
+            </div>
           </div>
         </div>
         <div>
-          <p className=""><b>Ejemplo #4: </b>Gráfico de confianza hacia el Bot</p>
+          <p className=""><b>Gráfico #3: </b>Rango de emociones de usuarios</p>
+          <div className="bg-light mx-auto px-2 border border-2 border-primary " style={{ width: "450px", height: "225px" }}>
+            <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
+              <PiesChart_Emo />
+            </div>
+          </div>
+        </div>
+        <div>
+          <p className=""><b>Gráfico #4: </b>Confianza hacia el Bot</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{ width: "450px", height: "225px" }}>
+            <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
+              <BarsChart_Conf />
+            </div>
           </div>
         </div>
 
