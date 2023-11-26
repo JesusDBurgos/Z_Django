@@ -1,13 +1,18 @@
 import './chatbot.css';
-//import react from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 
 import { IoMdSend } from 'react-icons/io';
 import { BiBot, BiUser } from 'react-icons/bi';
 
+import Webcam from "react-webcam";
+
 import logoE from '../static/Logo_Elaine.JPG'
 
 function Chatbot() {
+
+    const webcamRef = React.useRef(null);
+
     const [chat, setChat] = useState([]);
     const [inputMessage, setInputMessage] = useState('');
     const [botTyping, setbotTyping] = useState(false);
@@ -132,8 +137,9 @@ function Chatbot() {
     return (
         <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Chat de usuarios</h1>
             <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '3rem' }}>
-                {/* <button onClick={()=>rasaAPI("shreyas","hi")}>Try this</button> */}
-
+                
+                {/* <button onClick={()=>rasaAPI("shreyas","hi")}>Try this</button> 
+                ###Codigo de Logo de Elaine    
                 <br></br>
 
                 <div className="">
@@ -156,6 +162,7 @@ function Chatbot() {
                     </div>
 
                 </div>
+                */}
 
                 <div className="" style={{ width: "700px" }}>
 
@@ -165,7 +172,7 @@ function Chatbot() {
                             <h1 style={{ marginBottom: '0px' }}>
                                 <center>Elaine Assistant</center>
                             </h1>
-                            {botTyping ? <h6>Elaine escribiendo...</h6> : null}
+                            {botTyping ? <h6>  Elaine escribiendo...</h6> : null}
 
                         </div>
                         <div className="cardBody" id="messageArea" style={styleBody}>
@@ -190,7 +197,12 @@ function Chatbot() {
                                         }
                                     </div>
                                 ))}
-
+                                <img
+                                    src={logoE}
+                                    height="400"
+                                    className="d-inline-block align-center"
+                                    alt="React Bootstrap logo"
+                                />{' '}
                             </div>
 
                         </div>
@@ -209,7 +221,18 @@ function Chatbot() {
                     </div>
 
                 </div>
-
+                <div>
+                    <div className="">
+                        <Webcam
+                            audio={false}
+                            height={480}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            width={640}
+                        />
+                        <div className='col-md-20 row position-relative justify-content-center'><button>Captura</button></div>
+                    </div>
+                </div>
 
             </div>
         </>
