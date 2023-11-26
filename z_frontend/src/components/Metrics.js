@@ -1,6 +1,7 @@
 //import React from 'react'
 
 import React, { useEffect, useState, useMemo } from 'react'
+import PiesChart from "./Graficos/PiesChart";
 
 function Metrics() {
   const [users, setUsers] = useState([]);
@@ -109,7 +110,20 @@ function Metrics() {
           </div>
         </div>
         <div>
-          <p className=""><b>Ejemplo #2: </b>Gráfico de confianza hacia el Bot</p>
+          <p className=""><b>Ejemplo #2: </b>Gráfico de rango de edades detectadas de usuarios</p>
+          <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{ width: "450px", height: "225px" }}>
+            <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
+              <PiesChart />
+            </div>
+          </div>
+        </div>
+        <div>
+          <p className=""><b>Ejemplo #3: </b>Gráfico de emociones detectadas de usuarios</p>
+          <div className="bg-light mx-auto px-2 border border-2 border-primary " style={{ width: "450px", height: "225px" }}>
+          </div>
+        </div>
+        <div>
+          <p className=""><b>Ejemplo #4: </b>Gráfico de confianza hacia el Bot</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{ width: "450px", height: "225px" }}>
           </div>
         </div>
