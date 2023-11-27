@@ -11,6 +11,8 @@ camara = cv2.VideoCapture(0)
 
 # Una función generadora para stremear la cámara
 # https://flask.palletsprojects.com/en/1.1.x/patterns/streaming/
+
+
 def generador_frames():
     while True:
         ok, imagen = obtener_frame_camara()
@@ -18,16 +20,38 @@ def generador_frames():
             break
         else:
             # Regresar la imagen en modo de respuesta HTTP
-            yield b"--frame\r\nContent-Type: image/jpeg\r\n\r\n" + imagen + b"\r\n"
+            #yield b"--frame\r\nContent-Type: image/jpeg\r\n\r\n" + imagen + b"\r\n"
+            yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + imagen + b'\r\n')
+
 
 def obtener_frame_camara():
+    facec = cv2.CascadeClassifier('./models/detection_models/haarcascade_frontalface_default.xml')
+    #model = FacialExpressionModel("model.json", "model_weights.h5")
+    font = cv2.FONT_HERSHEY_SIMPLEX
+
     ok, frame = camara.read()
     if not ok:
         return False, None
-    # Codificar la imagen como JPG
-    _, bufer = cv2.imencode(".jpg", frame)
-    imagen = bufer.tobytes()
+    
+    # Acá van los algoritmos de detección y clasificación
+    gray_fr = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    faces = facec.detectMultiScale(gray_fr, 1.3, 5)
+
+    for (x, y, w, h) in faces:
+        fc = gray_fr[y:y+h, x:x+w]
+
+        roi = cv2.resize(fc, (48, 48))
+        # pred = model.predict_emotion(roi[np.newaxis, :, :, np.newaxis])
+
+        # cv2.putText(fr, pred, (x, y), font, 1, (255, 255, 0), 2)
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
+
+        # Codificar la imagen como JPG
+        _, bufer = cv2.imencode(".jpg", frame)
+        imagen = bufer.tobytes()
+
     return True, imagen
+
 
 # Cuando visiten la ruta
 @app.route("/streaming_camara")
