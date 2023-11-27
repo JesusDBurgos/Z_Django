@@ -6,6 +6,7 @@ import { IoMdSend } from 'react-icons/io';
 import { BiBot, BiUser } from 'react-icons/bi';
 
 import Webcam from "react-webcam";
+import axios from 'axios';
 
 import logoE from '../static/Logo_Elaine.JPG'
 
@@ -17,14 +18,20 @@ function Chatbot() {
     const [inputMessage, setInputMessage] = useState('');
     const [botTyping, setbotTyping] = useState(false);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+            webcamRef.current.srcObject = videoStream;
+        };
+        fetchData();
+    }, []);
+
 
     useEffect(() => {
 
         console.log("called");
         const objDiv = document.getElementById('messageArea');
         objDiv.scrollTop = objDiv.scrollHeight;
-
-
     }, [chat])
 
 
@@ -128,25 +135,25 @@ function Chatbot() {
         backgroundColor: '#1b0527',
     }
 
-/*
-    const styleHeaderLogo = {
-        height: '3.5rem',
-        width: '225px',
-        borderBottom: '1px solid black',
-        backgroundColor: '#1b0527',
-        paddingLeft: '0px',
-        paddingRight: '0px',
-        borderRadius: '30px',
-        boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
-    }
-
-    const styleBodyLogo = {
-        paddingTop: '10px',
-        height: '28rem',
-        overflowY: 'a',
-        overflowX: 'hidden',
-    }
- */
+    /*
+        const styleHeaderLogo = {
+            height: '3.5rem',
+            width: '225px',
+            borderBottom: '1px solid black',
+            backgroundColor: '#1b0527',
+            paddingLeft: '0px',
+            paddingRight: '0px',
+            borderRadius: '30px',
+            boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
+        }
+    
+        const styleBodyLogo = {
+            paddingTop: '10px',
+            height: '28rem',
+            overflowY: 'a',
+            overflowX: 'hidden',
+        }
+     */
 
     return (
         <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Chat de usuarios</h1>
@@ -191,7 +198,7 @@ function Chatbot() {
                         </div>
                         <div className="cardBody" id="messageArea" style={styleBody}>
                             <div style={transparentBackground}></div>
-                            <div className="row msgarea" style={{position: "relative"}} >
+                            <div className="row msgarea" style={{ position: "relative" }} >
                                 {chat.map((user, key) => (
                                     <div key={key}>
                                         {user.sender === 'bot' ?
@@ -229,14 +236,16 @@ function Chatbot() {
 
                 </div>
                 <div>
-                    <div className="">
+                    <div className="">  
                         <Webcam
                             audio={false}
                             height={480}
                             ref={webcamRef}
                             screenshotFormat="image/jpeg"
                             width={640}
+                            mirrored={true}
                         />
+                        {/*<img src="{{ url_for('streaming_camara') }}" alt="video stream" />*/}
                         <div className='col-md-20 row position-relative justify-content-center'><button>Captura</button></div>
                     </div>
                 </div>
