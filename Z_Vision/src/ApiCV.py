@@ -61,10 +61,10 @@ def obtener_frame_camara():
     
 
     # Load network
-    faceNet   = cv2.dnn.readNet(faceModel, faceProto)
-    ageNet    = cv2.dnn.readNet(ageModel, ageProto)
-    genderNet = cv2.dnn.readNet(genderModel, genderProto)
-    faceNet   = cv2.dnn.readNet(emotionModel, emotionProto)
+    #faceNet   = cv2.dnn.readNet(faceModel, faceProto)
+    #ageNet    = cv2.dnn.readNet(ageModel, ageProto)
+    #genderNet = cv2.dnn.readNet(genderModel, genderProto)
+    #faceNet   = cv2.dnn.readNet(emotionModel, emotionProto)
 
     facec = cv2.CascadeClassifier('./models/detection_models/haarcascade_frontalface_default.xml')
     #model = FacialExpressionModel("model.json", "model_weights.h5")
