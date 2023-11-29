@@ -37,21 +37,35 @@ def obtener_frame_camara():
 
 
     # Model architecture for age
-    AgeProto = "./models/detection_models/age_deploy.prototxt.txt"
+    ageProto = "./models/detection_models/age_deploy.prototxt.txt"
     # Weights
-    AgeModel = "./models/detection_models/age_net.caffemodel"
+    ageModel = "./models/detection_models/age_net.caffemodel"
 
-
-    # Model architecture for age
+    # Model architecture for gender
     genderProto = "./models/detection_models/gender_deploy.prototxt"
     # Weights
     genderModel = "./models/detection_models/gender_net.caffemodel"
 
-
-    # Model architecture for age
-    EmotionProto = "./models/detection_models/Model.json"
+    # Model architecture for emotion
+    emotionProto = "./models/detection_models/Model.json"
     # Weights
-    EmotionModel = "./models/detection_models/model_weights.h5"
+    emotionModel = "./models/detection_models/model_weights.h5"
+
+    MODEL_MEAN_VALUES = (78.4263377603, 87.7689143744, 114.895847746)
+    
+    emotionColors = [(0, 0, 255), (0, 255, 0), (0, 0, 0),(255, 255, 0), (255, 0, 0), (0, 255, 255), (255, 255, 255)]
+    emotionList   = ["angry", "disgust", "fear","happy", "sad", "suprised", "neutral"]
+    ageColors     = [(0, 0, 255), (0, 255, 0), (0, 255, 255), (0, 0, 0), (255, 255, 0), (255, 0, 0), (0, 255, 255), (255, 255, 255)]
+    ageList       = ['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
+    genderColors  = [(0, 255, 255), (255, 255, 0)]
+    genderList    = ['Male', 'Female']
+    
+
+    # Load network
+    faceNet   = cv2.dnn.readNet(faceModel, faceProto)
+    ageNet    = cv2.dnn.readNet(ageModel, ageProto)
+    genderNet = cv2.dnn.readNet(genderModel, genderProto)
+    faceNet   = cv2.dnn.readNet(emotionModel, emotionProto)
 
     facec = cv2.CascadeClassifier('./models/detection_models/haarcascade_frontalface_default.xml')
     #model = FacialExpressionModel("model.json", "model_weights.h5")
