@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from importlib import import_module
 import os
+import time
 from flask import Flask, render_template, Response
 import cv2
 #from Detection import get_frames_camera
@@ -9,6 +10,7 @@ app = Flask(__name__)
 
 # Si tienes varias cámaras puedes acceder a ellas en 1, 2, etcétera (en lugar de 0)
 camara = cv2.VideoCapture(0)
+time.sleep(2)
 
 # Una función generadora para stremear la cámara
 # https://flask.palletsprojects.com/en/1.1.x/patterns/streaming/
@@ -59,22 +61,30 @@ def obtener_frame_camara():
     if not ok:
         return False, None
     
+    fram = cv2.resize(frame, (640, 480))
     # Acá van los algoritmos de detección y clasificación
-    gray_fr = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = facec.detectMultiScale(gray_fr, scaleFactor=1.1, minNeighbors=5, minSize=(30,30), maxSize=(200,200))
+    gray_fr = cv2.cvtColor(fram, cv2.COLOR_BGR2GRAY)
+    faces = facec.detectMultiScale(gray_fr, scaleFactor=1.1, minNeighbors=6, minSize=(30,30), maxSize=(200,200))
+    
+    for (top, right, bottom, left) in faces:
+                  
+        face = fram[right:right+left, top:top+bottom]  #Es el mismo fc
+        #fc = gray_fr[y:y+h, top:top+w]
+        face = cv2.GaussianBlur(face,(23, 23), 30)
 
+        # merge this blurry rectangle to our final image
+        fram[right:right+face.shape[0], top:top+face.shape[1]] = face
 
-    for (x, y, w, h) in faces:
-        fc = gray_fr[y:y+h, x:x+w]
-
-        roi = cv2.resize(fc, (48, 48))
+        #roi = cv2.resize(fc, (48, 48))
         # pred = model.predict_emotion(roi[np.newaxis, :, :, np.newaxis])
 
+        cv2.rectangle(fram,(top,right),(top+bottom,right+left),(0,0,255),2)
+
         # cv2.putText(fr, pred, (x, y), font, 1, (255, 255, 0), 2)
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
+        #cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
         # Codificar la imagen como JPG
-        _, bufer = cv2.imencode(".jpg", frame)
+        _, bufer = cv2.imencode(".jpg", fram)
         imagen = bufer.tobytes()
 
     return True, imagen
