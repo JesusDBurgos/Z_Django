@@ -35,9 +35,8 @@ def obtener_frame_camara():
     # Weights
     faceModel = "./models/detection_models/opencv_face_detector_uint8.pb"
 
-
     # Model architecture for age
-    ageProto = "./models/detection_models/age_deploy.prototxt.txt"
+    ageProto = "./models/detection_models/age_deploy.prototxt"
     # Weights
     ageModel = "./models/detection_models/age_net.caffemodel"
 
