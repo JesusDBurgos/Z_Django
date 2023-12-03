@@ -30,7 +30,6 @@ parser = argparse.ArgumentParser(description='Use this script to run age and gen
 parser.add_argument('--input', help='Path to input image or video file. Skip this argument to capture frames from a camera.')
 
 args = parser.parse_args()
-
 # ----------- READ DNN MODELS -----------
 # Model architecture for face
 faceProto = "./models/detection_models/opencv_face_detector.pbtxt"
@@ -79,7 +78,8 @@ while cv.waitKey(1) < 0:
 
     frameFace, bboxes = getFaceBox(faceNet, frame)
     if not bboxes:
-        print("Ningún rostro detectado, Mantener el ultimo frame")
+        #La correcta iluminación mantiene la detección activa sino está bien iluminado no detectará correctamente.
+        #print("Ningún rostro detectado, Mantener el ultimo frame")
         continue
 
     for bbox in bboxes:
@@ -111,10 +111,13 @@ while cv.waitKey(1) < 0:
         print("Emotion Output : {}".format(emotionPreds))
         print("Emotion : {}, conf = {:.3f}".format(emotion, emotionPreds[0].max()))
         '''
-
-        label = "{}, Edad:{}".format(gender, age)
+        
+        #label = "{}, Edad:{}".format(gender, age)
+        label = "{}".format(gender)
+        label2 = "Edad:{}".format(age)
         #Blurface = cv.GaussianBlur(frameFace,(23, 23), 30)
-        cv.putText(frameFace, label, (bbox[0], bbox[1]-10), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
+        cv.putText(frameFace, label, (bbox[0], bbox[1]-35), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
+        cv.putText(frameFace, label2, (bbox[0], bbox[1]-10), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
         cv.imshow("Age Gender Demo", frameFace)
         #cv.imwrite("age-gender-out-{}".format(args.input), frameFace)
     #print("time : {:.3f}".format(time.time() - t))
