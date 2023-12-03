@@ -30,6 +30,8 @@ parser.add_argument('--input', help='Path to input image or video file. Skip thi
 
 args = parser.parse_args()
 
+
+'''
 import os
 
 # ----------- READ DNN MODELS -----------
@@ -39,43 +41,45 @@ faceProto = os.path.join(os.getcwd(), 'face_detector', './models/detection_model
 faceModel = os.path.join(os.getcwd(), 'face_detector', './models/detection_models/opencv_face_detector_uint8.pb')
 
 # Model architecture for age
-ageProto = os.path.join(os.getcwd(), 'age_detector', './models/detection_models/age_deploy.prototxt')
+ageProto = os.path.join(os.getcwd(), 'age_detector', './models/age_models/age_deploy.prototxt')
 # Weights
-ageModel = os.path.join(os.getcwd(), 'age_detector', './models/detection_models/age_net.caffemodel')
+ageModel = os.path.join(os.getcwd(), 'age_detector', './models/age_models/age_net.caffemodel')
 
 # Model architecture for gender
-genderProto = os.path.join(os.getcwd(), 'gender_detector', './models/detection_models/gender_deploy.prototxt')
+genderProto = os.path.join(os.getcwd(), 'gender_detector', './models/gender_models/gender_deploy.prototxt')
 # Weights
-genderModel = os.path.join(os.getcwd(), 'gender_detector', './models/detection_models/gender_net.caffemodel')
-
+genderModel = os.path.join(os.getcwd(), 'gender_detector', './models/gender_models/gender_net.caffemodel')
 
 '''
+
 # ----------- READ DNN MODELS -----------
 # Model architecture for face
-faceProto = r"./models/detection_models/opencv_face_detector.pbtxt"
+faceProto = "./models/detection_models/opencv_face_detector.pbtxt"
 # Weights
-faceModel = r"./models/detection_models/opencv_face_detector_uint8.pb"
+faceModel = "./models/detection_models/opencv_face_detector_uint8.pb"
 
 # Model architecture for age
-ageProto = r"./models/detection_models/age_deploy.prototxt"
+ageProto = "./models/age_models/age_deploy.prototxt"
 # Weights
-ageModel = r"./models/detection_models/age_net.caffemodel"
+ageModel = "./models/age_models/age_net.caffemodel"
 
 # Model architecture for gender
-genderProto = r"./models/detection_models/gender_deploy.prototxt"
+genderProto = "./models/gender_models/gender_deploy.prototxt"
 # Weights
-genderModel = r"./models/detection_models/gender_net.caffemodel"
+genderModel = "./models/gender_models/gender_net.caffemodel"
+
+
 
 MODEL_MEAN_VALUES = (78.4263377603, 87.7689143744, 114.895847746)
 ageList = ['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
-genderList = ['Male', 'Female']
+genderList = ['Hombre', 'Mujer']
 
 # Load network
 ageNet = cv.dnn.readNet(ageModel, ageProto)
 genderNet = cv.dnn.readNet(genderModel, genderProto)
 faceNet = cv.dnn.readNet(faceModel, faceProto)
 
-'''
+
 
 # Open a video file or an image file or a camera stream
 cap = cv.VideoCapture(args.input if args.input else 0)
