@@ -8,6 +8,7 @@ def getFaceBox(net, frame, conf_threshold=0.7):
     frameOpencvDnn = frame.copy()
     frameHeight = frameOpencvDnn.shape[0]
     frameWidth = frameOpencvDnn.shape[1]
+
     blob = cv.dnn.blobFromImage(frameOpencvDnn, 1.0, (300, 300), [104, 117, 123], True, False)
 
     net.setInput(blob)
@@ -29,28 +30,6 @@ parser = argparse.ArgumentParser(description='Use this script to run age and gen
 parser.add_argument('--input', help='Path to input image or video file. Skip this argument to capture frames from a camera.')
 
 args = parser.parse_args()
-
-
-'''
-import os
-
-# ----------- READ DNN MODELS -----------
-# Model architecture for face
-faceProto = os.path.join(os.getcwd(), 'face_detector', './models/detection_models/opencv_face_detector.pbtxt')
-# Weights
-faceModel = os.path.join(os.getcwd(), 'face_detector', './models/detection_models/opencv_face_detector_uint8.pb')
-
-# Model architecture for age
-ageProto = os.path.join(os.getcwd(), 'age_detector', './models/age_models/age_deploy.prototxt')
-# Weights
-ageModel = os.path.join(os.getcwd(), 'age_detector', './models/age_models/age_net.caffemodel')
-
-# Model architecture for gender
-genderProto = os.path.join(os.getcwd(), 'gender_detector', './models/gender_models/gender_deploy.prototxt')
-# Weights
-genderModel = os.path.join(os.getcwd(), 'gender_detector', './models/gender_models/gender_net.caffemodel')
-
-'''
 
 # ----------- READ DNN MODELS -----------
 # Model architecture for face
@@ -104,11 +83,15 @@ while cv.waitKey(1) < 0:
         continue
 
     for bbox in bboxes:
-        # print(bbox)
-        face = frame[max(0,bbox[1]-padding):min(bbox[3]+padding,frame.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, frame.shape[1]-1)]
 
+        # print(bbox) con emborronado
+        Blurface = cv.GaussianBlur(frame,(23, 23), 30)
+        face2 = Blurface[max(0,bbox[1]-padding):min(bbox[3]+padding,Blurface.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, Blurface.shape[1]-1)]
+
+        #print(bbox) para detección facial
+        face = frame[max(0,bbox[1]-padding):min(bbox[3]+padding,frame.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, frame.shape[1]-1)]
         blob = cv.dnn.blobFromImage(face, 1.0, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
-        
+
         genderNet.setInput(blob)
         genderPreds = genderNet.forward()
         gender = genderList[genderPreds[0].argmax()]
@@ -118,7 +101,7 @@ while cv.waitKey(1) < 0:
         ageNet.setInput(blob)
         agePreds = ageNet.forward()
         age = ageList[agePreds[0].argmax()]
-        print("Age Output : {}".format(agePreds))
+        #print("Age Output : {}".format(agePreds))
         print("Age : {}, conf = {:.3f}".format(age, agePreds[0].max()))
 
         '''
@@ -130,7 +113,8 @@ while cv.waitKey(1) < 0:
         '''
 
         label = "{}, Edad:{}".format(gender, age)
+        #Blurface = cv.GaussianBlur(frameFace,(23, 23), 30)
         cv.putText(frameFace, label, (bbox[0], bbox[1]-10), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
         cv.imshow("Age Gender Demo", frameFace)
-        # cv.imwrite("age-gender-out-{}".format(args.input),frameFace)
-    print("time : {:.3f}".format(time.time() - t))
+        #cv.imwrite("age-gender-out-{}".format(args.input), frameFace)
+    #print("time : {:.3f}".format(time.time() - t))
