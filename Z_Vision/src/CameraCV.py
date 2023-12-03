@@ -30,6 +30,26 @@ parser.add_argument('--input', help='Path to input image or video file. Skip thi
 
 args = parser.parse_args()
 
+import os
+
+# ----------- READ DNN MODELS -----------
+# Model architecture for face
+faceProto = os.path.join(os.getcwd(), 'face_detector', './models/detection_models/opencv_face_detector.pbtxt')
+# Weights
+faceModel = os.path.join(os.getcwd(), 'face_detector', './models/detection_models/opencv_face_detector_uint8.pb')
+
+# Model architecture for age
+ageProto = os.path.join(os.getcwd(), 'age_detector', './models/detection_models/age_deploy.prototxt')
+# Weights
+ageModel = os.path.join(os.getcwd(), 'age_detector', './models/detection_models/age_net.caffemodel')
+
+# Model architecture for gender
+genderProto = os.path.join(os.getcwd(), 'gender_detector', './models/detection_models/gender_deploy.prototxt')
+# Weights
+genderModel = os.path.join(os.getcwd(), 'gender_detector', './models/detection_models/gender_net.caffemodel')
+
+
+'''
 # ----------- READ DNN MODELS -----------
 # Model architecture for face
 faceProto = r"./models/detection_models/opencv_face_detector.pbtxt"
@@ -54,6 +74,8 @@ genderList = ['Male', 'Female']
 ageNet = cv.dnn.readNet(ageModel, ageProto)
 genderNet = cv.dnn.readNet(genderModel, genderProto)
 faceNet = cv.dnn.readNet(faceModel, faceProto)
+
+'''
 
 # Open a video file or an image file or a camera stream
 cap = cv.VideoCapture(args.input if args.input else 0)
