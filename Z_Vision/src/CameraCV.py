@@ -68,18 +68,24 @@ genderProto = "./models/gender_models/gender_deploy.prototxt"
 # Weights
 genderModel = "./models/gender_models/gender_net.caffemodel"
 
+# Model architecture for gender
+#emotionProto = "./models/emotion_models/model.json"
+# Weights
+#emotionModel = "./models/emotion_models/model_weights.h5"
 
 
+# Valores medibles
 MODEL_MEAN_VALUES = (78.4263377603, 87.7689143744, 114.895847746)
-ageList = ['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
-genderList = ['Hombre', 'Mujer']
+ageList     = ['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
+ageColors   = [(0, 0, 255), (0, 255, 0), (0, 0, 0),(255, 255, 0), (255, 0, 0), (0, 255, 255), (255, 255, 255)]
+genderList  = ['Hombre', 'Mujer']
+emotionList = ["angry", "disgust", "fear", "happy", "sad", "suprised", "neutral"]
 
 # Load network
-ageNet = cv.dnn.readNet(ageModel, ageProto)
-genderNet = cv.dnn.readNet(genderModel, genderProto)
-faceNet = cv.dnn.readNet(faceModel, faceProto)
-
-
+faceNet    = cv.dnn.readNet(faceModel, faceProto)
+ageNet     = cv.dnn.readNet(ageModel, ageProto)
+genderNet  = cv.dnn.readNet(genderModel, genderProto)
+#emotionNet = cv.dnn.readNet(emotionModel, emotionProto)
 
 # Open a video file or an image file or a camera stream
 cap = cv.VideoCapture(args.input if args.input else 0)
@@ -94,7 +100,7 @@ while cv.waitKey(1) < 0:
 
     frameFace, bboxes = getFaceBox(faceNet, frame)
     if not bboxes:
-        print("No face Detected, Checking next frame")
+        print("Ningún rostro detectado, Mantener el ultimo frame")
         continue
 
     for bbox in bboxes:
@@ -102,6 +108,7 @@ while cv.waitKey(1) < 0:
         face = frame[max(0,bbox[1]-padding):min(bbox[3]+padding,frame.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, frame.shape[1]-1)]
 
         blob = cv.dnn.blobFromImage(face, 1.0, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
+        
         genderNet.setInput(blob)
         genderPreds = genderNet.forward()
         gender = genderList[genderPreds[0].argmax()]
@@ -114,7 +121,15 @@ while cv.waitKey(1) < 0:
         print("Age Output : {}".format(agePreds))
         print("Age : {}, conf = {:.3f}".format(age, agePreds[0].max()))
 
-        label = "{},{}".format(gender, age)
+        '''
+        emotionNet.setInput(blob)
+        emotionPreds = emotionNet.forward()
+        emotion = emotionList[agePreds[0].argmax()]
+        print("Emotion Output : {}".format(emotionPreds))
+        print("Emotion : {}, conf = {:.3f}".format(emotion, emotionPreds[0].max()))
+        '''
+
+        label = "{}, Edad:{}".format(gender, age)
         cv.putText(frameFace, label, (bbox[0], bbox[1]-10), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
         cv.imshow("Age Gender Demo", frameFace)
         # cv.imwrite("age-gender-out-{}".format(args.input),frameFace)
