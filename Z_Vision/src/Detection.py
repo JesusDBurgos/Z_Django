@@ -42,9 +42,9 @@ genderProto = "./models/gender_models/gender_deploy.prototxt"
 genderModel = "./models/gender_models/gender_net.caffemodel"
 
 # Model architecture for gender
-#emotionProto = "./models/emotion_models/model.json"
+emotionProto = "./models/emotion_models/model.pbtxt"
 # Weights
-#emotionModel = "./models/emotion_models/model_weights.h5"
+emotionModel = "./models/emotion_models/model.pb"
 
 
 # Valores medibles
@@ -58,7 +58,7 @@ emotionList = ["angry", "disgust", "fear", "happy", "sad", "suprised", "neutral"
 faceNet    = cv.dnn.readNet(faceModel, faceProto)
 ageNet     = cv.dnn.readNet(ageModel, ageProto)
 genderNet  = cv.dnn.readNet(genderModel, genderProto)
-#emotionNet = cv.dnn.readNet(emotionModel, emotionProto)
+emotionNet = cv.dnn.readNet(emotionModel, emotionProto)
 
 def run_detection(image):
     padding = 20
@@ -83,7 +83,11 @@ def run_detection(image):
         agePreds = ageNet.forward()
         age = ageList[agePreds[0].argmax()]
 
-        results.append({"gender": gender, "age": age})
+        emotionNet.setInput(blob)
+        emotionPreds = emotionNet.forward()
+        emotion = emotionList[emotionPreds[0].argmax()]
+
+        results.append({"gender": gender, "age": age, "emotion": emotion })
 
     return results
 
@@ -123,19 +127,21 @@ def run_detection_on_video(input=None):
             #print("Age Output : {}".format(agePreds))
             #print("Age : {}, conf = {:.3f}".format(age, agePreds[0].max()))
 
-            '''
+            
             emotionNet.setInput(blob)
             emotionPreds = emotionNet.forward()
-            emotion = emotionList[agePreds[0].argmax()]
+            emotion = emotionList[emotionPreds[0].argmax()]
             print("Emotion Output : {}".format(emotionPreds))
             print("Emotion : {}, conf = {:.3f}".format(emotion, emotionPreds[0].max()))
-            '''
+            
 
             #label = "{}, Edad:{}".format(gender, age)
             label = "{}".format(gender)
             label2 = "Edad:{}".format(age)
+            label3 = "Emocion:{}".format(emotion)
 
-            cv.putText(frameFace, label, (bbox[0], bbox[1]-35), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
+            cv.putText(frameFace, label, (bbox[0], bbox[1]-60), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
+            cv.putText(frameFace, label2, (bbox[0], bbox[1]-35), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
             cv.putText(frameFace, label2, (bbox[0], bbox[1]-10), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
             cv.imshow("Age Gender Demo", frameFace)
             # cv.imwrite("age-gender-out-{}".format(args.input),frameFace)
