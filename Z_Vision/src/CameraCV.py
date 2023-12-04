@@ -26,23 +26,6 @@ def getFaceBox(net, frame, conf_threshold=0.7):
             cv.rectangle(frameOpencvDnn, (x1, y1), (x2, y2), (0, 255, 0), int(round(frameHeight/150)), 8)
     return frameOpencvDnn, bboxes
 
-
-def anonymize_face_simple(frame, factor=3.0):
-	# automatically determine the size of the blurring kernel based
-	# on the spatial dimensions of the input image
-	(h, w) = frame.shape[:2]
-	kW = int(w / factor)
-	kH = int(h / factor)
-	# ensure the width of the kernel is odd
-	if kW % 2 == 0:
-		kW -= 1
-	# ensure the height of the kernel is odd
-	if kH % 2 == 0:
-		kH -= 1
-	# apply a Gaussian blur to the input image using our computed
-	# kernel size
-	return cv.GaussianBlur(frame, (kW, kH), 0)
-
 parser = argparse.ArgumentParser(description='Use this script to run age and gender recognition using OpenCV.')
 parser.add_argument('--input', help='Path to input image or video file. Skip this argument to capture frames from a camera.')
 
