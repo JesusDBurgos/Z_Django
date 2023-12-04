@@ -318,7 +318,7 @@ function Chatbot() {
                                 }}
                             >
                                 <p style={{ color: '#fff', margin: 0, padding: '5px', fontSize: '16px', position: 'absolute', bottom: '100%', fontWeight: 'bold',backgroundColor: 'rgba(13,202,240, 0.5)' }}>
-                                    {`${box.gender},Edad: ${box.age}`}
+                                    {box.gender}<br></br>{`Edad: ${box.age}`}
                                 </p>
                             </div>
                         ))}
