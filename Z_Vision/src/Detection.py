@@ -42,9 +42,9 @@ genderProto = "./models/gender_models/gender_deploy.prototxt"
 genderModel = "./models/gender_models/gender_net.caffemodel"
 
 # Model architecture for gender
-emotionProto = "./models/emotion_models/model.pbtxt"
+#emotionProto = "./models/emotion_models/model.json"
 # Weights
-emotionModel = "./models/emotion_models/model.pb"
+#emotionModel = "./models/emotion_models/model_weights.h5"
 
 
 # Valores medibles
@@ -58,7 +58,7 @@ emotionList = ["angry", "disgust", "fear", "happy", "sad", "suprised", "neutral"
 faceNet    = cv.dnn.readNet(faceModel, faceProto)
 ageNet     = cv.dnn.readNet(ageModel, ageProto)
 genderNet  = cv.dnn.readNet(genderModel, genderProto)
-emotionNet = cv.dnn.readNet(emotionModel, emotionProto)
+#emotionNet = cv.dnn.readNet(emotionModel, emotionProto)
 
 def run_detection(image):
     padding = 20
@@ -66,10 +66,6 @@ def run_detection(image):
     results = []
 
     for bbox in bboxes:
-
-        # print(bbox) con emborronado
-        #Blurface = cv.GaussianBlur(frameFace,(23, 23), 30)
-        #face2 = Blurface[max(0,bbox[1]-padding):min(bbox[3]+padding,Blurface.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, Blurface.shape[1]-1)]
 
         #print(bbox) para detección facial
         face = frameFace[max(0,bbox[1]-padding):min(bbox[3]+padding,frameFace.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, frameFace.shape[1]-1)]
@@ -83,11 +79,33 @@ def run_detection(image):
         agePreds = ageNet.forward()
         age = ageList[agePreds[0].argmax()]
 
-        emotionNet.setInput(blob)
-        emotionPreds = emotionNet.forward()
-        emotion = emotionList[emotionPreds[0].argmax()]
+        results.append({"gender": gender, "age": age})
 
-        results.append({"gender": gender, "age": age, "emotion": emotion })
+    return results
+
+def run_detection_on_image(image):
+    padding = 20
+    frameFace, bboxes = getFaceBox(faceNet, image)
+    print(bboxes)
+    results = []
+
+    for bbox in bboxes:
+        face = image[max(0,bbox[1]-padding):min(bbox[3]+padding,image.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, image.shape[1]-1)]
+        blob = cv.dnn.blobFromImage(face, 1.0, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
+
+        genderNet.setInput(blob)
+        genderPreds = genderNet.forward()
+        gender = genderList[genderPreds[0].argmax()]
+
+        ageNet.setInput(blob)
+        agePreds = ageNet.forward()
+        age = ageList[agePreds[0].argmax()]
+
+        results.append({
+            'bbox': bbox,
+            'gender': gender,
+            'age': age
+        })
 
     return results
 
@@ -105,8 +123,7 @@ def run_detection_on_video(input=None):
 
         frameFace, bboxes = getFaceBox(faceNet, frame)
         if not bboxes:
-            #La correcta iluminación mantiene la detección activa sino está bien iluminado no detectará correctamente.
-            #print("Ningún rostro detectado, Mantener el ultimo frame")
+            print("Ningún rostro detectado, Mantener el ultimo frame")
             continue
 
         for bbox in bboxes:
@@ -118,7 +135,7 @@ def run_detection_on_video(input=None):
             genderNet.setInput(blob)
             genderPreds = genderNet.forward()
             gender = genderList[genderPreds[0].argmax()]
-            #print("Gender Output : {}".format(genderPreds))
+            # print("Gender Output : {}".format(genderPreds))
             #print("Gender : {}, conf = {:.3f}".format(gender, genderPreds[0].max()))
 
             ageNet.setInput(blob)
@@ -127,28 +144,32 @@ def run_detection_on_video(input=None):
             #print("Age Output : {}".format(agePreds))
             #print("Age : {}, conf = {:.3f}".format(age, agePreds[0].max()))
 
-            
+            '''
             emotionNet.setInput(blob)
             emotionPreds = emotionNet.forward()
-            emotion = emotionList[emotionPreds[0].argmax()]
+            emotion = emotionList[agePreds[0].argmax()]
             print("Emotion Output : {}".format(emotionPreds))
             print("Emotion : {}, conf = {:.3f}".format(emotion, emotionPreds[0].max()))
-            
+            '''
 
-            #label = "{}, Edad:{}".format(gender, age)
-            label = "{}".format(gender)
-            label2 = "Edad:{}".format(age)
-            label3 = "Emocion:{}".format(emotion)
+            label = "{}, Edad:{}".format(gender, age)
+            cv.putText(frameFace, label, (bbox[0], bbox[1]-10), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
+            cv.imshow("Age Gender Demo", frameFace)
+            # cv.imwrite("age-gender-out-{}".format(args.input),frameFace)
+        #print("time : {:.3f}".format(time.time() - t))
 
+'''
             cv.putText(frameFace, label, (bbox[0], bbox[1]-60), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
             cv.putText(frameFace, label2, (bbox[0], bbox[1]-35), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
             cv.putText(frameFace, label2, (bbox[0], bbox[1]-10), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv.LINE_AA)
             cv.imshow("Age Gender Demo", frameFace)
-            # cv.imwrite("age-gender-out-{}".format(args.input),frameFace)
-        #print("time : {:.3f}".format(time.time() - t))
+
+'''
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Use this script to run age and gender recognition using OpenCV.')
     parser.add_argument('--input', help='Path to input image or video file. Skip this argument to capture frames from a camera.')
     args = parser.parse_args()
     run_detection_on_video(args.input)
+
