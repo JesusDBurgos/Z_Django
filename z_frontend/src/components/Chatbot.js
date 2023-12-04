@@ -1,5 +1,5 @@
 import './chatbot.css';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 
 import { IoMdSend } from 'react-icons/io';
@@ -13,18 +13,73 @@ import logoE from '../static/Logo_Elaine.JPG'
 function Chatbot() {
 
     const webcamRef = React.useRef(null);
+    const [boxes, setBoxes] = useState([]);
+
+    const capture = useCallback(
+        () => {
+            console.log('Capture function called');
+            const imageSrc = webcamRef.current.getScreenshot();
+            fetch('http://127.0.0.1:8000/api/v1/detect', {
+                method: 'POST',
+                body: JSON.stringify({ image: imageSrc }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Detection results:', data.results);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        },
+        [webcamRef]
+    );
+
+    const detect = async (image) => {
+        try {
+
+            const response = await fetch("http://127.0.0.1:8000/api/v1/detect_streaming", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ image })
+            });
+
+            // Extraer bounding boxes    
+            const result = await response.json();
+            // Si result no es un array, conviértelo en un array
+            if (!Array.isArray(result)) {
+                result = [result];
+            }
+            setBoxes(result);
+            console.log(result)
+        } catch (error) {
+            console.error('Error during fetch:', error);
+        }
+    }
+
+    const processFrame = () => {
+
+        const screenshot = webcamRef.current.getScreenshot();
+
+        const image = screenshot.replace('data:image/jpeg;base64,', '');
+
+        detect(image);
+
+    }
 
     const [chat, setChat] = useState([]);
     const [inputMessage, setInputMessage] = useState('');
     const [botTyping, setbotTyping] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
-            webcamRef.current.srcObject = videoStream;
-        };
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+    //         webcamRef.current.srcObject = videoStream;
+    //     };
+    //     fetchData();
+    // }, []);
 
 
     useEffect(() => {
@@ -236,17 +291,39 @@ function Chatbot() {
 
                 </div>
                 <div>
-                    <div className="">  
+                    <div style={{ position: 'relative' }}>
                         <Webcam
                             audio={false}
                             height={480}
                             ref={webcamRef}
                             screenshotFormat="image/jpeg"
+                            onUserMedia={() => {
+                                setInterval(() => {
+                                    processFrame()
+                                }, 300)
+                            }}
                             width={640}
                             mirrored={true}
                         />
+                        {/* Renderizar bounding boxes */}
+                        {boxes && boxes.map((box, index) => (
+                            <div
+                                key={index}
+                                style={{
+                                    position: "absolute", left: `${box.bbox[0]}px`,
+                                    top: `${box.bbox[1]}px`, width: `${box.bbox[2] - box.bbox[0]}px`,
+                                    height: `${box.bbox[3] - box.bbox[1]}px`, border: "3px solid #fff",
+                                    zIndex: 1,
+                                    backdropFilter: "blur(6px)" // hacer que el contenido detrás del bounding box se vea borroso
+                                }}
+                            >
+                                <p style={{ color: '#fff', margin: 0, padding: '5px', fontSize: '16px', position: 'absolute', bottom: '100%', fontWeight: 'bold',backgroundColor: 'rgba(13,202,240, 0.5)' }}>
+                                    {`${box.gender},Edad: ${box.age}`}
+                                </p>
+                            </div>
+                        ))}
                         {/*<img src="{{ url_for('streaming_camara') }}" alt="video stream" />*/}
-                        <div className='col-md-20 row position-relative justify-content-center'><button>Captura</button></div>
+                        <div className='col-md-20 row position-relative justify-content-center'><button onClick={capture}>Captura</button></div>
                     </div>
                 </div>
 
