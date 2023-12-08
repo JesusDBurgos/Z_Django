@@ -22,39 +22,42 @@ ChartJS.register(
     Filler
 );
 
-var Medicion = [18, 7];
-var Interes = ["Interesados", "No Interesados"];
-
-var misoptions = {
-    responsive : true,
-    animation : false,
-    plugins : {
-        legend : {
-            display : false
-        }
-    },
-    scales : {
-        y : {
-            min : 0,
-            max : 30
-        },
-        x: {
-            ticks: { color: 'rgba(0, 220, 195)'}
-        }
+export default function Bars({ interes }) {
+    if (!interes || !interes[1]) {
+        return null;
     }
-};
+    var Medicion = [interes[1]["Interested"][0], interes[1]["Not Interested"][0]];
+    var Interes = ["Interesados", "No Interesados"];
 
-var midata = {
-    labels: Interes,
-    datasets: [
-        {
-            label: 'Rango',
-            data: Medicion,
-            backgroundColor: 'rgba(0, 220, 195, 0.5)'
+    var misoptions = {
+        responsive: true,
+        animation: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                min: 0,
+                max: 30
+            },
+            x: {
+                ticks: { color: 'rgba(0, 220, 195)' }
+            }
         }
-    ]
-};
+    };
 
-export default function Bars() {
+    var midata = {
+        labels: Interes,
+        datasets: [
+            {
+                label: 'Rango',
+                data: Medicion,
+                backgroundColor: 'rgba(0, 220, 195, 0.5)'
+            }
+        ]
+    };
+
     return <Bar data={midata} options={misoptions} />
 }
