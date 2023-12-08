@@ -22,48 +22,6 @@ function Metrics() {
     getUsers();
   }, []);
 
-  const Edades = users.map((Ed, key) =>
-    <p key={key}>{Ed[1]}</p>
-  )
-
-  const Genero = users.map((Gen, key) =>
-    <p key={key}>{Gen[2]}</p>
-  )
-
-
-  const Emotions = users.map((Emo, key) =>
-    <p key={key}>{Emo[3]}</p>
-  )
-
-  function Conteo(props) {
-
-    const [Em_Neg, setEmNeg] = useState(0);
-    const [Em_Pos, setEmPos] = useState(0);
-
-    // eslint-disable-next-line
-    const negativeEmotions = ['Tristeza', 'Enojo', 'Ira'];
-    const Em = props.Em;
-
-    useMemo(() => {
-      Emotions.forEach(emo => {
-        const emotion = emo.props.children;
-
-        if (negativeEmotions.includes(emotion)) {
-          setEmNeg(prev => prev + 1);
-        } else {
-          setEmPos(prev => prev + 1);
-        }
-      });
-    }, [Emotions])
-
-    if (Em) {
-      return <h5>Total: {Em_Pos}</h5>
-    }
-    else {
-      return <h5>Total: {Em_Neg}</h5>
-    }
-  }
-
   return (
     <div>
       <h1 className="bg-info text-center font-monospace fw-bold lh-base">Trazabilidad de usuarios</h1>
@@ -74,7 +32,7 @@ function Metrics() {
           </div>
           <hr />
           <div className=''>
-            <h5>Cantidad: {users.length}
+            <h5>Cantidad: {users && users[0] && users[0]["users"] && users[0]["users"][0]}
             </h5>
           </div>
         </div>
@@ -84,7 +42,7 @@ function Metrics() {
           </div>
           <hr />
           <div className=''>
-            <Conteo Em={true} />
+            <h5>Total: {users && users[1] && users[1]["Interested"] && users[1]["Interested"][0]}</h5>
           </div>
         </div>
         <div className='px-3 pt-2 pb-3 border shadow-sm w-25 me-2'>
@@ -93,25 +51,18 @@ function Metrics() {
           </div>
           <hr />
           <div className=''>
-            <Conteo Em={false} />
+            <h5>Total: {users && users[1] && users[1]["Not Interested"] && users[1]["Not Interested"][0]}</h5>
           </div>
         </div>
       </div>
-      {/* Aquí se visualizaban los valores obtenidos del fetch
-      <ul>{Edades}</ul>
-      <ul>{Genero}</ul>
-      <ul>{Emotions}</ul>
-      */}
       <br></br>
 
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: '1rem', gap: "100px" }}>
-        {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
-
         <div>
           <p className=""><b>Gráfico #1: </b>Usuarios conectados</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary " style={{ width: "450px", height: "225px" }}>
             <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
-              <PiesChart_Con />
+              {users && users[0] && users[0]["users"] && <PiesChart_Con usuarios={users[0]["users"][0]} />}
             </div>
           </div>
         </div>
@@ -119,7 +70,7 @@ function Metrics() {
           <p className=""><b>Gráfico #2: </b>Rango de edades de usuarios</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{ width: "450px", height: "225px" }}>
             <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
-              <PiesChart_Ed />
+              {users && <PiesChart_Ed edades={users} />}
             </div>
           </div>
         </div>
@@ -127,7 +78,7 @@ function Metrics() {
           <p className=""><b>Gráfico #3: </b>Rango de emociones de usuarios</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary " style={{ width: "450px", height: "225px" }}>
             <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
-              <PiesChart_Emo />
+              {users && <PiesChart_Emo emociones={users} />}
             </div>
           </div>
         </div>
@@ -135,26 +86,12 @@ function Metrics() {
           <p className=""><b>Gráfico #4: </b>Confianza hacia el Bot</p>
           <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{ width: "450px", height: "225px" }}>
             <div style={{ width: "100%", height: "100%", padding: "10px 0" }}>
-              <BarsChart_Conf />
+              {users && <BarsChart_Conf interes={users} />}
             </div>
           </div>
         </div>
-
-        {/* Aquí se incluye un gráfico más 
-          #Línea de gráfico - <hr className="mt-3 mb-2"/>
-          <div>
-              <p className="m-2"><b>Ejemplo #3: </b>Gráfico circular</p>
-              <div className="bg-light mx-auto border border-2 border-primary" style={{width:"450px", height:"250px"}}>
-                  <div style={{width:"100%", height:"100%", padding:"10px 0"}}>                      
-                  </div>
-              </div>
-          </div>
-          */}
-
       </div>
     </div>
-
-
 
   )
 }
