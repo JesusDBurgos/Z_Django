@@ -60,12 +60,11 @@ function Chatbot() {
     }
 
     const processFrame = () => {
-
-        const screenshot = webcamRef.current.getScreenshot();
-
-        const image = screenshot.replace('data:image/jpeg;base64,', '');
-
-        detect(image);
+        if (webcamRef.current) {
+            const screenshot = webcamRef.current.getScreenshot();
+            const image = screenshot.replace('data:image/jpeg;base64,', '');
+            detect(image);
+        }
 
     }
 
@@ -73,24 +72,11 @@ function Chatbot() {
     const [inputMessage, setInputMessage] = useState('');
     const [botTyping, setbotTyping] = useState(false);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
-    //         webcamRef.current.srcObject = videoStream;
-    //     };
-    //     fetchData();
-    // }, []);
-
-
     useEffect(() => {
-
         console.log("called");
         const objDiv = document.getElementById('messageArea');
         objDiv.scrollTop = objDiv.scrollHeight;
     }, [chat])
-
-
-
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -114,8 +100,6 @@ function Chatbot() {
     const rasaAPI = async function handleClick(name, msg) {
 
         //chatData.push({sender : "user", sender_id : name, msg : msg});
-
-
         await fetch('http://localhost:5005/webhooks/rest/webhook', {
             method: 'POST',
             headers: {
@@ -133,7 +117,6 @@ function Chatbot() {
                     const recipient_id = temp["recipient_id"];
                     const recipient_msg = temp["text"];
 
-
                     const response_temp = { sender: "bot", recipient_id: recipient_id, msg: recipient_msg };
                     setbotTyping(false);
 
@@ -144,7 +127,7 @@ function Chatbot() {
             })
     }
 
-    console.log(chat);
+    //console.log(chat);
 
     const stylecard = {
         maxWidth: '35rem',
@@ -213,33 +196,6 @@ function Chatbot() {
     return (
         <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Chat de usuarios</h1>
             <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '0rem' }}>
-
-                {/* <button onClick={()=>rasaAPI("shreyas","hi")}>Try this</button> 
-                ###Codigo de Logo de Elaine    
-                <br></br>
-
-                <div className="">
-
-                    <div className="cardHeader text-white" style={styleHeaderLogo}>
-                        <h4 style={{ marginBottom: '0px' }}>
-                            <center>Virtual Assistant</center>
-                        </h4>
-                    </div>
-                    <br></br>
-                    <div className="cardBody top-100 start-0" style={styleBodyLogo}>
-                        <img
-                            src={logoE}
-                            width="200"
-                            height="300"
-                            className="d-inline-block align-center"
-                            alt="React Bootstrap logo"
-                        />{' '}
-
-                    </div>
-
-                </div>
-                */}
-
                 <div className="" style={{ width: "500px" }}>
 
                     <div className="card" style={stylecard} >
@@ -317,12 +273,13 @@ function Chatbot() {
                                     backdropFilter: "blur(6px)" // hacer que el contenido detrás del bounding box se vea borroso
                                 }}
                             >
-                                <p style={{ color: '#fff', margin: 0, padding: '5px', fontSize: '16px', position: 'absolute', bottom: '100%', fontWeight: 'bold',backgroundColor: 'rgba(13,202,240, 0.5)' }}>
-                                    {box.gender}<br></br>{`Edad: ${box.age}`}
+                                <p style={{ color: '#fff', margin: 0, padding: '5px', fontSize: '16px', position: 'absolute', bottom: '100%', fontWeight: 'bold', backgroundColor: 'rgba(13,202,240, 0.5)' }}>
+                                    {box.gender}<br></br>{`Edad: ${box.age}`} <br></br> {box.emotion}
                                 </p>
                             </div>
                         ))}
                         {/*<img src="{{ url_for('streaming_camara') }}" alt="video stream" />*/}
+                        <p>*Al hacer click en "Captura" autoriza el uso de los metadatos de su imagen*</p>
                         <div className='col-md-20 row position-relative justify-content-center'><button onClick={capture}>Captura</button></div>
                     </div>
                 </div>
