@@ -67,6 +67,7 @@ def api_delete_user(id):
     result = app_controller.delete_user(id)
     return jsonify(result)
 
+# Endpoint HTTP para detección y ingreso de un nuevo usuario
 @app.route('/api/v1/detect', methods=['POST'])
 def api_detect():
     # Obtén la imagen de la solicitud
@@ -95,6 +96,7 @@ def api_detect():
     # Devuelve los resultados
     return {'results': result}
 
+# Endpoint HTTP para detección en tiempo real
 @app.route('/api/v1/detect_streaming', methods=['POST'])
 def api_detect_streaming():
     data = request.get_json()
@@ -107,7 +109,6 @@ def api_detect_streaming():
     
     # Ejecutar la detección en la imagen.
     boxes = run_detection_on_image(image)
-    print(boxes)
     if boxes:
         return jsonify(boxes)
     else:
@@ -120,6 +121,7 @@ def api_get_metrics():
     emotions = app_controller.get_emotions()
     result = ages, emotions
     return jsonify(result)
+
 
 """
 Enable CORS. Disable it if you don't need CORS
