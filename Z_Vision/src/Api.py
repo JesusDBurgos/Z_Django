@@ -15,6 +15,9 @@ import cv2
 import numpy as np
 import base64
 
+#Libreria para tomar la fecha del sistema
+from datetime import datetime
+
 app = Flask(__name__)
 CORS(app)
 
@@ -76,9 +79,21 @@ def api_detect():
 
     # Ejecuta la detección en la imagen
     results = run_detection(image)
+    if results:
+        first_result = results[0]
+        age = first_result["age"]
+        gender = first_result["gender"]
+        emotion = first_result["emotion"]
+
+    else:
+        age = None
+        gender = None
+    #emotion = results["emotion"]
+    DateCreated = datetime.now().strftime("%d-%m-%Y")
+    result = app_controller.create_user(age, gender,emotion, DateCreated)
 
     # Devuelve los resultados
-    return {'results': results}
+    return {'results': result}
 
 @app.route('/api/v1/detect_streaming', methods=['POST'])
 def api_detect_streaming():
@@ -97,7 +112,14 @@ def api_detect_streaming():
         return jsonify(boxes)
     else:
         return jsonify({'error': 'No detection results'})
-
+    
+# Endpoint HTTP datos para las metricas de la app
+@app.route("/api/v1/metrics", methods=["GET"])
+def api_get_metrics():
+    ages  = app_controller.get_ages()
+    emotions = app_controller.get_emotions()
+    result = ages, emotions
+    return jsonify(result)
 
 """
 Enable CORS. Disable it if you don't need CORS
