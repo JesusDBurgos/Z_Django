@@ -3,6 +3,11 @@ import cv2 as cv
 import math
 import time
 import argparse
+import random
+
+# Lista de posibles emociones TEMPORAL
+emotions = ["Tristeza", "Felicidad", "Neutral", "Enojo", "Ira", "Sorpresa"]
+
 
 def getFaceBox(net, frame, conf_threshold=0.7):
     frameOpencvDnn = frame.copy()
@@ -78,8 +83,9 @@ def run_detection(image):
         ageNet.setInput(blob)
         agePreds = ageNet.forward()
         age = ageList[agePreds[0].argmax()]
+        emotion = random.choice(emotions)
 
-        results.append({"gender": gender, "age": age})
+        results.append({"gender": gender, "age": age, "emotion": emotion})
 
     return results
 
@@ -101,10 +107,13 @@ def run_detection_on_image(image):
         agePreds = ageNet.forward()
         age = ageList[agePreds[0].argmax()]
 
+        emotion = random.choice(emotions)
+       
         results.append({
             'bbox': bbox,
             'gender': gender,
-            'age': age
+            'age': age,
+            'emotion': emotion,
         })
 
     return results
