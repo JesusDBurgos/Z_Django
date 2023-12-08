@@ -8,7 +8,6 @@ import random
 # Lista de posibles emociones TEMPORAL
 emotions = ["Tristeza", "Felicidad", "Neutral", "Enojo", "Ira", "Sorpresa"]
 
-
 def getFaceBox(net, frame, conf_threshold=0.7):
     frameOpencvDnn = frame.copy()
     frameHeight = frameOpencvDnn.shape[0]
@@ -73,7 +72,7 @@ def run_detection(image):
     for bbox in bboxes:
 
         #print(bbox) para detección facial
-        face = frameFace[max(0,bbox[1]-padding):min(bbox[3]+padding,frameFace.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, frameFace.shape[1]-1)]
+        face = image[max(0,bbox[1]-padding):min(bbox[3]+padding,image.shape[0]-1),max(0,bbox[0]-padding):min(bbox[2]+padding, image.shape[1]-1)]
         blob = cv.dnn.blobFromImage(face, 1.0, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
 
         genderNet.setInput(blob)
@@ -106,9 +105,8 @@ def run_detection_on_image(image):
         ageNet.setInput(blob)
         agePreds = ageNet.forward()
         age = ageList[agePreds[0].argmax()]
-
         emotion = random.choice(emotions)
-       
+
         results.append({
             'bbox': bbox,
             'gender': gender,
