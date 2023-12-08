@@ -10,7 +10,7 @@ function Metrics() {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const res = await fetch('http://localhost:8000/api/v1/users');
+    const res = await fetch('http://localhost:8000/api/v1/metrics');
     const data = await res.json();
     //console.log(data)
     //console.log(data.length)
