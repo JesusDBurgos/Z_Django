@@ -17,32 +17,6 @@ def get_users():
     cursor.execute(query)
     return cursor.fetchall()
 
-#Listar usuario por id en la base de datos
-def get_user_by_id(id):
-    db = connect_to_db()
-    cursor = db.cursor()
-    statement = "SELECT id, age, gender, emotion, DateCreated FROM users WHERE id = ?"
-    cursor.execute(statement, [id])
-    return cursor.fetchone()
-
-#Actualizar usuario por id en la base de datos
-def update_user(id, age, gender, emotion, DateCreated):
-    db = connect_to_db()
-    cursor = db.cursor()
-    statement = "UPDATE users SET age = ?, gender = ?, emotion = ? , DateCreated = ? WHERE id = ?"
-    cursor.execute(statement, [age, gender, emotion, DateCreated, id])
-    db.commit()
-    return True
-
-#Eliminar usuario por id en la base de datos
-def delete_user(id):
-    db = connect_to_db()
-    cursor = db.cursor()
-    statement = "DELETE FROM users WHERE id = ?"
-    cursor.execute(statement, [id])
-    db.commit()
-    return True
-
 #Consultar datos de metricas
 def get_ages():
     db = connect_to_db()
@@ -115,3 +89,29 @@ def get_emotions():
     tristeza = cursor.fetchone()
 
     return {"Interested" : interested, "Not Interested" : not_interested, "Neutral": neutral,"Felicidad": felicidad, "Sorpresa": sorpresa, "Ira": ira, "Enojo": enojo, "Tristeza": tristeza}
+
+#Listar usuario por id en la base de datos
+def get_user_by_id(id):
+    db = connect_to_db()
+    cursor = db.cursor()
+    statement = "SELECT id, age, gender, emotion, DateCreated FROM users WHERE id = ?"
+    cursor.execute(statement, [id])
+    return cursor.fetchone()
+
+#Actualizar usuario por id en la base de datos
+def update_user(id, age, gender, emotion, DateCreated):
+    db = connect_to_db()
+    cursor = db.cursor()
+    statement = "UPDATE users SET age = ?, gender = ?, emotion = ? , DateCreated = ? WHERE id = ?"
+    cursor.execute(statement, [age, gender, emotion, DateCreated, id])
+    db.commit()
+    return True
+
+#Eliminar usuario por id en la base de datos
+def delete_user(id):
+    db = connect_to_db()
+    cursor = db.cursor()
+    statement = "DELETE FROM users WHERE id = ?"
+    cursor.execute(statement, [id])
+    db.commit()
+    return True
