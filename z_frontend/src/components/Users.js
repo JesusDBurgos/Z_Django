@@ -71,25 +71,24 @@ export const Users = () => {
 
   const getUsers = async () => {
     const res = await fetch(`${API}/api/v1/users`)
-    //console.log(res)
     const data = await res.json();
-    //console.log(data)
-    //const index = data[0];
-    //console.log(index)
-    //result => setUsers(result.data);
-    setUsers(data);
+    setUsers(data.map(user => ({ ...user, id: user[0] })));
+    //setUsers(data)
   };
 
   const deleteUser = async (id) => {
     const userResponse = window.confirm("¿Esta seguro que desea eliminar este usuario?");
     if (userResponse) {
-      const res = await fetch(`${API}/api/v1/users/delete/${id}`, {
-        method: "DELETE",
-      });
-      const data = await res.json();
-      //console.log(data)
-      //result => getUsers(result.data);
-      await getUsers();
+      try {
+        const res = await fetch(`${API}/api/v1/users/delete/${id}`, {
+          method: "DELETE",
+        });
+        const data = await res.json();
+        console.log(data)
+        await getUsers();
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
   };
 
@@ -119,13 +118,13 @@ export const Users = () => {
 
   const JUsers = users.map((user,key) =>
     <tr key={key}>
-        <td>{user[0]}</td>
+        <td>{user.id}</td>
         <td>{user[1]}</td>
         <td>{user[2]}</td>
         <td>{user[3]}</td>
         <td>{user[4]}</td>
         <td>
-            <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block me-2'>Actualizar</button>
+            {/* <button onClick={e => editUser(user.id)} className='btn btn-secondary btn-sm btn-block me-2'>Actualizar</button> */}
             <button onClick={e => deleteUser(user.id)} className='btn btn-danger btn-sm btn-block me-2'>Eliminar</button>
         </td>
       </tr>
