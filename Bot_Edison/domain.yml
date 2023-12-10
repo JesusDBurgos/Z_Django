@@ -1,0 +1,74 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - bot_name
+  - out_of_scope
+  - ask_mood
+  - thanks
+
+responses:
+  utter_greet:
+  - text: ¡Hey! ¿Qué tal? ¿Puedo ayudarte en algo?
+  - text: ¡Hola hola, caracola! 
+  - text: Hola, holita :D
+
+  utter_cheer_up:
+  - text: Esto te animará
+    image: https://i.imgur.com/nGF1K8f.jpg
+    
+  utter_did_that_help:
+  - text: ¿Te ayudó?
+  - text: ¿Puedo hacer algo más por ti?
+
+  utter_happy:
+  - text: ¡Me alegra que estés feliz!
+  - text: :D
+  - text: Te noto alegre :D
+
+  utter_goodbye:
+  - text: Hasta pronto
+  - text: Sayonara...
+  - text: ¡Hasta la vista!
+  - text: ¡Nos vemos!
+
+  utter_iamabot:
+  - text: Soy EdisonBot, el bot más estupendo. ¿genial, no?
+
+  utter_anything_else:
+  - text: ¿Puedo ayudarte en algo más?
+  - text: ¿Qué más necesitas?
+  - text: ¿Alguna otra cosa?
+
+  utter_out_of_scope:
+  - text: Ups... no sé hacer eso... Sorry. :S
+  - text: Vaya... eso no está en mis neuronas...
+
+  utter_ask_rephrase:
+  - text: Ups... no lo he entendido. ¿Puedes decirlo de otra manera? :O
+  - text: Vaya... no me he enterado de nada... ¿Qué? :S
+  
+  utter_bot_name:
+  - text: Soy Edison Bot :)
+
+  your_welcome:
+  - text: Para eso estamos :D
+  - text: De nada :) ¿Algo más?
+
+  utter_ask_mood:
+  - text: Muy bien, gracias :D
+  - text: Ya sabes, aquí... y allí, y allá... no me aburro demasiado :P
+
+  utter_default:
+  - text: ¿Me estás hablando en chino o algo así?
+  - text: Vaya... no me he enterado de nada... ¡Qué? :S
+  
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
