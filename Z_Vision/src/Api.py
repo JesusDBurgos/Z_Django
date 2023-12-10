@@ -1,5 +1,4 @@
-from flask import Flask, jsonify, request
-
+from flask import Flask, jsonify, request, make_response
 
 #Librerías para crea la base de datos
 from db_conn import create_db_table
@@ -63,10 +62,10 @@ def api_update_user(id):
     return jsonify(result)
 
 # Endpoint HTTP eliminación de usuario
-@app.route("/api/v1/users/delete/{id}", methods=["DELETE"])
+@app.route("/api/v1/users/delete/<id>", methods=["DELETE"])
 def api_delete_user(id):
     result = app_controller.delete_user(id)
-    return jsonify(result)
+    return make_response(jsonify(result), 200)
 
 # Endpoint HTTP para detección y ingreso de un nuevo usuario
 @app.route('/api/v1/detect', methods=['POST'])
@@ -127,6 +126,17 @@ def api_get_metrics():
 """
 Enable CORS. Disable it if you don't need CORS
 """
+
+@app.before_request
+def before_request():
+    if request.method == 'OPTIONS':  # Respond to preflight requests
+        response = make_response()
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        response.headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS, PUT, DELETE"
+        response.headers["Access-Control-Allow-Headers"] = "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization"
+        return response
+
 @app.after_request
 def after_request(response):
     response.headers["Access-Control-Allow-Origin"] = "*" # <- You can change "*" for a domain for example "http://localhost"
