@@ -31,24 +31,24 @@ def getFaceBox(net, frame, conf_threshold=0.7):
 
 # ----------- READ DNN MODELS -----------
 # Model architecture for face
-faceProto = "./models/detection_models/opencv_face_detector.pbtxt"
+faceProto = "./src/models/detection_models/opencv_face_detector.pbtxt"
 # Weights
-faceModel = "./models/detection_models/opencv_face_detector_uint8.pb"
+faceModel = "./src/models/detection_models/opencv_face_detector_uint8.pb"
 
 # Model architecture for age
-ageProto = "./models/age_models/age_deploy.prototxt"
+ageProto = "./src/models/age_models/age_deploy.prototxt"
 # Weights
-ageModel = "./models/age_models/age_net.caffemodel"
+ageModel = "./src/models/age_models/age_net.caffemodel"
 
 # Model architecture for gender
-genderProto = "./models/gender_models/gender_deploy.prototxt"
+genderProto = "./src/models/gender_models/gender_deploy.prototxt"
 # Weights
-genderModel = "./models/gender_models/gender_net.caffemodel"
+genderModel = "./src/models/gender_models/gender_net.caffemodel"
 
 # Model architecture for gender
-#emotionProto = "./models/emotion_models/model.json"
+#emotionProto = "./src/models/emotion_models/model.json"
 # Weights
-#emotionModel = "./models/emotion_models/model_weights.h5"
+#emotionModel = "./src/models/emotion_models/model_weights.h5"
 
 
 # Valores medibles
