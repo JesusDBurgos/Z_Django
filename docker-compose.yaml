@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  sqlite3:
+    image: nouchka/sqlite3:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./db/:/root/db/
+  app:
+    build:
+      context: ../
+      dockerfile: build/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../:/app
+      - ./db/:./Z_Django/Z_Vision/src/Usersdatabase.db
+      #- ./db/:/my/sqlite/path/ # Here is the change
+    command: pipenv run gunicorn --bind=0.0.0.0:8000 --reload app:app
