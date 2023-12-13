@@ -7,14 +7,26 @@ services:
     tty: true
     volumes:
       - ./db/:/root/db/
-  app:
-    build:
-      context: ../
-      dockerfile: build/Dockerfile
+
+  flask:
+    build: ./flask
     ports:
       - "8000:8000"
+    container_name: flaskv:versio02
+    restart: always
+    environment:
+      - APP_NAME=MyFlaskApp
+    expose:
+      - 8000
     volumes:
       - ../:/app
       - ./db/:./Z_Django/Z_Vision/src/Usersdatabase.db
       #- ./db/:/my/sqlite/path/ # Here is the change
     command: pipenv run gunicorn --bind=0.0.0.0:8000 --reload app:app
+    
+  rasabot:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - “5000:5000”
