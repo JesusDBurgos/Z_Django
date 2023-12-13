@@ -2,7 +2,7 @@ import './chatbot.css';
 import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 
-import { IoMdSend } from 'react-icons/io';
+import { IoIosMic } from 'react-icons/io';
 import { BiBot, BiUser } from 'react-icons/bi';
 
 import Webcam from "react-webcam";
@@ -280,7 +280,7 @@ function Chatbot() {
                                         <input onChange={e => setInputMessage(e.target.value)} value={inputMessage} type="text" className="msginp"></input>
                                     </div>
                                     <div className="col-2 cola">
-                                        <button type="submit" className="circleBtn" ><IoMdSend className="sendBtn" /></button>
+                                        <button type="submit" className="circleBtn" ><IoIosMic className="sendBtn" /></button>
                                     </div>
                                 </form>
                             </div>
