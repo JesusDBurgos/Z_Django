@@ -1,6 +1,19 @@
 version: "3.7"
 
 services:
+  reactfront:
+    container_name: reactv07
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - 3000:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
   sqlite3:
     image: nouchka/sqlite3:latest
     stdin_open: true
@@ -23,10 +36,10 @@ services:
       - ./db/:./Z_Django/Z_Vision/src/Usersdatabase.db
       #- ./db/:/my/sqlite/path/ # Here is the change
     command: pipenv run gunicorn --bind=0.0.0.0:8000 --reload app:app
-    
+
   rasabot:
-    build: ./nginx
-    container_name: nginx
+    build: ./rasa
+    container_name: rasa
     restart: always
     ports:
       - “5000:5000”
