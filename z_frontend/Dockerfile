@@ -8,15 +8,22 @@ WORKDIR /Z_Django/z_frontend
 # add `/usr/src/app/node_modules/.bin` to $PATH
 ENV PATH /z_frontend/node_modules/.bin:$PATH
 
+#COPY public/ /z_frontend/public
+#COPY src/ /z_frontend/src
+
 # El punto al final del package.json es importante
 COPY package.json . 
 
 # install and cache app dependencies
 COPY package.json ./Z_Django/z_frontend/package.json
 COPY package-lock.json ./Z_Django/z_frontend/package-lock.json
+
+# add app
+COPY . .
 RUN npm install --silent
-RUN npm install react-scripts@5.0.1 -g --silent
-EXPOSE 4000
+
+#Server Port expose
+EXPOSE 3000
 
 # start app
 CMD ["npm", "start"]
