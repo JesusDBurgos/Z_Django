@@ -46,7 +46,7 @@ responses:
   - text: ¡Nos vemos! Gracias por visitarme
 
   utter_iamabot:
-  - text: Soy Elaine, la asistente virtual de la carrera Ingeniería Mecatrónica en la UNAB, sientete libre de preguntarme sobre la carrera de Ingeniería
+  - text: Soy EdisonBot, el asistente virtual de la carrera Ingeniería Mecatrónica en la UNAB, sientete libre de preguntarme sobre la carrera de Ingeniería
 
   utter_anything_else:
   - text: ¿Puedo ayudarte en algo más?
@@ -62,7 +62,7 @@ responses:
   - text: Esa información no la he alcanzado a procesar. ¿Podrías repetirlo de otra manera?
   
   utter_bot_name:
-  - text: Soy Elaine, la asistente virtual de la carrera Ingeniería Mecatrónica en la UNAB.
+  - text: Soy EdisonBot, el asistente virtual de la carrera Ingeniería Mecatrónica en la UNAB.
 
   your_welcome:
   - text: Me agrada haberte sido de utilidad en tus consultas.
