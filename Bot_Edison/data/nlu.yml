@@ -61,13 +61,6 @@ nlu:
     - Estoy feliz
     - Muy muy feliz
     - Me siento muy bien
-    - Me siento genial
-    - Me siento maravilloso
-    - Yo voy a salvar el mundo
-    - Yo voy a mejorar el mundo
-    - Ha sido un día espectacular
-    - Ha sido un buen día
-    - Fabulantastico
     - Ha sido un día perfecto
     - Muy bien
     - Ha sido un día perfecto
@@ -78,17 +71,7 @@ nlu:
     - Estoy triste
     - No me siento muy bien
     - Estoy perdido y sin un motivo claro
-    - super triste
     - Estoy tan triste
-    - Estoy triste, muchas cosas me salen mal
-    - Nada me sale bien
-    - Demasiado triste
-    - Hoy soy muy infeliz
-    - Nada bien
-    - No muy bien
-    - Extremamente mal
-    - Super mega fatal
-    - Estoy algo melancolico
     - Ha sido un día fatal
     - Tengo mucho estrés y eso me pone triste
     - Estoy bastante agotado
@@ -104,3 +87,67 @@ nlu:
     - Identificate
     - Quiero saber algo de ti
     - ¿Quien eres?
+
+- intent: courses
+  examples: |
+    - ¿Que cursos importantes ofrece la carrera Ingeniería Mecatrónica?
+    - ¿Que diferentes cursos son ofrecidos por la carrera Ingeniería Mecatrónica?
+    - Me podrías listar algunos cursos de la carrera Ingeniería Mecatrónica
+    - ¿Que materias se ven en Ingeniería Mecatrónica?
+    - ¿Cual es el plan de estudios de la carrera de Ingeniería Mecatrónica?
+
+- intent: labs
+  examples: |
+    - ¿Con que laboratorios cuenta la carrera Ingeniería Mecatrónica?
+    - ¿Que diferentes laboratorios tiene la carrera Ingeniería Mecatrónica?
+    - Me podrías indicar que laboratorios tiene la carrera Ingeniería Mecatrónica
+    - ¿La carrera de Ingeniería Mecatrónica tiene laboratorios?
+    - ¿Con que instalaciones cuentan?
+
+- intent: acreditation
+  examples: |
+    - ¿Cuenta con un proceso de acreditación la carrera Ingeniería Mecatrónica?
+    - ¿Tiene acreditación la carrera Ingeniería Mecatrónica?
+    - Acreditación de la carrera
+    - ¿La carrera de Ingeniería Mecatrónica es un programa acreditado?
+
+- intent: jobs
+  examples: |
+    - ¿A que se dedica un Ingeniero Mecatrónico?
+    - ¿De que se consigue trabajo como Ingeniero Mecatrónico?
+    - ¿Si hay trabajo como Ingeniero Mecatrónico?
+    - ¿A que trabajos se puede postular como Ingeniero Mecatrónico?
+    - ¿De que vive un Ingeniero Mecatrónico?
+
+- intent: functions
+  examples: |
+    - ¿Que funciones podría desarrollar un Ingeniero Mecatrónico en la industria?
+    - ¿Que realiza especificamente un Ingeniero Mecatrónico?
+    - En una empresa, ¿Que funciones cumple un Ingeniero Mecatrónico?
+    - ¿Cuales son las funciones de un Ingeniero Mecatrónico?
+
+- intent: modality
+  examples: |
+    - ¿En que modalidad se dicta la carrera de Ingeniería Mecatrónica?
+    - ¿La ingeniería es virtual?
+    - ¿La carrera es remota?
+    - ¿La carrera se puede llevar semi-presencial?
+
+- intent: deegre
+  examples: |
+    - ¿Al finalizar la carrera que titulo se obtiene?
+    - ¿La carrera da algún titulo al finalizarla?
+    - ¿Ingeniería Mecatrónica es una carrera con titulación?
+
+- intent: duration
+  examples: |
+    - ¿Cuanto demora la carrera?
+    - ¿La carrera es muy extensa?
+    - ¿Cuantos semestres tiene la carrera de Ingeniería?
+    - ¿Es semestralizado el programa?
+
+- intent: cost
+  examples: |
+    - ¿Cuanto cuesta el semestre de Ingeniería Mecatrónica?
+    - ¿Que valor tiene el semestre?
+    - ¿Es costoso el semestre?
