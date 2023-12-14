@@ -2,7 +2,7 @@ import './chatbot.css';
 import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 
-import { IoIosMic } from 'react-icons/io';
+import { IoIosMic, IoIosMicOff } from 'react-icons/io';
 import { BiBot, BiUser } from 'react-icons/bi';
 
 import Webcam from "react-webcam";
@@ -14,6 +14,33 @@ function Chatbot() {
 
     const webcamRef = React.useRef(null);
     const [boxes, setBoxes] = useState([]);
+    const [isMic, setIsMic] = useState(false);
+
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'es-ES';
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setInputMessage(transcript);
+    };
+
+    const startRecognition = () => {
+        recognition.start();
+        setIsMic(true);
+    };
+
+    const stopRecognition = () => {
+        recognition.stop();
+        setIsMic(false);
+    };
+
+    const speak = (text) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+    };
+
+
 
     const capture = useCallback(
         () => {
@@ -64,7 +91,7 @@ function Chatbot() {
             const image = screenshot.replace('data:image/jpeg;base64,', '');
             detect(image);
         }
-        
+
     }
 
     const [chat, setChat] = useState([]);
@@ -137,6 +164,8 @@ function Chatbot() {
 
                     setChat(chat => [...chat, response_temp]);
                     // scrollBottom();
+                    // Reproduce la respuesta del chatbot en audio
+                    speak(recipient_msg);
 
                 }
             })
@@ -280,7 +309,10 @@ function Chatbot() {
                                         <input onChange={e => setInputMessage(e.target.value)} value={inputMessage} type="text" className="msginp"></input>
                                     </div>
                                     <div className="col-2 cola">
-                                        <button type="submit" className="circleBtn" ><IoIosMic className="sendBtn" /></button>
+                                        {isMic ?
+                                            <button type="button" onClick={stopRecognition} className="circleBtn"><IoIosMicOff className="sendBtn" /></button>:
+                                            <button type="submit" onClick={startRecognition} className="circleBtn"><IoIosMic className="sendBtn" /></button>
+                                        }
                                     </div>
                                 </form>
                             </div>
@@ -315,7 +347,7 @@ function Chatbot() {
                                     backdropFilter: "blur(6px)" // hacer que el contenido detrás del bounding box se vea borroso
                                 }}
                             >
-                                <p style={{ color: '#fff', margin: 0, padding: '5px', fontSize: '16px', position: 'absolute', bottom: '100%', fontWeight: 'bold',backgroundColor: 'rgba(13,202,240, 0.5)' }}>
+                                <p style={{ color: '#fff', margin: 0, padding: '5px', fontSize: '16px', position: 'absolute', bottom: '100%', fontWeight: 'bold', backgroundColor: 'rgba(13,202,240, 0.5)' }}>
                                     {box.gender}<br></br>{`Edad: ${box.age}`} <br></br> {box.emotion}
                                 </p>
                             </div>
