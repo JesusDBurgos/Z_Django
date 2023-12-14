@@ -12,34 +12,41 @@ intents:
   - out_of_scope
   - ask_mood
   - thanks
+  - courses
+  - labs
+  - acreditation
+  - jobs
+  - functions
+  - modality
+  - deegre
+  - duration
+  - cost
 
 responses:
   utter_greet:
-  - text: ¡Hey! ¿Qué tal? ¿Puedo ayudarte en algo?
-  - text: ¡Hola hola, caracola! 
-  - text: Hola, holita :D
+  - text: ¡Hola! ¿Puedo ayudarte en algo?
+  - text: Hola, muy buen día.
+  - text: Hola, mucho gusto.
 
   utter_cheer_up:
-  - text: Esto te animará
-    image: https://numeralpaint.com/wp-content/uploads/2020/10/cute-panda-paint-by-number.jpg
+  - text: Esto te animará. "Sr. Shrödinger, su gato ha sufrido un accidente. Tengo buenas y malas noticias..."
     
   utter_did_that_help:
-  - text: ¿Te ayudó?
-  - text: ¿Puedo hacer algo más por ti?
+  - text: ¿Te puedo ayudar con algo? Me puedes preguntar lo que gustes referente a la universidad.
+  - text: ¿Puedo hacer algo más por ti? Tengo un amplio conocimiento de la carrera de Ingeniería Mecatrónica
 
   utter_happy:
-  - text: ¡Me alegra que estés feliz!
-  - text: :D
-  - text: Te noto alegre :D
+  - text: Estoy conforme si mi apoyo te hace feliz.
+  - text: Es bueno, mantenerse alegre
+  - text: Que buen semblante tienes.
 
   utter_goodbye:
-  - text: Hasta pronto
-  - text: Sayonara...
-  - text: ¡Hasta la vista!
-  - text: ¡Nos vemos!
+  - text: Hasta pronto, ten un buen día.
+  - text: Hasta luego, me gusto compartir esta charla contigo.
+  - text: ¡Nos vemos! Gracias por visitarme
 
   utter_iamabot:
-  - text: Soy EdisonBot, el bot más estupendo. ¿genial, no?
+  - text: Soy Elaine, la asistente virtual de la carrera Ingeniería Mecatrónica en la UNAB, sientete libre de preguntarme sobre la carrera de Ingeniería
 
   utter_anything_else:
   - text: ¿Puedo ayudarte en algo más?
@@ -47,28 +54,75 @@ responses:
   - text: ¿Alguna otra cosa?
 
   utter_out_of_scope:
-  - text: Ups... no sé hacer eso... Sorry. :S
-  - text: Vaya... eso no está en mis neuronas...
+  - text: No tengo el detalle de tu consulta, aún sigo aprendiendo. Pero puedes preguntarme de otro tema relacionado a la carrera de Ingeniería.
+  - text: Preguntaste algo complejo, parece que no está en mis neuronas en este momento. ¿Podrías intentar una nueva consulta?
 
   utter_ask_rephrase:
-  - text: Ups... no lo he entendido. ¿Puedes decirlo de otra manera? :O
-  - text: Vaya... no me he enterado de nada... ¿Qué? :S
+  - text: No he entendido tu consulta. ¿Podrías reformular tu pregunta de nuevo?
+  - text: Esa información no la he alcanzado a procesar. ¿Podrías repetirlo de otra manera?
   
   utter_bot_name:
-  - text: Soy Edison Bot :)
+  - text: Soy Elaine, la asistente virtual de la carrera Ingeniería Mecatrónica en la UNAB.
 
   your_welcome:
-  - text: Para eso estamos :D
-  - text: De nada :) ¿Algo más?
+  - text: Me agrada haberte sido de utilidad en tus consultas.
+  - text: Ha sido un placer conversar contigo.
 
   utter_ask_mood:
-  - text: Muy bien, gracias :D
-  - text: Ya sabes, aquí... y allí, y allá... no me aburro demasiado :P
+  - text: Tengo un grato día. Me encanta ayudar a las personas y ellas siempre quieren consultarme algo del programa.
+  - text: Mi día es muy interesante. Me siento entrevistada siempre que me consultan algo, no me puedo aburrir así.
 
   utter_default:
-  - text: ¿Me estás hablando en chino o algo así?
-  - text: Vaya... no me he enterado de nada... ¡Qué? :S
-  
+  - text: Tu consulta ha sido algo veloz, ¿podrías repetirlo más despacio?
+  - text: No te he entendido bien. Recuerda que mi idioma base es el español. 
+
+  utter_courses:
+  - text: "Algunas de las materias principales que ofrece la carrera de Ingeniería Mecatrónica son:
+           FUNDAMENTOS DE PROGRAMACION, MECANICA, CALCULO MULTIVARIABLE, CIRCUITOS, DINAMICA, MATERIALES, 
+           AUTOMATIZACIÓN INDUSTRIAL, CONTROL AVANZADO, MAQUINAS ELECTRICAS, INTELIGENCIA ARTIFICIAL, ETC. 
+           Solicita el plan de estudios completo en la oficina de admisiones de forma gratuita.
+          "
+
+  utter_labs:
+  - text: "Algunas de los principales laboratorios que tiene la carrera de Ingeniería Mecatrónica son:
+           LABORATORIO DE MECANICA, LABORATORIO DE CIRCUITOS ELECTRICOS, LABORATORIO DE MAQUINAS ELECTRICAS, 
+           LABORATORIO DE ELECTRONICA, LABORATORIO DE OLEONEUMATICA,LABORATORIO DE AUTOMATIZACIÓN INDUSTRIAL, 
+           LABORATORIO DE MANUFACTURA, ETC.
+          "
+
+  utter_acreditation:
+  - text: "La carrera de Ingeniería Mecatrónica cuenta con un registro Snies – 7731 & un registro Calificado 
+           – Resolución 13541 de Agosto 15, 2018 por 7 años.
+          "
+
+  utter_jobs:
+  - text: "Los principales trabajos a los que puede aplicar un Ingeniero Mecatrónico en la indutria, serían:
+           Diseñador y desarrollador de nuevos productos y servicios en ingeniería, Jefe de Mantenimiento,
+           Gerente de ventas y servicios de ingeniería, Ingeniero de operaciones, Supervisor de proyectos, 
+           Jefe en áreas de innovación y desarrollo de TI.
+           "
+
+  utter_functions:
+  - text: "Las principales funciones que podría realizar un Ingeniero Mecatrónico, serían:
+           Diseñar y desarrollar equipos, procesos o productos mecatrónicos que contengan mecánica de alta precisión, electrónica y control embebido, 
+           Diseñar, implementar y adaptar soluciones de ingeniería basadas en técnicas de inteligencia artificial & Robótica, Automatizar y Optimizar 
+           procesos industriales que permitan aumentar la productividad de las empresas impactadas. 
+          "
+
+  utter_modality:
+  - text: "La carrera Ingeniería Mecatrónica se dicta en modalidad presencial."
+
+  utter_deegre:
+  - text: "Al finalizar la carrera Ingeniería Mecatrónica se obtiene el nivel de formación profesional."
+
+  utter_duration:
+  - text: "La carrera Ingeniería Mecatrónica tiene una duración de 8 semestres."
+
+  utter_duration:
+  - text: "El costo de la matricula para la carrera Ingeniería Mecatrónica es de seis millones ciento sesenta 
+           y dos mil quinientos pesos colombianos."
+#$ 6.162.500
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
