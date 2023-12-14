@@ -29,7 +29,7 @@ responses:
   - text: Hola, mucho gusto.
 
   utter_cheer_up:
-  - text: Esto te animará. "Sr. Shrödinger, su gato ha sufrido un accidente. Tengo buenas y malas noticias..."
+  - text: Esto te animará. Sr. Shrödinger, su gato ha sufrido un accidente. Tengo buenas y malas noticias...
     
   utter_did_that_help:
   - text: ¿Te puedo ayudar con algo? Me puedes preguntar lo que gustes referente a la universidad.
@@ -118,10 +118,9 @@ responses:
   utter_duration:
   - text: "La carrera Ingeniería Mecatrónica tiene una duración de 8 semestres."
 
-  utter_duration:
+  utter_cost:
   - text: "El costo de la matricula para la carrera Ingeniería Mecatrónica es de seis millones ciento sesenta 
            y dos mil quinientos pesos colombianos."
-#$ 6.162.500
 
 session_config:
   session_expiration_time: 60
