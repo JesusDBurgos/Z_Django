@@ -73,3 +73,13 @@ stories:
   steps:
   - intent: cost
   - action: utter_cost
+
+- story: definition path
+  steps:
+  - intent: definition
+  - action: utter_definition
+
+- story: profile path
+  steps:
+  - intent: profile
+  - action: utter_profile

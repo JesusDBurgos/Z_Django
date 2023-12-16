@@ -21,6 +21,8 @@ intents:
   - deegre
   - duration
   - cost
+  - definition
+  - perfil
 
 responses:
   utter_greet:
@@ -46,7 +48,7 @@ responses:
   - text: ¡Nos vemos! Gracias por visitarme
 
   utter_iamabot:
-  - text: Soy EdisonBot, el asistente virtual de la carrera Ingeniería Mecatrónica en la UNAB, sientete libre de preguntarme sobre la carrera de Ingeniería
+  - text: Soy tu asistente virtual que te orientará carrera Ingeniería Mecatrónica en la UNAB, sientete libre de preguntarme sobre la carrera de Ingeniería
 
   utter_anything_else:
   - text: ¿Puedo ayudarte en algo más?
@@ -62,7 +64,7 @@ responses:
   - text: Esa información no la he alcanzado a procesar. ¿Podrías repetirlo de otra manera?
   
   utter_bot_name:
-  - text: Soy EdisonBot, el asistente virtual de la carrera Ingeniería Mecatrónica en la UNAB.
+  - text: Soy tu asistente virtual que te orientará carrera Ingeniería Mecatrónica en la UNAB.
 
   your_welcome:
   - text: Me agrada haberte sido de utilidad en tus consultas.
@@ -121,6 +123,24 @@ responses:
   utter_cost:
   - text: "El costo de la matricula para la carrera Ingeniería Mecatrónica es de seis millones ciento sesenta 
            y dos mil quinientos pesos colombianos."
+
+  utter_definition:
+  - text: "La ingeniería mecatrónica es una rama multidisciplinaria de la ingeniería dedicada a automatizar 
+          maquinaria, crear productos inteligentes que faciliten la vida de las personas y armonizar 
+          componentes electrónicos y mecánicos a partir de la informática, la mecánica, los sistemas de 
+          control y la electrónica."
+
+  utter_profile:
+  - text: "El Ingeniero Mecatrónico de la UNAB es un profesional competente, con sólidos conocimientos y 
+  respetuoso de los valores de la sociedad. Es una persona que contribuye al desarrollo social mediante 
+  su participación y compromiso ético en áreas de las ciencias básicas, mecánica, electrónica, control y 
+  automatización en las organizaciones de los sectores público y privado. Es un ser reflexivo y crítico 
+  en la construcción de criterios para la toma de decisiones y es creativo e innovador en la solución de 
+  problemas. Sustenta su liderazgo en propuestas de desarrollo y competencias específicas en modelado y 
+  simulación, control y automatización, diseño de sistemas mecatrónicos para su implementación en máquinas, 
+  sistemas y procesos industriales."
+
+
 
 session_config:
   session_expiration_time: 60

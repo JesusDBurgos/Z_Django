@@ -151,3 +151,16 @@ nlu:
     - ¿Cuanto cuesta el semestre de Ingeniería Mecatrónica?
     - ¿Que valor tiene el semestre?
     - ¿Es costoso el semestre?
+
+- intent: definition
+  examples: |
+    - ¿Que es Ingeniería Mecatrónica?
+    - ¿Me puedes decir más de la Ingeniería Mecatrónica?
+    - ¿Que sabes de la Ingeniería Mecatrónica?
+
+- intent: profile
+  examples: |
+    - ¿Que perfil tiene el Ingeniero de la UNAB?
+    - ¿Que perfil tiene un Ingeniero Mecatrónico?
+    - Dime el perfil de Ingeniero Mecatrónico
+    - ¿Sabes con que perfil sale el Ingeniero Mecatrónico de la UNAB?
