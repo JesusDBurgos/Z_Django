@@ -83,3 +83,8 @@ stories:
   steps:
   - intent: profile
   - action: utter_profile
+
+- story: salary path
+  steps:
+  - intent: salary
+  - action: utter_salary

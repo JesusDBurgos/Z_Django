@@ -87,6 +87,7 @@ nlu:
     - Identificate
     - Quiero saber algo de ti
     - ¿Quien eres?
+    - ¿Como te llamas?
 
 - intent: courses
   examples: |
@@ -151,6 +152,7 @@ nlu:
     - ¿Cuanto cuesta el semestre de Ingeniería Mecatrónica?
     - ¿Que valor tiene el semestre?
     - ¿Es costoso el semestre?
+    - ¿Que vale la matricula?
 
 - intent: definition
   examples: |
@@ -164,3 +166,9 @@ nlu:
     - ¿Que perfil tiene un Ingeniero Mecatrónico?
     - Dime el perfil de Ingeniero Mecatrónico
     - ¿Sabes con que perfil sale el Ingeniero Mecatrónico de la UNAB?
+
+- intent: salary
+  examples: |
+    - ¿Cuanto gana un Ingeniero Mecatrónico?
+    - ¿Que valor tiene un Ingeniero Mecatrónico en el mercado laboral?
+    - ¿Es bueno el salario de un Ingeniero Mecatrónico?
