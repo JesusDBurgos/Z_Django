@@ -20,7 +20,7 @@ COPY package-lock.json ./Z_Django/z_frontend/package-lock.json
 
 # add app
 COPY . .
-RUN npm install --silent
+RUN npm install --unsafe-perm --silent
 
 #Server Port expose
 EXPOSE 3000

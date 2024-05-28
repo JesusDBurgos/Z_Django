@@ -1,12 +1,19 @@
-FROM rasa/rasa-sdk:2.6.2
+# Utilizamos la imagen base de Rasa con la versión 2.6.2
+FROM rasa/rasa:2.6.2
 
-#COPY actions.py /app/actions.py
-#COPY requirements-actions.txt /app
+# Crear un usuario no root y darle permisos en el directorio de trabajo
+USER root
+RUN useradd -ms /bin/bash rasa
+RUN chown -R rasa /app
 
-#USER root
+# Cambiar al usuario recién creado
+USER rasa
 
-RUN pip install --no-cache-dir -r requirements-actions.txt
+# Copiamos el modelo entrenado a la carpeta /app dentro del contenedor
+COPY ./models/20231210-014102.tar.gz /app/models/
 
-#USER 1001
+# Exponemos el puerto 5005 para el servicio de Rasa
+EXPOSE 5005
 
-CMD ["start", "--actions", "actions"]
+# Comando para iniciar el servidor de Rasa con el modelo cargado y opciones específicas
+CMD ["run", "--cors", "\"*\"", "--enable-api" , "--model", "/app/models"]

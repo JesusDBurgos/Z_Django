@@ -31,19 +31,19 @@ def getFaceBox(net, frame, conf_threshold=0.7):
 
 # ----------- READ DNN MODELS -----------
 # Model architecture for face
-faceProto = "../src/models/detection_models/opencv_face_detector.pbtxt"
+faceProto = "./models/detection_models/opencv_face_detector.pbtxt"
 # Weights
-faceModel = "../src/models/detection_models/opencv_face_detector_uint8.pb"
+faceModel = "./models/detection_models/opencv_face_detector_uint8.pb"
 
 # Model architecture for age
-ageProto = "../src/models/age_models/age_deploy.prototxt"
+ageProto = "./models/age_models/age_deploy.prototxt"
 # Weights
-ageModel = "../src/models/age_models/age_net.caffemodel"
+ageModel = "./models/age_models/age_net.caffemodel"
 
 # Model architecture for gender
-genderProto = "../src/models/gender_models/gender_deploy.prototxt"
+genderProto = "./models/gender_models/gender_deploy.prototxt"
 # Weights
-genderModel = "../src/models/gender_models/gender_net.caffemodel"
+genderModel = "./models/gender_models/gender_net.caffemodel"
 
 # Model architecture for gender
 #emotionProto = "../src/models/emotion_models/model.json"
