@@ -44,21 +44,6 @@ const Navigation = () => {
             <NavLink to="/Elaine_Assistant">
               <CDBSidebarMenuItem icon="laptop">Conversación</CDBSidebarMenuItem>
             </NavLink>
-            {/*<NavLink to="/Vision_camera">
-              <CDBSidebarMenuItem icon="camera">Detección</CDBSidebarMenuItem>
-            </NavLink>*/}
-            <NavLink to="/ReadAPI">
-              <CDBSidebarMenuItem icon="smile">Conexión API</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact="true" to="/List">
-              <CDBSidebarMenuItem icon="list">Listar usuarios</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink to="/Manage">
-              <CDBSidebarMenuItem icon="user">Administrar usuarios</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink to="/Metrics">
-              <CDBSidebarMenuItem icon="tools">Metricas</CDBSidebarMenuItem>
-            </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
       </CDBSidebar>
