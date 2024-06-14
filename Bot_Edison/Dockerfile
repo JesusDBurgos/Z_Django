@@ -10,10 +10,10 @@ RUN chown -R rasa /app
 USER rasa
 
 # Copiamos el modelo entrenado a la carpeta /app dentro del contenedor
-COPY ./models/20231210-014102.tar.gz /app/models/
+COPY ./models/20240604-172140.tar.gz /app/models/
 
 # Exponemos el puerto 5005 para el servicio de Rasa
 EXPOSE 5005
 
 # Comando para iniciar el servidor de Rasa con el modelo cargado y opciones específicas
-CMD ["run", "--cors", "\"*\"", "--enable-api" , "--model", "/app/models"]
+CMD ["run", "--cors", "*", "--enable-api", "--model", "/app/models"]

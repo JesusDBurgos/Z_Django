@@ -28,7 +28,7 @@ const Navigation = () => {
               alt="React Bootstrap logo"
               exact = "true"
             />{' '}
-            <strong>Asistente Virtual Robótico: Edison Robot</strong>
+            <strong>Asistente Virtual Robótico: Elaine Assistant</strong>
         </Navbar.Brand>
     </Navbar>
     <div className='sidebar'>

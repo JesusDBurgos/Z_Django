@@ -125,7 +125,7 @@ function Chatbot() {
 
     const rasaAPI = async function handleClick(name, msg) {
 
-        await fetch('http://localhost:5005/webhooks/rest/webhook', {
+        await fetch('https://chatbot-nofc.onrender.com/webhooks/rest/webhook', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -194,7 +194,7 @@ function Chatbot() {
     }
 
     return (
-        <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Chat de usuarios</h1>
+        <><h1 className="bg-info text-center font-monospace fw-bold lh-base">Orientador de Ingeniería Mecátronica</h1>
             <div className="d-flex flex-wrap justify-content-evenly" style={{ marginTop: '0rem' }}>
 
                 <div className="" style={{ width: "500px" }}>
