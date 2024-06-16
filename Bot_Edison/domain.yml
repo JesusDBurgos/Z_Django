@@ -134,9 +134,9 @@ responses:
   automatización en las organizaciones de los sectores público y privado"
 
   utter_salary:
-  - text: "El salario promedio de un Ingeniero Mecatrónico en Colombia es de 2370010 millones de pesos por mes. 
-  El sueldo de un Ingeniero Mecatrónico puede empezar en un salario mínimo de 1561070 millones de pesos por mes, mientras 
-  que el salario máximo puede exceder los 3'925,100 millones de pesos por mes"
+  - text: "El salario promedio de un Ingeniero Mecatrónico en Colombia es de dos millones trecientos setenta mil pesos por mes. 
+  El sueldo de un Ingeniero Mecatrónico puede empezar en un salario mínimo de un millón quinientos sesenta y un mil pesos por mes, mientras 
+  que el salario máximo puede exceder los tres millones novecientos venticinco mil pesos por mes"
 
 session_config:
   session_expiration_time: 60
