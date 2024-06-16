@@ -10,7 +10,7 @@ RUN chown -R rasa /app
 USER rasa
 
 # Copiamos el modelo entrenado a la carpeta /app dentro del contenedor
-COPY ./models/20240604-172140.tar.gz /app/models/
+COPY ./models/20240615-230952.tar.gz /app/models/
 
 # Exponemos el puerto 5005 para el servicio de Rasa
 EXPOSE 5005
