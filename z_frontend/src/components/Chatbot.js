@@ -35,6 +35,57 @@ function Chatbot() {
         speechSynthesis.speak(utterance);
     };
 
+    const capture = useCallback(
+        () => {
+            console.log('Capture function called');
+            const imageSrc = webcamRef.current.getScreenshot();
+            fetch('http://127.0.0.1:8000/api/v1/detect', {
+                method: 'POST',
+                body: JSON.stringify({ image: imageSrc }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Detection results:', data.results);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        },
+        [webcamRef]
+    );
+
+    const detect = async (image) => {
+        try {
+
+            const response = await fetch("http://127.0.0.1:8000/api/v1/detect_streaming", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ image })
+            });
+
+            // Extraer bounding boxes    
+            const result = await response.json();
+            // Si result no es un array, conviértelo en un array
+            if (!Array.isArray(result)) {
+                result = [result];
+            }
+            setBoxes(result);
+        } catch (error) {
+            //console.error('Error during fetch:', error);
+        }
+    }
+
+    const processFrame = () => {
+        if (webcamRef.current) {
+            const screenshot = webcamRef.current.getScreenshot();
+            const image = screenshot.replace('data:image/jpeg;base64,', '');
+            detect(image);
+        }
+
+    }
     const [chat, setChat] = useState([]);
     const [inputMessage, setInputMessage] = useState('');
     const [botTyping, setbotTyping] = useState(false);
